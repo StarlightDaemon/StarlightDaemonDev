@@ -298,6 +298,16 @@ section h2::after {
     transform: translateY(-4px);
 }
 
+/* Placeholder cards - slightly faded */
+.project-card.placeholder-card {
+    opacity: 0.6;
+    border-style: dashed;
+}
+
+.project-card.placeholder-card:hover {
+    opacity: 0.85;
+}
+
 .project-header {
     display: flex;
     justify-content: space-between;
