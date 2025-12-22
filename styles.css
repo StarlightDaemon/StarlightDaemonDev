@@ -13,17 +13,17 @@
     --text-secondary: #cccccc;
     --text-muted: #999999;
 
-    /* Matrix neon green accent (solid) */
-    --accent-primary: #00ff41;
-    --accent-secondary: #00ff41;
-    --accent-glow: rgba(0, 255, 65, 0.5);
+    /* Matrix CRT green accent (classic phosphor green) */
+    --accent-primary: #00cc00;
+    --accent-secondary: #00cc00;
+    --accent-glow: rgba(0, 204, 0, 0.5);
 
     --border-default: #3a3a3a;
     --border-accent: #00ff41;
     --border-muted: #2a2a2a;
 
     /* Status Colors - Matrix Style */
-    --status-active: #00ff41;
+    --status-active: #00cc00;
     --status-maintained: #ffaa00;
     --status-archived: #666666;
 
