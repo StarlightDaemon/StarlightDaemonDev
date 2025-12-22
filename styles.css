@@ -3,31 +3,29 @@
    Retro-Modern Terminal Aesthetic
    =========================== */
 :root {
-    /* Colors - Matrix-Lite Theme */
-    --bg-primary: #f0f0f0;
-    --bg-secondary: #e8e8e8;
-    --bg-tertiary: #e0e0e0;
-    --bg-card: #fafafa;
+    /* Colors - Dark Matrix Theme */
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #222222;
+    --bg-tertiary: #2a2a2a;
+    --bg-card: #252525;
 
-    --text-primary: #1a1a1a;
-    --text-secondary: #3a3a3a;
-    --text-muted: #666666;
+    --text-primary: #e8e8e8;
+    --text-secondary: #b8b8b8;
+    --text-muted: #888888;
 
-    /* Matrix-inspired neon accents */
+    /* Matrix neon green accent (solid) */
     --accent-primary: #00ff41;
-    --accent-secondary: #00d9ff;
-    --accent-glow: rgba(0, 255, 65, 0.4);
-    --accent-glow-cyan: rgba(0, 217, 255, 0.3);
-    --accent-gradient: linear-gradient(135deg, #00ff41 0%, #00d9ff 100%);
+    --accent-secondary: #00ff41;
+    --accent-glow: rgba(0, 255, 65, 0.5);
 
-    --border-default: #c0c0c0;
+    --border-default: #3a3a3a;
     --border-accent: #00ff41;
-    --border-muted: #d8d8d8;
+    --border-muted: #2a2a2a;
 
     /* Status Colors - Matrix Style */
     --status-active: #00ff41;
     --status-maintained: #ffaa00;
-    --status-archived: #888888;
+    --status-archived: #666666;
 
     /* Spacing */
     --space-xs: 0.25rem;
@@ -57,11 +55,10 @@
     --radius-lg: 8px;
     --radius-full: 9999px;
 
-    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
-    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
     --shadow-neon: 0 0 10px var(--accent-glow), 0 0 20px var(--accent-glow);
-    --shadow-neon-cyan: 0 0 10px var(--accent-glow-cyan), 0 0 20px var(--accent-glow-cyan);
 
     /* Transitions */
     --transition-fast: 150ms ease;
@@ -104,11 +101,9 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-        to bottom,
-        transparent 50%,
-        rgba(0, 0, 0, 0.02) 50%
-    );
+    background: linear-gradient(to bottom,
+            transparent 50%,
+            rgba(0, 0, 0, 0.02) 50%);
     background-size: 100% 4px;
     pointer-events: none;
     z-index: 9999;
@@ -122,8 +117,8 @@ a {
 }
 
 a:hover {
-    color: var(--accent-secondary);
-    text-shadow: 0 0 8px var(--accent-glow-cyan);
+    color: var(--accent-primary);
+    text-shadow: 0 0 8px var(--accent-glow);
 }
 
 ul {
@@ -188,10 +183,8 @@ img {
 .title {
     font-size: var(--text-4xl);
     font-weight: 700;
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--accent-primary);
+    text-shadow: 0 0 20px var(--accent-glow);
     margin-bottom: var(--space-sm);
     letter-spacing: 0.05em;
     font-family: var(--font-display);
@@ -208,10 +201,14 @@ img {
 }
 
 @keyframes blink {
-    0%, 50% {
+
+    0%,
+    50% {
         opacity: 1;
     }
-    51%, 100% {
+
+    51%,
+    100% {
         opacity: 0;
     }
 }
@@ -261,10 +258,10 @@ img {
 }
 
 .btn-primary:hover {
-    background: var(--accent-secondary);
-    border-color: var(--accent-secondary);
-    box-shadow: var(--shadow-neon-cyan);
-    color: var(--text-primary);
+    background: var(--bg-card);
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-neon);
+    color: var(--accent-primary);
 }
 
 .btn-secondary {
@@ -321,7 +318,7 @@ section h2::after {
     left: 0;
     width: 100%;
     height: 2px;
-    background: var(--accent-gradient);
+    background: var(--accent-primary);
     box-shadow: 0 0 8px var(--accent-glow);
 }
 
@@ -360,10 +357,13 @@ section h2::after {
 }
 
 @keyframes pulse-dot {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 1;
         transform: scale(1);
     }
+
     50% {
         opacity: 0.5;
         transform: scale(1.2);
@@ -498,8 +498,8 @@ section h2::after {
 }
 
 .skill-category:hover {
-    border-color: var(--accent-secondary);
-    box-shadow: var(--shadow-neon-cyan);
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-neon);
 }
 
 .skill-category h3 {
@@ -514,7 +514,7 @@ section h2::after {
 
 .skill-category h3::before {
     content: '$ ';
-    color: var(--accent-secondary);
+    color: var(--accent-primary);
 }
 
 .skill-list li {
@@ -594,14 +594,14 @@ section h2::after {
     width: 80px;
     height: 80px;
     margin: 0 auto;
-    background: var(--accent-gradient);
+    background: var(--bg-tertiary);
     border-radius: var(--radius-sm);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: var(--text-2xl);
     font-weight: 700;
-    color: var(--text-primary);
+    color: var(--accent-primary);
     box-shadow: var(--shadow-neon);
     font-family: var(--font-display);
     border: 2px solid var(--accent-primary);
@@ -733,6 +733,7 @@ section h2::after {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -744,6 +745,7 @@ section h2::after {
         opacity: 0;
         transform: translateX(-20px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -773,9 +775,12 @@ section:nth-child(4) {
 
 /* Glow pulse for focus states */
 @keyframes glow-pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         box-shadow: 0 0 5px var(--accent-glow);
     }
+
     50% {
         box-shadow: 0 0 20px var(--accent-glow), 0 0 30px var(--accent-glow);
     }
