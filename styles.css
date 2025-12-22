@@ -3,11 +3,11 @@
    Retro-Modern Terminal Aesthetic
    =========================== */
 :root {
-    /* Colors - Dark Matrix Theme */
-    --bg-primary: #1a1a1a;
-    --bg-secondary: #222222;
-    --bg-tertiary: #2a2a2a;
-    --bg-card: #252525;
+    /* Colors - Dark Matrix Theme (20% darker) */
+    --bg-primary: #0d0d0d;
+    --bg-secondary: #141414;
+    --bg-tertiary: #1a1a1a;
+    --bg-card: #161616;
 
     --text-primary: #e8e8e8;
     --text-secondary: #b8b8b8;
@@ -176,7 +176,6 @@ img {
 .hero {
     padding: var(--space-3xl) 0;
     text-align: center;
-    border-bottom: 2px solid var(--border-accent);
     position: relative;
 }
 
