@@ -198,7 +198,7 @@ img {
 .title::after {
     content: '▊';
     color: var(--accent-primary);
-    animation: blink 1s step-end infinite;
+    animation: blink 1.5s step-end infinite;
     margin-left: 4px;
 }
 
