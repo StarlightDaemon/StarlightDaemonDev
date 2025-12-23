@@ -136,10 +136,10 @@ img {
    =========================== */
 .page-wrapper {
     display: grid;
-    grid-template-columns: 1fr 280px;
+    grid-template-columns: 1fr;
     grid-template-rows: 1fr auto;
     gap: var(--space-xl);
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: var(--space-2xl);
     min-height: 100vh;
@@ -152,6 +152,7 @@ img {
     gap: var(--space-2xl);
 }
 
+/* Sidebar - Commented out, keeping CSS for future use
 .sidebar {
     grid-column: 2;
     position: sticky;
@@ -161,6 +162,7 @@ img {
     flex-direction: column;
     gap: var(--space-lg);
 }
+*/
 
 .footer {
     grid-column: 1 / -1;
