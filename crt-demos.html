@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRT Scanline Demos | StarlightDaemon</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/crt-demos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&family=Courier+Prime:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Logo -->
+    <div class="logo">
+        <a href="index.html"><img src="assets/thinker-logo.png" alt="StarlightDaemon Logo" /></a>
+    </div>
+
+    <!-- Upper Right Info -->
+    <div class="upper-right-info">
+        <div class="clock" id="clock">00:00:00</div>
+        <div class="date" id="date">JAN-01-2025</div>
+        <div class="quick-links">
+            <a href="https://github.com/StarlightDaemon" target="_blank" rel="noopener">[GH]</a>
+            <a href="https://xdaforums.com/m/graycatgrayhat.12893039/" target="_blank" rel="noopener">[XDA]</a>
+            <a href="index.html">[HOME]</a>
+        </div>
+    </div>
+
+    <div class="demo-wrapper">
+        <!-- Page Header -->
+        <header class="demo-header">
+            <h1>CRT SCANLINE DEMOS</h1>
+            <p>Interactive demonstration of different CRT monitor scanline effects. Click buttons to toggle between
+                styles.</p>
+        </header>
+
+        <!-- Effect Selector -->
+        <nav class="effect-selector">
+            <button class="effect-btn" data-effect="subtle">SUBTLE</button>
+            <button class="effect-btn" data-effect="classic">CLASSIC</button>
+            <button class="effect-btn" data-effect="heavy">HEAVY</button>
+            <button class="effect-btn" data-effect="rgb">RGB</button>
+            <button class="effect-btn active" data-effect="matrix">MATRIX</button>
+            <button class="effect-btn" data-effect="ultra">ULTRA</button>
+            <button class="effect-btn" data-effect="mega">MEGA</button>
+        </nav>
+
+        <!-- Current Effect Info -->
+        <section class="effect-info" id="effectInfo">
+            <h2 id="effectTitle">MATRIX THICK SCANLINES</h2>
+            <p id="effectDesc">Thick visible scanlines inspired by The Matrix CRT monitors. Bold horizontal lines with
+                significant presence - very authentic old-school CRT feel.</p>
+            <div class="effect-specs" id="effectSpecs">
+                <span>▪ Line Width: 2px</span>
+                <span>▪ Spacing: 4px</span>
+                <span>▪ Opacity: 0.40</span>
+            </div>
+        </section>
+
+        <!-- Sample Content -->
+        <section class="demo-content">
+            <h2>> SAMPLE PROJECT CARD</h2>
+            <article class="project-card">
+                <div class="project-header">
+                    <h3>ARC</h3>
+                    <span class="project-status status-active">Active</span>
+                </div>
+                <p class="project-description">
+                    Accessories Recommendation Catalog - Comprehensive phone accessory guides for XDA Forums.
+                    Static website with BBCode generation, research system, and multi-device support.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">HTML</span>
+                    <span class="tech-tag">CSS</span>
+                    <span class="tech-tag">JavaScript</span>
+                </div>
+            </article>
+
+            <h2>> SAMPLE TEXT</h2>
+            <div class="demo-text">
+                <p>This is how body text appears with the scanline effect applied. Notice the horizontal lines that give
+                    an authentic CRT monitor feel.</p>
+                <p>Toggle between different effects using the buttons above to compare scanline visibility and
+                    thickness.</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="js/crt-demos.js"></script>
+</body>
+
+</html>
