@@ -14,6 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Uptime counter
     updateUptime();
+
+    // Clock and date
+    updateClock();
+    setInterval(updateClock, 1000); // Update every second
 });
 
 /**

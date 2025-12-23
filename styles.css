@@ -85,13 +85,49 @@ html {
 
 body {
     font-family: var(--font-mono);
-    background-color: var(--bg-primary);
+    background:
+        repeating-linear-gradient(0deg,
+            rgba(0, 204, 0, 0.03) 0px,
+            transparent 1px,
+            transparent 2px,
+            rgba(0, 204, 0, 0.03) 3px),
+        radial-gradient(ellipse at center, #0d0d0d 0%, #050505 100%);
     color: var(--text-primary);
     line-height: 1.6;
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     position: relative;
+}
+
+/* CRT scanline effect */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%,
+            rgba(0, 0, 0, 0.25) 50%);
+    background-size: 100% 4px;
+    z-index: 9998;
+    pointer-events: none;
+    animation: flicker 0.15s infinite;
+}
+
+@keyframes flicker {
+    0% {
+        opacity: 0.97;
+    }
+
+    50% {
+        opacity: 0.99;
+    }
+
+    100% {
+        opacity: 0.97;
+    }
 }
 
 /* Subtle scan-line overlay */
@@ -154,6 +190,61 @@ img {
     line-height: 1;
     color: var(--accent-primary);
     text-shadow: 0 0 8px var(--accent-glow);
+}
+
+/* ===========================
+   Upper Right Info
+   =========================== */
+.upper-right-info {
+    position: fixed;
+    top: var(--space-lg);
+    right: var(--space-lg);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--space-xs);
+    font-family: var(--font-mono);
+    opacity: 0.7;
+    transition: opacity var(--transition-fast);
+}
+
+.upper-right-info:hover {
+    opacity: 1;
+}
+
+.clock {
+    font-size: var(--text-base);
+    color: var(--accent-primary);
+    letter-spacing: 0.1em;
+    text-shadow: 0 0 4px var(--accent-glow);
+}
+
+.date {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+}
+
+.quick-links {
+    display: flex;
+    gap: var(--space-sm);
+    margin-top: var(--space-xs);
+}
+
+.quick-links a {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 2px 4px;
+    border: 1px solid var(--border-default);
+    transition: all var(--transition-fast);
+}
+
+.quick-links a:hover {
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
+    text-shadow: 0 0 4px var(--accent-glow);
 }
 
 /* ===========================
