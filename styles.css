@@ -295,7 +295,7 @@ img {
    Sections
    =========================== */
 section {
-    padding: var(--space-xl) 0;
+    padding: 0;
 }
 
 section h2 {
