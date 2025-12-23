@@ -150,8 +150,8 @@ img {
 .ascii-logo pre {
     margin: 0;
     font-family: var(--font-mono);
-    font-size: var(--text-sm);
-    line-height: 1;
+    font-size: var(--text-lg);
+    line-height: 1.1;
     color: var(--accent-primary);
     text-shadow: 0 0 4px var(--accent-glow);
 }
