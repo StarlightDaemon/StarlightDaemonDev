@@ -393,6 +393,9 @@ section h2 {
     font-family: var(--font-display);
     text-transform: uppercase;
     letter-spacing: 0.1em;
+    padding: var(--space-sm) var(--space-md);
+    border: 2px solid var(--accent-primary);
+    background: rgba(0, 204, 0, 0.03);
 }
 
 section h2::before {
