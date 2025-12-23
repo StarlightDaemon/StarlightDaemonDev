@@ -177,7 +177,7 @@ img {
    Hero Section
    =========================== */
 .hero {
-    padding: var(--space-xl) 0;
+    padding: 0.8rem 0;
     text-align: center;
     position: relative;
 }
