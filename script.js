@@ -111,6 +111,33 @@ function updateUptime() {
 }
 
 /**
+ * Update clock and date display
+ */
+function updateClock() {
+    const now = new Date();
+
+    // Format time as [HH:MM:SS]
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    const timeString = `[${hours}:${minutes}:${seconds}]`;
+
+    // Format date as MMM-DD-YYYY
+    const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN',
+        'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+    const month = months[now.getMonth()];
+    const day = String(now.getDate()).padStart(2, '0');
+    const year = now.getFullYear();
+    const dateString = `${month}-${day}-${year}`;
+
+    const clockElement = document.getElementById('clock');
+    const dateElement = document.getElementById('date');
+
+    if (clockElement) clockElement.textContent = timeString;
+    if (dateElement) dateElement.textContent = dateString;
+}
+
+/**
  * Optional: Add typing effect to tagline
  * Uncomment to enable
  */
