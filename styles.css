@@ -184,8 +184,8 @@ img {
 }
 
 .logo img {
-    width: 150px;
-    height: 150px;
+    width: 110px;
+    height: 110px;
     display: block;
     filter: brightness(1.1) contrast(1.1);
 }
