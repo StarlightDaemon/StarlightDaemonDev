@@ -452,7 +452,7 @@ section h2::after {
 }
 
 .project-card {
-    background: var(--bg-card);
+    background: #1d1d1d;
     border: 2px solid var(--border-default);
     border-radius: var(--radius-md);
     padding: var(--space-lg);
@@ -461,6 +461,7 @@ section h2::after {
     flex-direction: column;
     gap: var(--space-md);
     position: relative;
+    z-index: 10;
 }
 
 /* Pulsing dot indicator - Commented out
@@ -614,11 +615,13 @@ section h2::after {
 }
 
 .skill-category {
-    background: var(--bg-card);
+    background: #1d1d1d;
     border: 2px solid var(--border-default);
     border-radius: var(--radius-md);
     padding: var(--space-lg);
     transition: all var(--transition-base);
+    position: relative;
+    z-index: 10;
 }
 
 .skill-category:hover {
