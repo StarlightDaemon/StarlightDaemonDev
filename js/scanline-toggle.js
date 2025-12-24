@@ -10,8 +10,8 @@ function initScanlineToggle() {
     const togglePanel = document.getElementById('togglePanel');
     const effectBtns = document.querySelectorAll('.effect-option');
 
-    // Load saved preference or default to subtle
-    const savedEffect = localStorage.getItem('scanlineEffect') || 'subtle';
+    // Load saved preference or default to matrix
+    const savedEffect = localStorage.getItem('scanlineEffect') || 'matrix';
     applyScanlineEffect(savedEffect);
 
     // Update active button
