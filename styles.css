@@ -85,13 +85,7 @@ html {
 
 body {
     font-family: var(--font-mono);
-    background:
-        repeating-linear-gradient(0deg,
-            rgba(0, 204, 0, 0.03) 0px,
-            transparent 1px,
-            transparent 2px,
-            rgba(0, 204, 0, 0.03) 3px),
-        radial-gradient(ellipse at center, #0d0d0d 0%, #050505 100%);
+    background: #0a0a0a;
     color: var(--text-primary);
     line-height: 1.6;
     min-height: 100vh;
