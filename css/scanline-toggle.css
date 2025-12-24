@@ -92,6 +92,54 @@
     color: var(--accent-primary);
 }
 
+/* Brightness options */
+.brightness-options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-md);
+}
+
+.brightness-option {
+    background: transparent;
+    border: 1px solid var(--border-default);
+    color: var(--text-secondary);
+    padding: var(--space-xs) var(--space-sm);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    text-align: left;
+}
+
+.brightness-option:hover {
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+
+.brightness-option.active {
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
+    background: rgba(0, 204, 0, 0.05);
+}
+
+/* Background brightness variations */
+body[data-brightness="dark"] {
+    background: radial-gradient(ellipse at center, #050505 0%, #000000 100%);
+}
+
+body[data-brightness="default"] {
+    background: radial-gradient(ellipse at center, #0d0d0d 0%, #050505 100%);
+}
+
+body[data-brightness="medium"] {
+    background: radial-gradient(ellipse at center, #1a1a1a 0%, #0d0d0d 100%);
+}
+
+body[data-brightness="light"] {
+    background: radial-gradient(ellipse at center, #252525 0%, #1a1a1a 100%);
+}
+
 /* Scanline effect variations */
 body[data-scanline="subtle"]::before {
     background: linear-gradient(to bottom,

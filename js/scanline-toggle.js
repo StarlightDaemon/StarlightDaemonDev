@@ -52,8 +52,44 @@ function initScanlineToggle() {
             localStorage.setItem('scanlineEffect', effect);
         });
     });
+
+    // Brightness controls
+    const brightnessBtn = document.querySelectorAll('.brightness-option');
+    const savedBrightness = localStorage.getItem('backgroundBrightness') || 'default';
+    applyBrightness(savedBrightness);
+
+    // Update active brightness button
+    brightnessBtn.forEach(btn => {
+        if (btn.getAttribute('data-brightness') === savedBrightness) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+
+    // Brightness option click handlers
+    brightnessBtn.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const brightness = btn.getAttribute('data-brightness');
+
+            // Update active state
+            brightnessBtn.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Apply brightness
+            applyBrightness(brightness);
+
+            // Save preference
+            localStorage.setItem('backgroundBrightness', brightness);
+        });
+    });
 }
 
 function applyScanlineEffect(effect) {
     document.body.setAttribute('data-scanline', effect);
+}
+
+function applyBrightness(brightness) {
+    document.body.setAttribute('data-brightness', brightness);
 }
