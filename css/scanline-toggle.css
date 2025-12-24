@@ -125,19 +125,19 @@
 
 /* Background brightness variations - Flat monochrome monitor style */
 body[data-brightness="dark"] {
-    background: #000000;
+    background: #141414;
 }
 
 body[data-brightness="default"] {
-    background: #0a0a0a;
-}
-
-body[data-brightness="medium"] {
     background: #1a1a1a;
 }
 
-body[data-brightness="light"] {
+body[data-brightness="medium"] {
     background: #2a2a2a;
+}
+
+body[data-brightness="light"] {
+    background: #3a3a3a;
 }
 
 /* Scanline effect variations */
