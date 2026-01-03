@@ -80,7 +80,8 @@
 
 html {
     scroll-behavior: smooth;
-    font-size: 16px;
+    font-size: 18px;
+    /* Increased from 16px for better readability */
 }
 
 body {
@@ -895,10 +896,10 @@ section h2::after {
                 rgba(0, 0, 0, 0.20) 4px);
     }
 
-    /* Slightly larger base font size */
+    /* Larger base font size for 2K */
     html {
-        font-size: 18px;
-        /* Up from 16px */
+        font-size: 20px;
+        /* Up from 18px default */
     }
 
     /* Wider layout for larger screens */
@@ -939,7 +940,8 @@ section h2::after {
 
     /* Optimal font size for 4K */
     html {
-        font-size: 20px;
+        font-size: 24px;
+        /* Up from 20px - matches 150% zoom preference */
     }
 
     /* Much wider layout for 4K */
