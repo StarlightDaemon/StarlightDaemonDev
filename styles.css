@@ -879,6 +879,27 @@ section h2::after {
         font-size: 18px;
         /* Up from 16px */
     }
+
+    /* Wider layout for larger screens */
+    .page-wrapper {
+        max-width: 1200px;
+        /* Up from 1000px */
+    }
+
+    /* Scale up logo */
+    .logo img {
+        width: 130px;
+        height: 130px;
+    }
+
+    /* Larger clock and date */
+    .clock {
+        font-size: 1.125rem;
+    }
+
+    .date {
+        font-size: 0.875rem;
+    }
 }
 
 /* 4K+ Displays (2560px and above) */
@@ -899,7 +920,65 @@ section h2::after {
     html {
         font-size: 20px;
     }
+
+    /* Much wider layout for 4K */
+    .page-wrapper {
+        max-width: 1600px;
+        /* Up from 1000px */
+        padding: 0 var(--space-3xl) var(--space-3xl);
+    }
+
+    /* Scale up project cards */
+    .project-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: var(--space-2xl);
+    }
+
+    .project-card {
+        padding: var(--space-2xl);
+    }
+
+    /* Scale up skills grid */
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: var(--space-2xl);
+    }
+
+    .skill-category {
+        padding: var(--space-2xl);
+    }
+
+    /* Larger logo for 4K */
+    .logo img {
+        width: 150px;
+        height: 150px;
+    }
+
+    /* Larger clock and date for 4K */
+    .clock {
+        font-size: 1.25rem;
+    }
+
+    .date {
+        font-size: 1rem;
+    }
+
+    /* Scale up section headings */
+    section h2 {
+        font-size: 2.5rem;
+        padding: var(--space-md) var(--space-lg);
+    }
+
+    /* Larger title */
+    .title {
+        font-size: 3.5rem;
+    }
+
+    .tagline {
+        font-size: 1.75rem;
+    }
 }
+
 
 /* ===========================
    Animations
