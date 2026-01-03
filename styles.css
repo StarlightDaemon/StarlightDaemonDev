@@ -10,8 +10,8 @@
     --bg-card: #161616;
 
     --text-primary: #ffffff;
-    --text-secondary: #cccccc;
-    --text-muted: #999999;
+    --text-secondary: #e0e0e0;
+    --text-muted: #b0b0b0;
 
     /* Matrix CRT green accent (classic phosphor green) */
     --accent-primary: #00cc00;
@@ -854,6 +854,50 @@ section h2::after {
 
     .skills-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+/* ===========================
+   High-Resolution Display Optimizations
+   =========================== */
+
+/* 2K+ Displays (1920px and above) */
+@media (min-width: 1920px) {
+
+    /* Reduce scanline opacity for better readability */
+    body::before {
+        background: repeating-linear-gradient(0deg,
+                transparent 0px,
+                transparent 2px,
+                rgba(0, 0, 0, 0.20) 2px,
+                /* Reduced from 0.40 */
+                rgba(0, 0, 0, 0.20) 4px);
+    }
+
+    /* Slightly larger base font size */
+    html {
+        font-size: 18px;
+        /* Up from 16px */
+    }
+}
+
+/* 4K+ Displays (2560px and above) */
+@media (min-width: 2560px) {
+
+    /* Further reduce scanline intensity with wider spacing */
+    body::before {
+        background: repeating-linear-gradient(0deg,
+                transparent 0px,
+                transparent 3px,
+                /* Wider spacing */
+                rgba(0, 0, 0, 0.15) 3px,
+                /* Even lighter */
+                rgba(0, 0, 0, 0.15) 5px);
+    }
+
+    /* Optimal font size for 4K */
+    html {
+        font-size: 20px;
     }
 }
 
