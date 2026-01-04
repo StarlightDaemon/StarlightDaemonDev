@@ -683,9 +683,18 @@ section h2::after {
    =========================== */
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    /* Widened for longer titles */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* Adaptive default */
     gap: var(--space-lg);
+}
+
+/* Enforce 4 columns on desktop standard */
+@media (min-width: 1200px) {
+
+    .skills-grid,
+    .project-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
 }
 
 .skill-category {
@@ -1024,8 +1033,9 @@ section h2::after {
     }
 
     /* Scale up project cards */
+    /* Enforce 4 columns on 4K too */
     .project-grid {
-        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        grid-template-columns: repeat(4, 1fr) !important;
         gap: var(--space-2xl);
     }
 
@@ -1034,8 +1044,9 @@ section h2::after {
     }
 
     /* Scale up skills grid */
+    /* Enforce 4 columns on 4K too */
     .skills-grid {
-        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        grid-template-columns: repeat(4, 1fr) !important;
         /* Fix overwrite */
         gap: var(--space-2xl);
     }
