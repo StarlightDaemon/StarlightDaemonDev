@@ -85,12 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Auto-start if mini mode
-document.addEventListener('DOMContentLoaded', () => {
-    if (document.querySelector('.sg-terminal.mini-mode')) {
-        setTimeout(dialSequence, 1000);
-    }
-});
+
 
 
 // Main Init
