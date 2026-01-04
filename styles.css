@@ -645,7 +645,8 @@ section h2::after {
 }
 
 .skill-category h3 {
-    font-size: var(--text-base);
+    font-size: var(--text-sm);
+    /* Reduced to prevent cutoff */
     font-weight: 600;
     color: var(--accent-primary);
     margin-bottom: var(--space-md);
