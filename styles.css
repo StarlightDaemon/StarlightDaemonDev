@@ -955,8 +955,8 @@ section h2::after {
    High-Resolution Display Optimizations
    =========================== */
 
-/* 2K+ Displays (1920px and above) */
-@media (min-width: 1920px) {
+/* 2K+ Displays (Effective width > 1700px to account for OS chrome) */
+@media (min-width: 1700px) {
 
     /* Reduce scanline opacity for better readability */
     body::before {
@@ -996,8 +996,8 @@ section h2::after {
     }
 }
 
-/* 4K+ Displays (2560px and above) */
-@media (min-width: 2560px) {
+/* 4K+ Displays (Effective width > 2300px to account for OS chrome) */
+@media (min-width: 2300px) {
 
     /* Further reduce scanline intensity with wider spacing */
     body::before {
@@ -1010,7 +1010,6 @@ section h2::after {
                 rgba(0, 0, 0, 0.15) 5px);
     }
 
-    /* Optimal font size for 4K */
     /* Optimal font size for 4K */
     html {
         font-size: 28px;
