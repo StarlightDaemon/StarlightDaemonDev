@@ -1,0 +1,14 @@
+# Archives & Backups
+_DEPRECATED_ASSETS/
+concepts/
+ideas/
+
+# System Files
+.DS_Store
+Thumbs.db
+*.log
+
+# Editor/Agent
+.vscode/
+.idea/
+*.swp
