@@ -646,6 +646,8 @@ section h2::after {
     font-family: var(--font-mono);
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    white-space: nowrap;
+    /* Fixed: Prevent title wrapping */
 }
 
 .skill-category h3::before {
