@@ -26,6 +26,7 @@
     --status-active: #00cc00;
     --status-maintained: #ffaa00;
     --status-archived: #666666;
+    --status-beta: #00e5ff;
 
     /* Spacing */
     --space-xs: 0.25rem;
@@ -584,6 +585,12 @@ section h2::after {
     background: rgba(136, 136, 136, 0.15);
     color: var(--status-archived);
     border: 1px solid var(--border-default);
+}
+
+.status-beta {
+    background: rgba(0, 229, 255, 0.15);
+    color: var(--status-beta);
+    border: 1px solid var(--status-beta);
 }
 
 .project-description {
