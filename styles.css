@@ -1168,333 +1168,233 @@ section:nth-child(4) {
 .btn-primary:focus,
 .project-card:focus-within {
     animation: glow-pulse 2s ease-in-out infinite;
-}<!DOCTYPE html>
-<html lang="en">
+}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Retro LCD Stargate - Functional</title>
-    <style>
-        :root {
-            --lcd-green: #00ff41;
-            --lcd-off: #003311;
-            --bg-dark: #0a0a0a;
-        }
+/* --- STARGATE TERMINAL WIDGET --- */
+:root {
+    --lcd-green: #00ff41;
+    --lcd-off: #003311;
+    --bg-dark: #0a0a0a;
+}
 
-        body {
-            background: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            overflow: hidden;
-        }
+/* Container adapted for Upper Right Header */
+.sg-terminal {
+    background: var(--bg-dark);
+    border: 2px solid var(--lcd-green);
+    padding: 10px;
+    font-family: 'Courier New', monospace;
+    color: var(--lcd-green);
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+    width: 300px;
+    /* Adjusted size */
+    position: relative;
+    transform: scale(0.8);
+    /* Scale down slightly to fit */
+    transform-origin: top right;
+}
 
-        /* The "Code Window" Container */
-        .terminal {
-            background: var(--bg-dark);
-            border: 4px solid var(--lcd-green);
-            padding: 10px;
-            font-family: 'Courier New', monospace;
-            color: var(--lcd-green);
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
-            width: 400px;
-            position: relative;
-        }
+/* Scanline Effect */
+.sg-terminal::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 20;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+    animation: flicker 0.15s infinite;
+}
 
-        /* Screen Flicker & Scanlines */
-        .terminal::before {
-            content: " ";
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            z-index: 20;
-            background-size: 100% 2px, 3px 100%;
-            pointer-events: none;
-            animation: flicker 0.15s infinite;
-        }
+@keyframes flicker {
+    0% {
+        opacity: 0.95
+    }
 
-        @keyframes flicker {
-            0% {
-                opacity: 0.95
-            }
+    100% {
+        opacity: 1
+    }
+}
 
-            100% {
-                opacity: 1
-            }
-        }
+.sg-header {
+    border-bottom: 2px dashed var(--lcd-green);
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    text-shadow: 2px 0 rgba(255, 0, 0, 0.5), -2px 0 rgba(0, 0, 255, 0.5);
+    /* Aberration */
+    font-weight: bold;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+}
 
-        .header {
-            border-bottom: 2px dashed var(--lcd-green);
-            padding-bottom: 10px;
-            margin-bottom: 10px;
-            text-shadow: 2px 0 rgba(255, 0, 0, 0.5), -2px 0 rgba(0, 0, 255, 0.5);
-            /* Chromatic Aberration */
-            font-weight: bold;
-            display: flex;
-            justify-content: space-between;
-        }
+.sg-footer {
+    border-top: 2px dashed var(--lcd-green);
+    padding-top: 5px;
+    margin-top: 10px;
+    text-align: center;
+    text-shadow: 0 0 5px var(--lcd-green);
+    cursor: pointer;
+    font-size: 12px;
+    transition: background 0.2s;
+}
 
-        .footer {
-            border-top: 2px dashed var(--lcd-green);
-            padding-top: 10px;
-            margin-top: 10px;
-            text-align: center;
-            text-shadow: 0 0 5px var(--lcd-green);
-            cursor: pointer;
-        }
+.sg-footer:hover {
+    background: var(--lcd-off);
+    color: #fff;
+}
 
-        .footer:hover {
-            background: var(--lcd-off);
-            color: #fff;
-        }
+/* The Gate Geometry */
+.sg-display {
+    position: relative;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        /* The Gate Geometry */
-        .lcd-screen {
-            position: relative;
-            height: 260px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+.stargate {
+    width: 160px;
+    height: 160px;
+    position: relative;
+}
 
-        .stargate {
-            width: 200px;
-            height: 200px;
-            position: relative;
-        }
+.ring {
+    border-radius: 50%;
+    position: absolute;
+    border: 2px solid var(--lcd-green);
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+}
 
-        .ring {
-            border-radius: 50%;
-            position: absolute;
-            border: 3px solid var(--lcd-green);
-            box-sizing: border-box;
-            top: 0;
-            left: 0;
-        }
+.outer-ring {
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 10px var(--lcd-green), inset 0 0 8px rgba(0, 255, 65, 0.2);
+}
 
-        .outer-ring {
-            width: 100%;
-            height: 100%;
-            box-shadow: 0 0 10px var(--lcd-green), inset 0 0 10px rgba(0, 255, 65, 0.2);
-        }
+.inner-ring {
+    width: 84%;
+    height: 84%;
+    top: 8%;
+    left: 8%;
+    border: 4px dashed var(--lcd-green);
+    opacity: 0.7;
+    transition: transform 0.5s cubic-bezier(0.5, 0, 0.5, 1);
+}
 
-        .inner-ring {
-            width: 84%;
-            height: 84%;
-            top: 8%;
-            left: 8%;
-            border: 6px dashed var(--lcd-green);
-            opacity: 0.7;
-            transition: transform 0.5s cubic-bezier(0.5, 0, 0.5, 1);
-        }
+/* Chevrons */
+.chevron {
+    position: absolute;
+    width: 12px;
+    height: 8px;
+    background: var(--bg-dark);
+    border: 1px solid var(--lcd-green);
+    top: -4px;
+    left: 50%;
+    margin-left: -6px;
+    transform-origin: center 84px;
+    /* 80px radius + 4px offset */
+    transition: all 0.2s;
+    z-index: 5;
+}
 
-        .spinning {
-            /* Used during spin phase */
-        }
+.chevron.locked {
+    background: var(--lcd-green);
+    box-shadow: 0 0 10px var(--lcd-green);
+}
 
-        /* Chevrons */
-        .chevron {
-            position: absolute;
-            width: 16px;
-            height: 10px;
-            background: var(--bg-dark);
-            border: 2px solid var(--lcd-green);
-            top: -6px;
-            left: 50%;
-            margin-left: -8px;
-            transform-origin: center 106px;
-            /* 100px radius + 6px offset */
-            transition: all 0.2s;
-            z-index: 5;
-        }
+.c1 {
+    transform: rotate(0deg);
+}
 
-        .chevron.locked {
-            background: var(--lcd-green);
-            box-shadow: 0 0 15px var(--lcd-green);
-        }
+.c2 {
+    transform: rotate(40deg);
+}
 
-        .c1 {
-            transform: rotate(0deg);
-        }
+.c3 {
+    transform: rotate(80deg);
+}
 
-        .c2 {
-            transform: rotate(40deg);
-        }
+.c4 {
+    transform: rotate(120deg);
+}
 
-        .c3 {
-            transform: rotate(80deg);
-        }
+.c5 {
+    transform: rotate(160deg);
+}
 
-        .c4 {
-            transform: rotate(120deg);
-        }
+.c6 {
+    transform: rotate(200deg);
+}
 
-        .c5 {
-            transform: rotate(160deg);
-        }
+.c7 {
+    transform: rotate(240deg);
+}
 
-        .c6 {
-            transform: rotate(200deg);
-        }
+.c8 {
+    transform: rotate(280deg);
+}
 
-        .c7 {
-            transform: rotate(240deg);
-        }
+.c9 {
+    transform: rotate(320deg);
+}
 
-        .c8 {
-            transform: rotate(280deg);
-        }
+/* Event Horizon */
+.event-horizon {
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    width: 70%;
+    height: 70%;
+    background: radial-gradient(circle, var(--lcd-green) 0%, transparent 60%);
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 1s, transform 0.2s;
+}
 
-        .c9 {
-            transform: rotate(320deg);
-        }
+.event-horizon.active {
+    opacity: 0.6;
+    transform: scale(1);
+    animation: shimmer 0.1s infinite alternate;
+}
 
-        /* The Event Horizon */
-        .event-horizon {
-            position: absolute;
-            top: 15%;
-            left: 15%;
-            width: 70%;
-            height: 70%;
-            background: radial-gradient(circle, var(--lcd-green) 0%, transparent 60%);
-            border-radius: 50%;
-            opacity: 0;
-            transform: scale(0);
-            transition: opacity 1s, transform 0.2s;
-        }
+.kawoosh {
+    animation: kawoosh-anim 1s ease-out forwards;
+}
 
-        .event-horizon.active {
-            opacity: 0.6;
-            transform: scale(1);
-            animation: shimmer 0.1s infinite alternate;
-        }
+@keyframes shimmer {
+    from {
+        opacity: 0.5;
+    }
 
-        .kawoosh {
-            animation: kawoosh-anim 1s ease-out forwards;
-        }
+    to {
+        opacity: 0.7;
+    }
+}
 
-        @keyframes shimmer {
-            from {
-                opacity: 0.5;
-            }
+@keyframes kawoosh-anim {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+        background: #fff;
+    }
 
-            to {
-                opacity: 0.7;
-            }
-        }
+    50% {
+        transform: scale(1.5);
+        opacity: 0.8;
+        background: var(--lcd-green);
+    }
 
-        @keyframes kawoosh-anim {
-            0% {
-                transform: scale(0);
-                opacity: 1;
-                background: #fff;
-            }
-
-            50% {
-                transform: scale(1.5);
-                opacity: 0.8;
-                background: var(--lcd-green);
-            }
-
-            100% {
-                transform: scale(1);
-                opacity: 0.6;
-                background: radial-gradient(circle, var(--lcd-green) 0%, transparent 60%);
-            }
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="terminal">
-        <div class="header">
-            <span>SG-1 TERMINAL</span>
-            <span id="status">IDLE</span>
-        </div>
-
-        <div class="lcd-screen">
-            <div class="stargate">
-                <div class="ring outer-ring">
-                    <div class="chevron c1" id="c1"></div>
-                    <div class="chevron c2" id="c2"></div>
-                    <div class="chevron c3" id="c3"></div>
-                    <div class="chevron c4" id="c4"></div>
-                    <div class="chevron c5" id="c5"></div>
-                    <div class="chevron c6" id="c6"></div>
-                    <div class="chevron c7" id="c7"></div>
-                    <div class="chevron c8" id="c8"></div>
-                    <div class="chevron c9" id="c9"></div>
-                </div>
-                <div class="ring inner-ring" id="innerRing"></div>
-                <div class="event-horizon" id="horizon"></div>
-            </div>
-        </div>
-
-        <div class="footer" onclick="dialSequence()">[ INITIATE CONNECTION ]</div>
-    </div>
-
-    <script>
-        const innerRing = document.getElementById('innerRing');
-        const horizon = document.getElementById('horizon');
-        const statusText = document.getElementById('status');
-        const chevrons = [1, 2, 3, 4, 5, 6, 7].map(i => document.getElementById('c' + i)); // Use 7 chevrons for dialing
-
-        let isDialing = false;
-        let currentRotation = 0;
-
-        async function dialSequence() {
-            if (isDialing) return;
-            isDialing = true;
-
-            // Reset
-            horizon.className = 'event-horizon';
-            chevrons.forEach(c => c.classList.remove('locked'));
-            statusText.innerText = "DIALING...";
-            currentRotation = 0;
-            innerRing.style.transform = `rotate(0deg)`;
-
-            // Dial 7 Chevrons
-            for (let i = 0; i < 7; i++) {
-                // Spin Ring
-                let spinAmount = Math.floor(Math.random() * 100) + 50;
-                // Alternate direction
-                if (i % 2 === 0) currentRotation += spinAmount;
-                else currentRotation -= spinAmount;
-
-                innerRing.style.transition = 'transform 1s cubic-bezier(0.5, 0, 0.5, 1)';
-                innerRing.style.transform = `rotate(${currentRotation}deg)`;
-
-                statusText.innerText = `ENCODING CHEVRON ${i + 1}...`;
-
-                // Wait for spin
-                await new Promise(r => setTimeout(r, 1000));
-
-                // Lock Chevron
-                chevrons[i].classList.add('locked');
-
-                // Short pause
-                await new Promise(r => setTimeout(r, 200));
-            }
-
-            // Engage
-            statusText.innerText = "WORMHOLE ACTIVE";
-            horizon.classList.add('kawoosh');
-            await new Promise(r => setTimeout(r, 1000));
-            horizon.classList.remove('kawoosh');
-            horizon.classList.add('active');
-
-            isDialing = false;
-        }
-    </script>
-
-</body>
-
-</html>
+    100% {
+        transform: scale(1);
+        opacity: 0.6;
+        background: radial-gradient(circle, var(--lcd-green) 0%, transparent 60%);
+    }
+}
