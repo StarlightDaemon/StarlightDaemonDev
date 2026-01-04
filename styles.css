@@ -97,49 +97,7 @@ body {
     position: relative;
 }
 
-/* Matrix scanlines - default with boot-up effect */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Scanline effect temporarily disabled */
-    /*
-    background: repeating-linear-gradient(0deg,
-            transparent 0px,
-            transparent 2px,
-            rgba(0, 0, 0, 0.40) 2px,
-            rgba(0, 0, 0, 0.40) 4px);
-    */
-    pointer-events: none;
-    z-index: 9999;
-    /* Start subtle and readable */
-    /* opacity: 0.5; */
-    /* Fade in on load for boot-up effect */
-    display: none;
-    /* Disabled for now */
-    animation: scanline-bootup 3s ease-out forwards;
-}
-
-/* CRT boot-up animation - scanlines fade to minimal */
-@keyframes scanline-bootup {
-    0% {
-        opacity: 1;
-        /* Start with full scanlines */
-    }
-
-    50% {
-        opacity: 1;
-        /* Hold full intensity briefly */
-    }
-
-    100% {
-        opacity: 0.5;
-        /* Fade to subtle for readability */
-    }
-}
+/* Matrix scanlines & Boot-up effects - REMOVED per user request */
 
 a {
     color: var(--accent-primary);
