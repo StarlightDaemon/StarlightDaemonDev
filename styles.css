@@ -1012,20 +1012,20 @@ section h2::after {
 
     /* Optimal font size for 4K */
     html {
-        font-size: 28px;
-        /* Aggressive scaling for readability */
+        font-size: 22px;
+        /* Pulling back from 28px per user request */
     }
 
     /* Much wider layout for 4K */
     .page-wrapper {
-        max-width: 2400px;
-        /* Utilize wide screen real estate */
+        max-width: 2000px;
+        /* Reduced from 2400px */
         padding: 0 var(--space-3xl) var(--space-3xl);
     }
 
     /* Scale up project cards */
     .project-grid {
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
         gap: var(--space-2xl);
     }
 
@@ -1035,7 +1035,7 @@ section h2::after {
 
     /* Scale up skills grid */
     .skills-grid {
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
         /* Fix overwrite */
         gap: var(--space-2xl);
     }
