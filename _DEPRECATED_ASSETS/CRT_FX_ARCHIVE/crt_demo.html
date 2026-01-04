@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRT & Scanline Effects Demo</title>
+    <link rel="stylesheet" href="crt_tools.css">
+    <style>
+        body {
+            background: #111;
+            color: #eee;
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .demo-item {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .label {
+            font-size: 0.9rem;
+            color: #888;
+            font-family: monospace;
+        }
+
+        /* Custom sizing for demo boxes */
+        .box {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>CRT & Retro Effects Library</h1>
+
+    <div class="grid">
+
+        <!-- 1. Basic Scanlines -->
+        <div class="demo-item">
+            <div class="label">.terminal-box .scanlines .phosphor-glow</div>
+            <div class="terminal-box scanlines phosphor-glow box">
+                SYSTEM READY<br>
+                INITIALIZING...
+            </div>
+        </div>
+
+        <!-- 2. Flickering + Chromatic -->
+        <div class="demo-item">
+            <div class="label">.terminal-box .scanlines-flicker .chromatic-text</div>
+            <div class="terminal-box scanlines-flicker chromatic-text box"
+                style="--crt-green: #ffb000; border-color: #ffb000; color: #ffb000;">
+                WARNING:<br>
+                SIGNAL LOSS
+            </div>
+        </div>
+
+        <!-- 3. Glitch Text -->
+        <div class="demo-item">
+            <div class="label">.glitch-text (data-text)</div>
+            <div class="terminal-box scanlines box"
+                style="--crt-green: #ff3333; border-color: #ff3333; color: #ff3333;">
+                <div class="glitch-text" data-text="CORRUPTION DETECTED">
+                    CORRUPTION DETECTED
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Screen Curve/Vignette -->
+        <div class="demo-item">
+            <div class="label">.screen-curve</div>
+            <div class="terminal-box scanlines screen-curve box"
+                style="background: #222; border:none; box-shadow:none;">
+                <img src="https://via.placeholder.com/150" style="mix-blend-mode: luminosity;">
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

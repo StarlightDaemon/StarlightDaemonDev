@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dialing Earth - Variations</title>
+    <style>
+        :root {
+            --bg: #050505;
+        }
+
+        body {
+            background: var(--bg);
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1400px;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            background: #111;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+
+        .label {
+            font-size: 0.8rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- BASE STARGATE CSS --- */
+        .terminal-box {
+            width: 250px;
+            height: 280px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 2px solid #555;
+        }
+
+        .screen {
+            flex-grow: 1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .status-line {
+            height: 20px;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+            margin-top: 5px;
+            font-weight: bold;
+        }
+
+        .gate-container {
+            width: 160px;
+            height: 160px;
+            position: relative;
+        }
+
+        .ring {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            box-sizing: border-box;
+            border: 4px solid currentColor;
+        }
+
+        .inner-ring {
+            width: 80%;
+            height: 80%;
+            top: 10%;
+            left: 10%;
+            border: 4px dashed currentColor;
+            transition: transform 0.5s cubic-bezier(0.5, 0, 0.5, 1);
+        }
+
+        .horizon {
+            position: absolute;
+            top: 15%;
+            left: 15%;
+            width: 70%;
+            height: 70%;
+            border-radius: 50%;
+            opacity: 0;
+            transform: scale(0);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        .horizon.active {
+            opacity: 0.6;
+            transform: scale(1);
+            animation: shimmer 0.2s infinite alternate;
+        }
+
+        .horizon.kawoosh {
+            animation: kawoosh 0.8s ease-out forwards;
+        }
+
+        @keyframes shimmer {
+            from {
+                opacity: 0.5;
+            }
+
+            to {
+                opacity: 0.7;
+            }
+        }
+
+        @keyframes kawoosh {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+                background: #fff;
+            }
+
+            50% {
+                transform: scale(1.3);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+        }
+
+        .chevs {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .chev {
+            position: absolute;
+            width: 12px;
+            height: 8px;
+            background: currentColor;
+            top: -4px;
+            left: 50%;
+            margin-left: -6px;
+            transform-origin: center 84px;
+            /* 80px radius + 4px offset */
+            opacity: 0.3;
+            transition: opacity 0.2s, box-shadow 0.2s;
+        }
+
+        .chev.locked {
+            opacity: 1;
+            box-shadow: 0 0 10px currentColor;
+        }
+
+        .c1 {
+            transform: rotate(0deg);
+        }
+
+        .c2 {
+            transform: rotate(51deg);
+        }
+
+        .c3 {
+            transform: rotate(102deg);
+        }
+
+        .c4 {
+            transform: rotate(154deg);
+        }
+
+        .c5 {
+            transform: rotate(205deg);
+        }
+
+        .c6 {
+            transform: rotate(257deg);
+        }
+
+        .c7 {
+            transform: rotate(308deg);
+        }
+
+        /* --- THEMES --- */
+
+        /* 1. SGC STANDARD (Green) */
+        .theme-sgc {
+            --color: #00ff41;
+            --bg-term: #0a0a0a;
+        }
+
+        .theme-sgc .terminal-box {
+            background: var(--bg-term);
+            border-color: var(--color);
+            color: var(--color);
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+        }
+
+        .theme-sgc .horizon {
+            background: radial-gradient(circle, var(--color), transparent);
+        }
+
+        .theme-sgc .terminal-box::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0.3) 2px);
+            pointer-events: none;
+        }
+
+        /* 2. AMBER CRT (Orange) */
+        .theme-amber {
+            --color: #ffb000;
+            --bg-term: #1a1100;
+        }
+
+        .theme-amber .terminal-box {
+            background: var(--bg-term);
+            border-color: var(--color);
+            color: var(--color);
+            text-shadow: 0 0 4px var(--color);
+        }
+
+        .theme-amber .horizon {
+            background: radial-gradient(circle, var(--color), transparent);
+        }
+
+        .theme-amber .terminal-box::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0.3) 2px);
+            pointer-events: none;
+        }
+
+        /* 3. RED ALERT (Red) */
+        .theme-red {
+            --color: #ff3333;
+            --bg-term: #220000;
+        }
+
+        .theme-red .terminal-box {
+            background: var(--bg-term);
+            border: 2px dashed var(--color);
+            color: var(--color);
+        }
+
+        .theme-red .horizon {
+            background: radial-gradient(circle, #ff0000, transparent);
+        }
+
+        .theme-red .status-line {
+            animation: blink 0.5s infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* 4. ATLANTIS (Blue/Cyan) */
+        .theme-atlantis {
+            --color: #00ffff;
+            --bg-term: #001122;
+        }
+
+        .theme-atlantis .terminal-box {
+            background: linear-gradient(#001122, #002233);
+            border: 1px solid var(--color);
+            color: var(--color);
+            border-radius: 10px;
+        }
+
+        .theme-atlantis .ring {
+            border: 2px solid var(--color);
+            box-shadow: 0 0 5px var(--color);
+        }
+
+        .theme-atlantis .horizon {
+            background: radial-gradient(circle, #fff, #00ffff, transparent);
+        }
+
+        .theme-atlantis .chev {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            opacity: 0.4;
+        }
+
+        /* 5. WIREFRAME (White) */
+        .theme-wire {
+            --color: #ffffff;
+            --bg-term: #000;
+        }
+
+        .theme-wire .terminal-box {
+            background: var(--bg-term);
+            border: 1px solid #333;
+            color: var(--color);
+        }
+
+        .theme-wire .ring,
+        .theme-wire .inner-ring {
+            border-width: 1px;
+        }
+
+        .theme-wire .horizon {
+            border: 1px solid #fff;
+            background: transparent;
+        }
+
+        .theme-wire .horizon.active {
+            opacity: 1;
+            transform: scale(1);
+            border-style: dashed;
+            animation: spin 4s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* 6. HIGH CONTRAST (B&W) */
+        .theme-bw {
+            --color: #000;
+            --bg-term: #fff;
+        }
+
+        .theme-bw .terminal-box {
+            background: var(--bg-term);
+            border: 4px solid #000;
+            color: var(--color);
+        }
+
+        .theme-bw .ring {
+            border-width: 6px;
+        }
+
+        .theme-bw .inner-ring {
+            border-width: 4px;
+            border-style: dotted;
+        }
+
+        .theme-bw .horizon {
+            background: #000;
+        }
+
+        .theme-bw .chev.locked {
+            background: #000;
+            box-shadow: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Dialing Sequence Variations</h1>
+
+    <div class="gallery">
+        <!-- 1. SGC -->
+        <div class="card">
+            <div class="terminal-box theme-sgc" id="g1">
+                <div class="screen">
+                    <div class="gate-container">
+                        <div class="ring"></div>
+                        <div class="ring inner-ring"></div>
+                        <div class="chevs"></div>
+                        <div class="horizon"></div>
+                    </div>
+                </div>
+                <div class="status-line">IDLE</div>
+            </div>
+            <div class="label">SGC Standard (Green)</div>
+        </div>
+
+        <!-- 2. Amber -->
+        <div class="card">
+            <div class="terminal-box theme-amber" id="g2">
+                <div class="screen">
+                    <div class="gate-container">
+                        <div class="ring"></div>
+                        <div class="ring inner-ring"></div>
+                        <div class="chevs"></div>
+                        <div class="horizon"></div>
+                    </div>
+                </div>
+                <div class="status-line">IDLE</div>
+            </div>
+            <div class="label">CRT Amber</div>
+        </div>
+
+        <!-- 3. Red Alert -->
+        <div class="card">
+            <div class="terminal-box theme-red" id="g3">
+                <div class="screen">
+                    <div class="gate-container">
+                        <div class="ring"></div>
+                        <div class="ring inner-ring"></div>
+                        <div class="chevs"></div>
+                        <div class="horizon"></div>
+                    </div>
+                </div>
+                <div class="status-line">IDLE</div>
+            </div>
+            <div class="label">Red Alert / Off-World</div>
+        </div>
+
+        <!-- 4. Atlantis -->
+        <div class="card">
+            <div class="terminal-box theme-atlantis" id="g4">
+                <div class="screen">
+                    <div class="gate-container">
+                        <div class="ring"></div>
+                        <div class="ring inner-ring"></div>
+                        <div class="chevs"></div>
+                        <div class="horizon"></div>
+                    </div>
+                </div>
+                <div class="status-line">IDLE</div>
+            </div>
+            <div class="label">Atlantis (Digital Blue)</div>
+        </div>
+
+        <!-- 5. Wireframe -->
+        <div class="card">
+            <div class="terminal-box theme-wire" id="g5">
+                <div class="screen">
+                    <div class="gate-container">
+                        <div class="ring"></div>
+                        <div class="ring inner-ring"></div>
+                        <div class="chevs"></div>
+                        <div class="horizon"></div>
+                    </div>
+                </div>
+                <div class="status-line">IDLE</div>
+            </div>
+            <div class="label">Wireframe (Vector)</div>
+        </div>
+
+        <!-- 6. High Contrast -->
+        <div class="card">
+            <div class="terminal-box theme-bw" id="g6">
+                <div class="screen">
+                    <div class="gate-container">
+                        <div class="ring"></div>
+                        <div class="ring inner-ring"></div>
+                        <div class="chevs"></div>
+                        <div class="horizon"></div>
+                    </div>
+                </div>
+                <div class="status-line">IDLE</div>
+            </div>
+            <div class="label">High Contrast (Print)</div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Gates
+        const gates = ['g1', 'g2', 'g3', 'g4', 'g5', 'g6'];
+
+        gates.forEach(id => {
+            const container = document.querySelector(`#${id} .chevs`);
+            // Create 7 chevrons
+            for (let i = 1; i <= 7; i++) {
+                const el = document.createElement('div');
+                el.className = `chev c${i}`;
+                container.appendChild(el);
+            }
+        });
+
+        // Encapsulated Dialing Logic
+        async function runGate(id, delayStart = 0) {
+            const root = document.getElementById(id);
+            const inner = root.querySelector('.inner-ring');
+            const status = root.querySelector('.status-line');
+            const horizon = root.querySelector('.horizon');
+            const chevs = root.querySelectorAll('.chev');
+
+            await new Promise(r => setTimeout(r, delayStart));
+
+            while (true) { // Loop forever
+                // Reset
+                horizon.className = 'horizon';
+                chevs.forEach(c => c.classList.remove('locked'));
+                status.innerText = "ESTABLISHING LOCK...";
+                let rotation = 0;
+                inner.style.transform = `rotate(0deg)`;
+
+                // Dial 7
+                for (let i = 0; i < 7; i++) {
+                    // Spin
+                    let spin = Math.floor(Math.random() * 60) + 60;
+                    rotation += (i % 2 == 0 ? spin : -spin);
+                    inner.style.transform = `rotate(${rotation}deg)`;
+
+                    // Wait
+                    await new Promise(r => setTimeout(r, 600));
+
+                    // Lock
+                    chevs[i].classList.add('locked');
+                    status.innerText = `LOCKED > SYMBOL ${i + 1}`;
+
+                    await new Promise(r => setTimeout(r, 200));
+                }
+
+                // Activate
+                status.innerText = ">> WORMHOLE ACTIVE <<";
+                horizon.classList.add('kawoosh');
+                await new Promise(r => setTimeout(r, 800));
+                horizon.classList.remove('kawoosh');
+                horizon.classList.add('active');
+
+                // Stay open
+                await new Promise(r => setTimeout(r, 5000));
+
+                // Close
+                status.innerText = "DISENGAGED";
+                horizon.classList.remove('active');
+                await new Promise(r => setTimeout(r, 2000));
+            }
+        }
+
+        // Start all with staggered delays
+        runGate('g1', 0);
+        runGate('g2', 500);
+        runGate('g3', 1000);
+        runGate('g4', 1500);
+        runGate('g5', 2000);
+        runGate('g6', 2500);
+
+    </script>
+
+</body>
+
+</html>

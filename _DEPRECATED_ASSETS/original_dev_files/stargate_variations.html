@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stargate Variations - Retro Gallery</title>
+    <style>
+        :root {
+            --accent: #00cc00;
+            --bg: #0d0d0d;
+        }
+
+        body {
+            padding: 40px;
+            background: var(--bg);
+            color: #fff;
+            font-family: monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #00ffff;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            width: 100%;
+            max-width: 1400px;
+        }
+
+        .variant-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .variant-label {
+            color: #888;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .terminal-box {
+            width: 220px;
+            height: 220px;
+            border: 2px solid #333;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            image-rendering: pixelated;
+        }
+
+        /* Shared Base */
+        .sg-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sg-ring {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .sg-chev {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            top: -6px;
+            left: 50%;
+            margin-left: -6px;
+            transform-origin: center 86px;
+        }
+
+        .c1 {
+            transform: rotate(0deg);
+        }
+
+        .c2 {
+            transform: rotate(51.4deg);
+        }
+
+        .c3 {
+            transform: rotate(102.9deg);
+        }
+
+        .c4 {
+            transform: rotate(154.3deg);
+        }
+
+        .c5 {
+            transform: rotate(205.7deg);
+        }
+
+        .c6 {
+            transform: rotate(257.1deg);
+        }
+
+        .c7 {
+            transform: rotate(308.6deg);
+        }
+
+        .sg-horizon {
+            position: absolute;
+            width: 136px;
+            height: 136px;
+            border-radius: 50%;
+            z-index: 5;
+        }
+
+        /* Animation Helpers */
+        @keyframes chev-lock {
+
+            0%,
+            95% {
+                opacity: 0.3
+            }
+
+            14%,
+            28% {
+                opacity: 1
+            }
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(1)
+            }
+
+            100% {
+                transform: scale(0.4)
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.4
+            }
+
+            50% {
+                opacity: 1
+            }
+        }
+
+        /* === VARIANT 1: PIXEL ART BLOCKY === */
+        .v1 .sg-ring {
+            border: 10px solid #2a2a2a;
+            background: #1a1a1a;
+            box-shadow: inset 0 0 20px #000;
+        }
+
+        .v1 .sg-chev {
+            background: #3a3a3a;
+            border: 2px solid #555;
+            animation: chev-lock 7s infinite;
+        }
+
+        .v1 .c1 {
+            animation-delay: 0s
+        }
+
+        .v1 .c2 {
+            animation-delay: 1s
+        }
+
+        .v1 .c3 {
+            animation-delay: 2s
+        }
+
+        .v1 .c4 {
+            animation-delay: 3s
+        }
+
+        .v1 .c5 {
+            animation-delay: 4s
+        }
+
+        .v1 .c6 {
+            animation-delay: 5s
+        }
+
+        .v1 .c7 {
+            animation-delay: 6s
+        }
+
+        .v1 .sg-chev::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: orange;
+            top: 2px;
+            left: 2px;
+            opacity: 0;
+            animation: chev-lock 7s infinite;
+        }
+
+        .v1 .sg-horizon {
+            background:
+                radial-gradient(circle, #0088ff 0%, #0044aa 100%);
+            box-shadow: inset 0 0 30px rgba(0, 150, 255, 0.8);
+        }
+
+        .v1 .sg-horizon::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: repeating-conic-gradient(#fff 0deg 2deg, transparent 2deg 10deg);
+            opacity: 0.2;
+            animation: spin 4s linear infinite;
+        }
+
+        /* === VARIANT 2: MONOCHROME GREEN CRT === */
+        .v2 .terminal-box {
+            filter: contrast(1.2);
+        }
+
+        .v2 .sg-ring {
+            border: 8px solid #003300;
+            background: #001100;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+        }
+
+        .v2 .sg-chev {
+            background: #004400;
+            border: 2px solid #00cc00;
+            box-shadow: 0 0 5px #00cc00;
+            animation: pulse 2s infinite;
+        }
+
+        .v2 .sg-horizon {
+            background: radial-gradient(circle, #00ff00 0%, #004400 100%);
+            box-shadow:
+                inset 0 0 40px #00ff00,
+                0 0 30px rgba(0, 255, 0, 0.5);
+        }
+
+        .v2 .sg-horizon::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: #00ff00;
+            top: 50%;
+            left: 0;
+            animation: scan-line 1s linear infinite;
+        }
+
+        @keyframes scan-line {
+            0% {
+                top: 0%
+            }
+
+            100% {
+                top: 100%
+            }
+        }
+
+        /* === VARIANT 3: AMBER TERMINAL === */
+        .v3 .sg-ring {
+            border: 8px solid #442200;
+            background: #221100;
+        }
+
+        .v3 .sg-chev {
+            background: #664400;
+            border: 2px solid #ffaa00;
+            animation: chev-lock 7s infinite;
+        }
+
+        .v3 .c1 {
+            animation-delay: 0s
+        }
+
+        .v3 .c2 {
+            animation-delay: 1s
+        }
+
+        .v3 .c3 {
+            animation-delay: 2s
+        }
+
+        .v3 .c4 {
+            animation-delay: 3s
+        }
+
+        .v3 .c5 {
+            animation-delay: 4s
+        }
+
+        .v3 .c6 {
+            animation-delay: 5s
+        }
+
+        .v3 .c7 {
+            animation-delay: 6s
+        }
+
+        .v3 .sg-horizon {
+            background: radial-gradient(circle, #ffcc00 0%, #884400 100%);
+            box-shadow: inset 0 0 40px #ff8800;
+        }
+
+        /* === VARIANT 4: WIREFRAME ONLY === */
+        .v4 .sg-ring {
+            border: 3px solid #00ffff;
+            background: transparent;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        }
+
+        .v4 .sg-chev {
+            width: 8px;
+            height: 8px;
+            background: transparent;
+            border: 2px solid #00ffff;
+            animation: pulse 2s infinite;
+        }
+
+        .v4 .sg-horizon {
+            background: transparent;
+            border: 2px solid #0088ff;
+            box-shadow:
+                inset 0 0 20px rgba(0, 150, 255, 0.3),
+                0 0 20px rgba(0, 150, 255, 0.5);
+        }
+
+        .v4 .sg-horizon::before {
+            content: '';
+            position: absolute;
+            width: 90%;
+            height: 90%;
+            top: 5%;
+            left: 5%;
+            border: 1px solid #0066ff;
+            border-radius: 50%;
+            animation: spin 3s linear infinite;
+        }
+
+        /* === VARIANT 5: HEAVY SCANLINES === */
+        .v5 .terminal-box::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(0deg, transparent 0, transparent 1px, rgba(0, 0, 0, 0.7) 2px, rgba(0, 0, 0, 0.7) 3px);
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .v5 .sg-ring {
+            border: 10px solid #2a2a2a;
+            background: #0a0a0a;
+        }
+
+        .v5 .sg-chev {
+            background: #555;
+            border: 2px solid #00cc00;
+            animation: chev-lock 7s infinite;
+        }
+
+        .v5 .c1 {
+            animation-delay: 0s
+        }
+
+        .v5 .c2 {
+            animation-delay: 1s
+        }
+
+        .v5 .c3 {
+            animation-delay: 2s
+        }
+
+        .v5 .c4 {
+            animation-delay: 3s
+        }
+
+        .v5 .c5 {
+            animation-delay: 4s
+        }
+
+        .v5 .c6 {
+            animation-delay: 5s
+        }
+
+        .v5 .c7 {
+            animation-delay: 6s
+        }
+
+        .v5 .sg-horizon {
+            background: radial-gradient(circle, #00ddff 0%, #006688 100%);
+        }
+
+        /* === VARIANT 6: DITHERED PIXEL === */
+        .v6 .sg-ring {
+            border: 8px solid #2a2a2a;
+            background:
+                repeating-conic-gradient(#1a1a1a 0deg 5deg, #0a0a0a 5deg 10deg);
+        }
+
+        .v6 .sg-chev {
+            background:
+                repeating-linear-gradient(45deg, #3a3a3a 0, #3a3a3a 2px, #2a2a2a 2px, #2a2a2a 4px);
+            border: 1px solid #555;
+            animation: chev-lock 7s infinite;
+        }
+
+        .v6 .c1 {
+            animation-delay: 0s
+        }
+
+        .v6 .c2 {
+            animation-delay: 1s
+        }
+
+        .v6 .c3 {
+            animation-delay: 2s
+        }
+
+        .v6 .c4 {
+            animation-delay: 3s
+        }
+
+        .v6 .c5 {
+            animation-delay: 4s
+        }
+
+        .v6 .c6 {
+            animation-delay: 5s
+        }
+
+        .v6 .c7 {
+            animation-delay: 6s
+        }
+
+        .v6 .sg-horizon {
+            background:
+                repeating-radial-gradient(circle, #0088ff 0, #0088ff 2px, #004488 2px, #004488 4px);
+            image-rendering: pixelated;
+        }
+
+        /* === VARIANT 7: MINIMALIST GEOMETRIC === */
+        .v7 .sg-ring {
+            border: 4px solid #00cc00;
+            background: #000;
+            clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+            border-radius: 0;
+        }
+
+        .v7 .sg-chev {
+            background: #00cc00;
+            border: none;
+            width: 10px;
+            height: 10px;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        }
+
+        .v7 .sg-horizon {
+            background: #00cc00;
+            opacity: 0.3;
+            animation: pulse 2s infinite;
+        }
+
+        /* === VARIANT 8: ASCII STYLE === */
+        .v8 .sg-ring {
+            border: 6px solid #00cc00;
+            background: #000;
+            font-size: 8px;
+            color: #00cc00;
+        }
+
+        .v8 .sg-ring::before {
+            content: '■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■';
+            position: absolute;
+            width: 200%;
+            text-align: center;
+            top: -15px;
+            left: -50%;
+            animation: spin 8s linear infinite;
+            white-space: nowrap;
+        }
+
+        .v8 .sg-chev {
+            background: #00cc00;
+            width: 8px;
+            height: 8px;
+        }
+
+        .v8 .sg-horizon {
+            background: transparent;
+            color: #00cc00;
+            font-size: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 6px;
+        }
+
+        .v8 .sg-horizon::before {
+            content: '░▒▓█▓▒░\A░▒▓█▓▒░\A░▒▓█▓▒░\A░▒▓█▓▒░';
+            white-space: pre;
+            animation: pulse 1s infinite;
+        }
+
+        /* === VARIANT 9: GLITCH/CORRUPT === */
+        .v9 .sg-ring {
+            border: 8px solid #2a2a2a;
+            background: #0a0a0a;
+            animation: glitch-ring 3s infinite;
+        }
+
+        @keyframes glitch-ring {
+
+            0%,
+            90% {
+                transform: translate(0, 0)
+            }
+
+            91% {
+                transform: translate(-3px, 2px)
+            }
+
+            92% {
+                transform: translate(3px, -2px)
+            }
+
+            93% {
+                transform: translate(0, 0)
+            }
+        }
+
+        .v9 .sg-chev {
+            background: #ff0000;
+            border: 2px solid #00ff00;
+            animation: glitch-chev 0.5s infinite;
+        }
+
+        @keyframes glitch-chev {
+            0% {
+                filter: hue-rotate(0deg)
+            }
+
+            50% {
+                filter: hue-rotate(180deg)
+            }
+
+            100% {
+                filter: hue-rotate(360deg)
+            }
+        }
+
+        .v9 .sg-horizon {
+            background:
+                linear-gradient(90deg, #ff0000 0%, #00ff00 25%, #0000ff 50%, #ff00ff 75%, #ffff00 100%);
+            animation: glitch-horizon 0.3s infinite;
+        }
+
+        @keyframes glitch-horizon {
+            0% {
+                transform: translateX(0)
+            }
+
+            25% {
+                transform: translateX(-5px)
+            }
+
+            50% {
+                transform: translateX(5px)
+            }
+
+            75% {
+                transform: translateX(-3px)
+            }
+
+            100% {
+                transform: translateX(0)
+            }
+        }
+
+        /* === VARIANT 10: TRON GRID === */
+        .v10 .terminal-box {
+            background: #001a1a;
+        }
+
+        .v10 .sg-ring {
+            border: 4px solid #00ffff;
+            background:
+                linear-gradient(0deg, transparent 48%, #00ffff 49%, #00ffff 51%, transparent 52%),
+                linear-gradient(90deg, transparent 48%, #00ffff 49%, #00ffff 51%, transparent 52%);
+            background-size: 20px 20px;
+            box-shadow:
+                0 0 30px rgba(0, 255, 255, 0.6),
+                inset 0 0 30px rgba(0, 255, 255, 0.2);
+        }
+
+        .v10 .sg-chev {
+            background: #00ffff;
+            border: 2px solid #fff;
+            box-shadow: 0 0 10px #00ffff;
+            animation: pulse 1s infinite;
+        }
+
+        .v10 .sg-horizon {
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.3) 0%, rgba(0, 100, 100, 0.6) 100%);
+            box-shadow:
+                inset 0 0 40px #00ffff,
+                0 0 40px rgba(0, 255, 255, 0.5);
+        }
+
+        .v10 .sg-horizon::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(0deg, transparent 0, transparent 8px, rgba(0, 255, 255, 0.3) 9px, transparent 10px);
+            animation: scan-line 2s linear infinite;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>⛩️ STARGATE - 10 RETRO VARIATIONS</h1>
+
+    <div class="gallery">
+
+        <!-- V1: Pixel Art Blocky -->
+        <div class="variant-card">
+            <div class="terminal-box v1">
+                <div class="sg-container">
+                    <div class="sg-ring">
+                        <div class="sg-chev c1"></div>
+                        <div class="sg-chev c2"></div>
+                        <div class="sg-chev c3"></div>
+                        <div class="sg-chev c4"></div>
+                        <div class="sg-chev c5"></div>
+                        <div class="sg-chev c6"></div>
+                        <div class="sg-chev c7"></div>
+                    </div>
+                    <div class="sg-horizon"></div>
+                </div>
+            </div>
+            <div class="variant-label">1. Pixel Art Blocky</div>
+        </div>
+
+        <!-- V2: Monochrome CRT -->
+        <div class="variant-card">
+            <div class="terminal-box v2">
+                <div class="sg-container">
+                    <div class="sg-ring">
+                        <div class="sg-chev c1"></div>
+                        <div class="sg-chev c2"></div>
+                        <div class="sg-chev c3"></div>
+                        <div class="sg-chev c4"></div>
+                        <div class="sg-chev c5"></div>
+                        <div class="sg-chev c6"></div>
+                        <div class="sg-chev c7"></div>
+                    </div>
+                    <div class="sg-horizon"></div>
+                </div>
+            </div>
+            <div class="variant-label">2. Monochrome CRT</div>
+        </div>
+
+        <!-- V3: Amber Terminal -->
+        <div class="variant-card">
+            <div class="terminal-box v3">
+                <div class="sg-container">
+                    <div class="sg-ring">
+                        <div class="sg-chev c1"></div>
+                        <div class="sg-chev c2"></div>
+                        <div class="sg-chev c3"></div>
+                        <div class="sg-chev c4"></div>
+                        <div class="sg-chev c5"></div>
+                        <div class="sg-chev c6"></div>
+                        <div class="sg-chev c7"></div>
+                    </div>
+                    <div class="sg-horizon"></div>
+                </div>
+            </div>
+            <div class="variant-label">3. Amber Terminal</div>
+        </div>
+
+        <!-- V4: Wireframe -->
+        <div class="variant-card">
+            <div class="terminal-box v4">
+                <div class="sg-container">
+                    <div class="sg-ring">
+                        <div class="sg-chev c1"></div>
+                        <div class="sg-chev c2"></div>
+                        <div class="sg-chev c3"></div>
+                        <div class="sg-chev c4"></div>
+                        <div class="sg-chev c5"></div>
+                        <div class="sg-chev c6"></div>
+                        <div class="sg-chev c7"></div>
+                    </div>
+                    <div class="sg-horizon"></div>
+                </div>
+            </div>
+            <div class="variant-label">4. Wireframe</div>
+        </div>
+
+        <!-- V5: Heavy Scanlines -->
+        <div class="variant-card">
+            <div class="terminal-box v5">
+                <div class="sg-container">
+                    <div class="sg-ring">
+                        <div class="sg-chev c1"></div>
+                        <div class="sg-chev c2"></div>
+                        <div class="sg-chev c3"></div>
+                        <div class="sg-chev c4"></div>
+                        <div class="sg-chev c5"></div>
+                        <div class="sg-chev c6"></div>
+                        <div class="sg-chev c7"></div>
+                    </div>
+                    <div class="sg-horizon"></div>
+                </div>
+            </div>
+            <div class="variant-label">5. Heavy Scanlines</div>
+        </div>
+
+        <!-- V6: Dithered -->
+        <div class="variant-card">
+            <div class="terminal-box v6">
+                <div class="sg-container">
+                    <div class="sg-ring">
+                        <div class="sg-chev c1"></div>
+                        <div class="sg-chev c2"></div>
+                        <div class="sg-chev c3"></div>
+                        <div class="sg-chev c4"></div>
+                        <div class="sg-chev c5"></div>
+                        <div class="sg-chev c6"></div>
+                        <div class="sg-chev c7"></div>
+                    </div>
+                    <div class="sg-horizon"></div>
+                </div>
+            </div>
+            <div class="variant-label">6. Dithered Pixel</div>
+        </div>
+
+        <!-- V7: Minimalist -->
+        <div class="variant-card">
+            <div class="terminal-box v7">
+                <div class="sg-container">
+                    <div class="sg-ring">
+                        <div class="sg-chev c1"></div>
+                        <div class="sg-chev c2"></div>
+                        <div class="sg-chev c3"></div>
+                        <div class="sg-chev c4"></div>
+                        <div class="sg-chev c5"></div>
+                        <div class="sg-chev c6"></div>
+                        <div class="sg-chev c7"></div>
+                    </div>
+                    <div class="sg-horizon"></div>
+                </div>
+            </div>
+            <div class="variant-label">7. Minimalist Geo</div>
+        </div>
+
+        <!-- V8: ASCII -->
+        <div class="variant-card">
+            <div class="terminal-box v8">
+                <div class="sg-container">
+                    <div class="sg-ring">
+                        <div class="sg-chev c1"></div>
+                        <div class="sg-chev c2"></div>
+                        <div class="sg-chev c3"></div>
+                        <div class="sg-chev c4"></div>
+                        <div class="sg-chev c5"></div>
+                        <div class="sg-chev c6"></div>
+                        <div class="sg-chev c7"></div>
+                    </div>
+                    <div class="sg-horizon"></div>
+                </div>
+            </div>
+            <div class="variant-label">8. ASCII Art</div>
+        </div>
+
+        <!-- V9: Glitch -->
+        <div class="variant-card">
+            <div class="terminal-box v9">
+                <div class="sg-container">
+                    <div class="sg-ring">
+                        <div class="sg-chev c1"></div>
+                        <div class="sg-chev c2"></div>
+                        <div class="sg-chev c3"></div>
+                        <div class="sg-chev c4"></div>
+                        <div class="sg-chev c5"></div>
+                        <div class="sg-chev c6"></div>
+                        <div class="sg-chev c7"></div>
+                    </div>
+                    <div class="sg-horizon"></div>
+                </div>
+            </div>
+            <div class="variant-label">9. Glitch/Corrupt</div>
+        </div>
+
+        <!-- V10: Tron Grid -->
+        <div class="variant-card">
+            <div class="terminal-box v10">
+                <div class="sg-container">
+                    <div class="sg-ring">
+                        <div class="sg-chev c1"></div>
+                        <div class="sg-chev c2"></div>
+                        <div class="sg-chev c3"></div>
+                        <div class="sg-chev c4"></div>
+                        <div class="sg-chev c5"></div>
+                        <div class="sg-chev c6"></div>
+                        <div class="sg-chev c7"></div>
+                    </div>
+                    <div class="sg-horizon"></div>
+                </div>
+            </div>
+            <div class="variant-label">10. Tron Grid</div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

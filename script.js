@@ -2,6 +2,62 @@
  * StarlightDaemon Portfolio - Interactive Features
  */
 
+
+/* --- STARGATE TERMINAL LOGIC --- */
+const innerRing = document.getElementById('innerRing');
+const horizon = document.getElementById('horizon');
+const statusText = document.getElementById('sgStatus');
+const chevrons = [1, 2, 3, 4, 5, 6, 7].map(i => document.getElementById('c' + i));
+
+let isDialing = false;
+let currentRotation = 0;
+
+async function dialSequence() {
+    if (isDialing) return;
+    isDialing = true;
+
+    // Reset
+    horizon.className = 'event-horizon';
+    chevrons.forEach(c => { if (c) c.classList.remove('locked') });
+    statusText.innerText = "DIALING...";
+    currentRotation = 0;
+    innerRing.style.transform = `rotate(0deg)`;
+
+    // Dial 7 Chevrons
+    for (let i = 0; i < 7; i++) {
+        // Spin Ring
+        let spinAmount = Math.floor(Math.random() * 60) + 60;
+        // Alternate direction logic
+        if (i % 2 === 0) currentRotation += spinAmount;
+        else currentRotation -= spinAmount;
+
+        innerRing.style.transition = 'transform 1s cubic-bezier(0.5, 0, 0.5, 1)';
+        innerRing.style.transform = `rotate(${currentRotation}deg)`;
+
+        statusText.innerText = `ENCODING CHEVRON ${i + 1}...`;
+
+        // Wait for spin
+        await new Promise(r => setTimeout(r, 1000));
+
+        // Lock Chevron
+        if (chevrons[i]) chevrons[i].classList.add('locked');
+
+        // Short pause
+        await new Promise(r => setTimeout(r, 200));
+    }
+
+    // Engage
+    statusText.innerText = "WORMHOLE ACTIVE";
+    horizon.classList.add('kawoosh');
+    await new Promise(r => setTimeout(r, 1000));
+    horizon.classList.remove('kawoosh');
+    horizon.classList.add('active');
+
+    isDialing = false;
+}
+
+
+// Main Init
 document.addEventListener('DOMContentLoaded', () => {
     // Smooth scroll for anchor links
     initSmoothScroll();

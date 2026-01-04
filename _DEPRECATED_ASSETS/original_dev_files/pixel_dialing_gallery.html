@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Art Dialing Variations</title>
+    <style>
+        body {
+            background: #050505;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 0 #333;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .card {
+            background: #111;
+            padding: 20px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .label {
+            font-size: 0.8rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        button {
+            padding: 8px 16px;
+            background: #333;
+            color: #fff;
+            border: 1px solid #555;
+            font-family: inherit;
+            font-size: 0.7rem;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        button:hover {
+            background: #444;
+        }
+
+        /* --- SHARED CSS PIXEL GATE STYLES --- */
+        .pixel-container {
+            width: 180px;
+            height: 180px;
+            position: relative;
+            image-rendering: pixelated;
+            /* CRITICAL for retro look */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 4px solid #000;
+        }
+
+        .pixel-ring {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            border: 8px dashed currentColor;
+            box-sizing: border-box;
+            border-radius: 50%;
+            opacity: 0.5;
+            transition: transform 0.2s steps(4);
+            /* VERY CHOPPY MOTION */
+        }
+
+        .pixel-chev {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #000;
+            border: 2px solid currentColor;
+            top: 2px;
+            left: 50%;
+            margin-left: -6px;
+            transform-origin: center 78px;
+            opacity: 0.3;
+        }
+
+        .pixel-chev.locked {
+            opacity: 1;
+            background: currentColor;
+            box-shadow: 0 0 10px currentColor;
+        }
+
+        .p-c1 {
+            transform: rotate(0deg);
+        }
+
+        .p-c2 {
+            transform: rotate(51deg);
+        }
+
+        .p-c3 {
+            transform: rotate(102deg);
+        }
+
+        .p-c4 {
+            transform: rotate(154deg);
+        }
+
+        .p-c5 {
+            transform: rotate(205deg);
+        }
+
+        .p-c6 {
+            transform: rotate(257deg);
+        }
+
+        .p-c7 {
+            transform: rotate(308deg);
+        }
+
+        .pixel-horizon {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: radial-gradient(circle, currentColor 20%, transparent 80%);
+            background-size: 4px 4px;
+            /* Dither Effect */
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        .pixel-horizon.active {
+            opacity: 0.8;
+            transform: scale(1);
+            animation: pixel-pulse 0.2s infinite alternate steps(2);
+        }
+
+        @keyframes pixel-pulse {
+            from {
+                opacity: 0.6
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+
+        /* --- THEME 1: VIRTUAL BOY (Red/Black) --- */
+        #g1 {
+            background: #000;
+            color: #ff0000;
+            border-color: #500;
+        }
+
+        #g1 .pixel-ring {
+            border-width: 6px;
+            border-style: dotted;
+        }
+
+        /* --- THEME 2: AMBER TERMINAL (Orange/Dark) --- */
+        #g2 {
+            background: #1a1000;
+            color: #ffad33;
+            border-color: #630;
+        }
+
+        #g2::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0.4) 2px);
+            pointer-events: none;
+        }
+
+        /* --- THEME 3: CGA (Cyan/Magenta) --- */
+        #g3 {
+            background: #fff;
+            color: #000;
+            border-color: #000;
+        }
+
+        #g3 .pixel-ring {
+            color: #f0f;
+            border-style: solid;
+        }
+
+        #g3 .pixel-chev {
+            border-color: #0ff;
+        }
+
+        #g3 .pixel-chev.locked {
+            background: #0ff;
+        }
+
+        #g3 .pixel-horizon {
+            background: #0ff;
+        }
+
+        /* --- THEME 4: CANVAS GAMEBOY --- */
+        canvas {
+            image-rendering: pixelated;
+            width: 180px;
+            height: 180px;
+            background: #0f380f;
+            border: 4px solid #0f380f;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Pixel-Perfect Dialing Logic</h1>
+
+    <div class="gallery">
+
+        <!-- 1. VIRTUAL BOY -->
+        <div class="card">
+            <div class="pixel-container" id="g1">
+                <div class="pixel-ring"></div>
+                <div class="pixel-chev p-c1"></div>
+                <div class="pixel-chev p-c2"></div>
+                <div class="pixel-chev p-c3"></div>
+                <div class="pixel-chev p-c4"></div>
+                <div class="pixel-chev p-c5"></div>
+                <div class="pixel-chev p-c6"></div>
+                <div class="pixel-chev p-c7"></div>
+                <div class="pixel-horizon"></div>
+            </div>
+            <div class="label">Style: Virtual Boy (Step Anim)</div>
+            <button onclick="dialCSS('g1')">DIAL SEQUENCE</button>
+        </div>
+
+        <!-- 2. AMBER TERMINAL -->
+        <div class="card">
+            <div class="pixel-container" id="g2">
+                <div class="stat-overlay" style="position:absolute; top:5px; left:5px; font-size:8px;">SYS:READY</div>
+                <div class="pixel-ring"></div>
+                <div class="pixel-chev p-c1"></div>
+                <div class="pixel-chev p-c2"></div>
+                <div class="pixel-chev p-c3"></div>
+                <div class="pixel-chev p-c4"></div>
+                <div class="pixel-chev p-c5"></div>
+                <div class="pixel-chev p-c6"></div>
+                <div class="pixel-chev p-c7"></div>
+                <div class="pixel-horizon"></div>
+            </div>
+            <div class="label">Style: Amber CRT (Scanlines)</div>
+            <button onclick="dialCSS('g2')">DIAL SEQUENCE</button>
+        </div>
+
+        <!-- 3. CGA HIGH -->
+        <div class="card">
+            <div class="pixel-container" id="g3">
+                <div class="pixel-ring"></div>
+                <div class="pixel-chev p-c1"></div>
+                <div class="pixel-chev p-c2"></div>
+                <div class="pixel-chev p-c3"></div>
+                <div class="pixel-chev p-c4"></div>
+                <div class="pixel-chev p-c5"></div>
+                <div class="pixel-chev p-c6"></div>
+                <div class="pixel-chev p-c7"></div>
+                <div class="pixel-horizon"></div>
+            </div>
+            <div class="label">Style: CGA (High Contrast)</div>
+            <button onclick="dialCSS('g3')">DIAL SEQUENCE</button>
+        </div>
+
+        <!-- 4. CANVAS GAMEBOY -->
+        <div class="card">
+            <canvas id="gbCanvas" width="80" height="80"></canvas>
+            <div class="label">Style: GameBoy (Canvas API)</div>
+            <button onclick="dialCanvas()">DIAL SEQUENCE</button>
+        </div>
+
+    </div>
+
+    <script>
+        // --- CSS-BASED DIALING LOGIC ---
+        async function dialCSS(id) {
+            const root = document.getElementById(id);
+            const ring = root.querySelector('.pixel-ring');
+            const chevs = root.querySelectorAll('.pixel-chev');
+            const horizon = root.querySelector('.pixel-horizon');
+
+            // Reset
+            horizon.classList.remove('active');
+            chevs.forEach(c => c.classList.remove('locked'));
+            ring.style.transform = 'rotate(0deg)';
+
+            // Dial 7
+            for (let i = 0; i < 7; i++) {
+                // Spin: using steps() for retro feel
+                let rotation = (i + 1) * 123; // Random-ish rotation
+                ring.style.transition = 'transform 0.5s steps(8)'; // 8 frames of animation (choppy)
+                ring.style.transform = `rotate(${rotation}deg)`;
+
+                await new Promise(r => setTimeout(r, 600));
+
+                // Lock
+                chevs[i].classList.add('locked');
+                await new Promise(r => setTimeout(r, 200));
+            }
+
+            // Active
+            horizon.classList.add('active');
+        }
+
+
+        // --- CANVAS-BASED DIALING LOGIC (Gameboy) ---
+        const cvs = document.getElementById('gbCanvas');
+        const ctx = cvs.getContext('2d');
+
+        // GB Palette
+        const GB = { bg: '#0f380f', dark: '#002200', light: '#8bac0f', bright: '#9bbc0f' };
+
+        let gbState = { rotation: 0, locked: 0, active: false, puddleR: 0 };
+        let gbDialing = false;
+
+        function drawGB() {
+            // Clear
+            ctx.fillStyle = GB.bg;
+            ctx.fillRect(0, 0, 80, 80);
+
+            // Ring
+            ctx.strokeStyle = GB.dark;
+            ctx.lineWidth = 4;
+            ctx.beginPath(); ctx.arc(40, 40, 35, 0, Math.PI * 2); ctx.stroke();
+
+            // Inner Ring (Dots)
+            ctx.save();
+            ctx.translate(40, 40);
+            ctx.rotate(gbState.rotation);
+            ctx.fillStyle = GB.light;
+            for (let i = 0; i < 8; i++) {
+                ctx.fillRect(25, -2, 4, 4);
+                ctx.rotate(Math.PI / 4);
+            }
+            ctx.restore();
+
+            // Chevrons
+            for (let i = 0; i < 7; i++) {
+                let ang = (i * (360 / 7) - 90) * Math.PI / 180;
+                let x = 40 + Math.cos(ang) * 35;
+                let y = 40 + Math.sin(ang) * 35;
+                ctx.fillStyle = (i < gbState.locked) ? GB.bright : GB.dark;
+                ctx.fillRect(x - 2, y - 2, 5, 5);
+            }
+
+            // Puddle
+            if (gbState.active) {
+                ctx.fillStyle = GB.bright;
+                // Dither pattern simulation
+                for (let y = 0; y < 80; y += 2) {
+                    for (let x = 0; x < 80; x += 2) {
+                        let dx = x - 40, dy = y - 40;
+                        if (Math.sqrt(dx * dx + dy * dy) < gbState.puddleR) {
+                            if (Math.random() > 0.2) ctx.fillRect(x, y, 2, 2);
+                        }
+                    }
+                }
+                if (gbState.puddleR < 30) gbState.puddleR += 2;
+            }
+        }
+
+        // Animation Loop
+        setInterval(drawGB, 100); // 10 FPS for retro feel!
+
+        async function dialCanvas() {
+            if (gbDialing) return;
+            gbDialing = true;
+            gbState.locked = 0;
+            gbState.active = false;
+            gbState.puddleR = 0;
+
+            for (let i = 1; i <= 7; i++) {
+                // Spin
+                for (let f = 0; f < 5; f++) {
+                    gbState.rotation += 0.5;
+                    await new Promise(r => setTimeout(r, 100));
+                }
+                gbState.locked = i;
+                await new Promise(r => setTimeout(r, 200));
+            }
+            gbState.active = true;
+            gbDialing = false;
+        }
+
+    </script>
+
+</body>
+
+</html>
