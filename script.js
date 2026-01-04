@@ -112,43 +112,46 @@ function updateUptime() {
 /**
  * Terminal commands rotation
  */
+/**
+ * Terminal commands - Static for now
+ */
 function updateTerminalCommands() {
-    const commands = [
-        '> LOADING USER_PROFILE...',
-        '> STATUS: OPERATIONAL',
-        '> PROJECTS: 3 ACTIVE',
-        '> SYSTEMS: ONLINE',
-        '> GITHUB: CONNECTED',
-        '> READY_'
+    // Static content handled in HTML
+    return;
+}
+'> PROJECTS: 3 ACTIVE',
+    '> SYSTEMS: ONLINE',
+    '> GITHUB: CONNECTED',
+    '> READY_'
     ];
 
-    let currentIndex = 0;
-    const terminalOutput = document.getElementById('terminalOutput');
+let currentIndex = 0;
+const terminalOutput = document.getElementById('terminalOutput');
 
-    if (!terminalOutput) return;
+if (!terminalOutput) return;
 
-    function rotateCommand() {
-        // Fade out current command
-        terminalOutput.style.opacity = '0';
+function rotateCommand() {
+    // Fade out current command
+    terminalOutput.style.opacity = '0';
 
-        setTimeout(() => {
-            // Update command
-            terminalOutput.innerHTML = `<div class="terminal-line">${commands[currentIndex]}</div>`;
+    setTimeout(() => {
+        // Update command
+        terminalOutput.innerHTML = `<div class="terminal-line">${commands[currentIndex]}</div>`;
 
-            // Fade in new command
-            terminalOutput.style.opacity = '1';
+        // Fade in new command
+        terminalOutput.style.opacity = '1';
 
-            // Move to next command
-            currentIndex = (currentIndex + 1) % commands.length;
-        }, 300);
-    }
+        // Move to next command
+        currentIndex = (currentIndex + 1) % commands.length;
+    }, 300);
+}
 
-    // Initial command
-    terminalOutput.innerHTML = `<div class="terminal-line">${commands[currentIndex]}</div>`;
-    currentIndex++;
+// Initial command
+terminalOutput.innerHTML = `<div class="terminal-line">${commands[currentIndex]}</div>`;
+currentIndex++;
 
-    // Rotate every 3 seconds
-    setInterval(rotateCommand, 3000);
+// Rotate every 3 seconds
+setInterval(rotateCommand, 3000);
 }
 
 /**
