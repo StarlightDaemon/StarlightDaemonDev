@@ -701,6 +701,8 @@ section h2::after {
     padding: var(--space-xs) 0;
     border-bottom: 1px dashed var(--border-muted);
     font-family: var(--font-mono);
+    white-space: nowrap;
+    /* Prevent skill wrapping */
 }
 
 .skill-list li::before {
