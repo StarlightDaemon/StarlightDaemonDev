@@ -238,8 +238,13 @@ img {
     overflow: hidden;
 }
 
-/* Hover effect removed per request */
-/* .terminal-output:hover { ... } */
+/* Light hover glow for future interactivity */
+.terminal-output:hover {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.15);
+    cursor: pointer;
+    /* Indication it might be clickable later */
+}
 
 /* Screen reflection/scanline overlay */
 .terminal-output::after {
