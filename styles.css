@@ -1050,6 +1050,14 @@ section h2::after {
         height: 150px;
     }
 
+    /* Scale up terminal output to match logo */
+    .terminal-output {
+        width: 150px;
+        height: 150px;
+        font-size: 13px;
+        /* Slightly larger text inside */
+    }
+
     /* Larger clock and date for 4K */
     .clock {
         font-size: 1.25rem;
@@ -1066,8 +1074,10 @@ section h2::after {
     }
 
     /* Larger title */
+    /* Larger title (scaled down slightly) */
     .title {
-        font-size: 3.5rem;
+        font-size: 3rem;
+        /* Reduced from 3.5rem */
     }
 
     .tagline {
