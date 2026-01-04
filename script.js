@@ -15,9 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Uptime counter
     updateUptime();
 
-    // Clock and date
-    updateClock();
-    setInterval(updateClock, 1000); // Update every second
+    // Terminal commands rotation
+    updateTerminalCommands();
 });
 
 /**
@@ -111,30 +110,45 @@ function updateUptime() {
 }
 
 /**
- * Update clock and date display
+ * Terminal commands rotation
  */
-function updateClock() {
-    const now = new Date();
+function updateTerminalCommands() {
+    const commands = [
+        '> LOADING USER_PROFILE...',
+        '> STATUS: OPERATIONAL',
+        '> PROJECTS: 3 ACTIVE',
+        '> SYSTEMS: ONLINE',
+        '> GITHUB: CONNECTED',
+        '> READY_'
+    ];
 
-    // Format time as [HH:MM:SS]
-    const hours = String(now.getHours()).padStart(2, '0');
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-    const seconds = String(now.getSeconds()).padStart(2, '0');
-    const timeString = `[${hours}:${minutes}:${seconds}]`;
+    let currentIndex = 0;
+    const terminalOutput = document.getElementById('terminalOutput');
 
-    // Format date as MMM-DD-YYYY
-    const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN',
-        'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-    const month = months[now.getMonth()];
-    const day = String(now.getDate()).padStart(2, '0');
-    const year = now.getFullYear();
-    const dateString = `${month}-${day}-${year}`;
+    if (!terminalOutput) return;
 
-    const clockElement = document.getElementById('clock');
-    const dateElement = document.getElementById('date');
+    function rotateCommand() {
+        // Fade out current command
+        terminalOutput.style.opacity = '0';
 
-    if (clockElement) clockElement.textContent = timeString;
-    if (dateElement) dateElement.textContent = dateString;
+        setTimeout(() => {
+            // Update command
+            terminalOutput.innerHTML = `<div class="terminal-line">${commands[currentIndex]}</div>`;
+
+            // Fade in new command
+            terminalOutput.style.opacity = '1';
+
+            // Move to next command
+            currentIndex = (currentIndex + 1) % commands.length;
+        }, 300);
+    }
+
+    // Initial command
+    terminalOutput.innerHTML = `<div class="terminal-line">${commands[currentIndex]}</div>`;
+    currentIndex++;
+
+    // Rotate every 3 seconds
+    setInterval(rotateCommand, 3000);
 }
 
 /**
