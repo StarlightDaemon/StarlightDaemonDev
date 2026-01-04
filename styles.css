@@ -215,8 +215,9 @@ img {
     transition: opacity 0.3s ease;
 
     /* Themed Box Style (Matches Project Cards) */
-    width: 140px;
-    height: 100px;
+    width: 125px;
+    /* Square to match logo */
+    height: 125px;
     background: #000;
     /* Deep black for screen contrast */
     border: 1px solid var(--border-default);
@@ -237,10 +238,8 @@ img {
     overflow: hidden;
 }
 
-.terminal-output:hover {
-    border-color: var(--accent-primary);
-    box-shadow: 0 0 10px rgba(0, 255, 65, 0.1);
-}
+/* Hover effect removed per request */
+/* .terminal-output:hover { ... } */
 
 /* Screen reflection/scanline overlay */
 .terminal-output::after {
