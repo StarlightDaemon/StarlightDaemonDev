@@ -8,6 +8,7 @@
     <meta name="author" content="StarlightDaemon">
     <title>StarlightDaemon | Developer Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/theme-toggle.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -261,7 +262,24 @@
         </footer>
     </div>
 
+
+    <!-- Theme Brightness Toggle -->
+    <div class="theme-toggle">
+        <button class="toggle-btn" id="toggleTheme">
+            <span class="toggle-icon">⚙</span>
+        </button>
+        <div class="toggle-panel" id="themePanel">
+            <h3>BRIGHTNESS</h3>
+            <div class="theme-options">
+                <button class="theme-option" data-theme="standard">STANDARD</button>
+                <button class="theme-option" data-theme="dark">DARK</button>
+                <button class="theme-option" data-theme="darker">DARKER</button>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
+    <script src="js/theme-toggle.js"></script>
 </body>
 
 </html>

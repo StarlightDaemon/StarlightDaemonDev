@@ -82,8 +82,8 @@
 
 html {
     scroll-behavior: smooth;
-    font-size: 18px;
-    /* Increased from 16px for better readability */
+    font-size: 13px;
+    /* Reduced from 18px (30% scale down) */
 }
 
 body {
@@ -136,8 +136,10 @@ img {
 }
 
 .logo img {
-    width: 110px;
-    height: 110px;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    /* Subtle rounded look */
     display: block;
     filter: brightness(1.1) contrast(1.1);
 }
@@ -257,7 +259,8 @@ img {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr auto;
     gap: var(--space-xl);
-    max-width: 1000px;
+    max-width: 1400px;
+    /* Increased from 1000px for comfortable 4-column layout */
     margin: 0 auto;
     padding: 0 var(--space-2xl) var(--space-2xl);
     min-height: 100vh;
@@ -643,12 +646,12 @@ section h2::after {
    =========================== */
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     /* Adaptive default */
     gap: var(--space-lg);
 }
 
-/* Enforce columns on desktop standard */
+/* Enforce 4 columns on desktop - Per user request */
 @media (min-width: 1200px) {
     .project-grid {
         grid-template-columns: repeat(4, 1fr) !important;
@@ -656,7 +659,17 @@ section h2::after {
 
     .skills-grid {
         grid-template-columns: repeat(4, 1fr) !important;
-        /* Wider for single-line text */
+    }
+}
+
+/* Tablet: 2 columns (600-1199px) */
+@media (min-width: 600px) and (max-width: 1199px) {
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
     }
 }
 
@@ -954,8 +967,8 @@ section h2::after {
 
     /* Wider layout for larger screens */
     .page-wrapper {
-        max-width: 1200px;
-        /* Up from 1000px */
+        max-width: 1600px;
+        /* Increased for 2K displays - 4-column comfort */
     }
 
     /* Scale up logo */
@@ -1145,37 +1158,29 @@ section:nth-child(4) {
     --bg-dark: #0a0a0a;
 }
 
-/* Container adapted for Upper Right Header */
+/* Container adapted for Upper Right Header - Transparent (Gate Only) */
 .sg-terminal {
-    background: var(--bg-dark);
-    border: 2px solid var(--lcd-green);
+    background: transparent;
+    /* Removed box background */
+    border: none;
+    /* Removed border */
     padding: 10px;
     font-family: 'Courier New', monospace;
     color: var(--lcd-green);
-    box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
-    width: 300px;
-    /* Adjusted size */
+    box-shadow: none;
+    /* Removed box glow */
+    width: 180px;
+    /* Reduced from 300px to prevent overlap */
     position: relative;
-    transform: scale(0.8);
+    transform: scale(0.7);
     /* Scale down slightly to fit */
     transform-origin: top right;
 }
 
-/* Scanline Effect */
+/* Scanline Effect - Disabled for gate-only view */
 .sg-terminal::before {
-    content: " ";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
-        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-    z-index: 20;
-    background-size: 100% 2px, 3px 100%;
-    pointer-events: none;
-    animation: flicker 0.15s infinite;
+    display: none;
+    /* Removed scanline overlay */
 }
 
 @keyframes flicker {
@@ -1366,3 +1371,5 @@ section:nth-child(4) {
         background: radial-gradient(circle, var(--lcd-green) 0%, transparent 60%);
     }
 }
+
+/* V4 Restore: Sun Jan  4 06:27:13 MST 2026 */
