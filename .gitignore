@@ -12,3 +12,9 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+
+old_brain/
+
+# Node.js (if using local packages)
+node_modules/
+
