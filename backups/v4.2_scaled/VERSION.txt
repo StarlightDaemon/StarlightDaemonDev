@@ -1,1 +1,0 @@
-v4.2 Scaled - 30% reduction applied, 4-column layout, 1400px container

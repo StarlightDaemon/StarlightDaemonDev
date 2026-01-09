@@ -1,7 +1,12 @@
 # Archives & Backups
 _DEPRECATED_ASSETS/
-concepts/
-ideas/
+
+# Experimental directories (but allow README.md for documentation)
+concepts/*
+!concepts/README.md
+!concepts/*/README.md
+ideas/*
+!ideas/README.md
 
 # System Files
 .DS_Store

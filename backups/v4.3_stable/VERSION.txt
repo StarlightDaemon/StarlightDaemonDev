@@ -1,1 +1,0 @@
-v4.3 Stable - Scaled layout, balanced header, theme toggle
