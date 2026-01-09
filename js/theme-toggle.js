@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const togglePanel = document.getElementById('themePanel');
     const themeOptions = document.querySelectorAll('.theme-option');
 
-    // Load saved theme or default to 'standard'
-    const savedTheme = localStorage.getItem('theme') || 'standard';
+    // Load saved theme or default to 'p1-matrix' (classic Matrix green)
+    const savedTheme = localStorage.getItem('theme') || 'p1-matrix';
     document.body.dataset.theme = savedTheme;
 
     // Update active button

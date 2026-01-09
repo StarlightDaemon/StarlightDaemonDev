@@ -79,31 +79,3 @@
     color: var(--bg-primary);
     border-color: var(--accent-primary);
 }
-
-/* Theme Brightness Levels - Direct Application */
-body[data-theme="standard"] {
-    background: #0a0a0a !important;
-}
-
-body[data-theme="standard"] .project-card,
-body[data-theme="standard"] .skill-category {
-    background: #1d1d1d !important;
-}
-
-body[data-theme="dark"] {
-    background: #050505 !important;
-}
-
-body[data-theme="dark"] .project-card,
-body[data-theme="dark"] .skill-category {
-    background: #141414 !important;
-}
-
-body[data-theme="darker"] {
-    background: #000000 !important;
-}
-
-body[data-theme="darker"] .project-card,
-body[data-theme="darker"] .skill-category {
-    background: #0a0a0a !important;
-}
