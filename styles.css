@@ -623,18 +623,7 @@ section h2::after {
 }
 
 /* Reduce scanline visibility on cards */
-.project-card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(29, 29, 29, 0.85);
-    /* Note: This is intentionally dark to create contrast with cards */
-    pointer-events: none;
-    z-index: 1;
-}
+/* Scanline overlay removed for cleaner black aesthetic */
 
 .project-card>* {
     position: relative;
@@ -838,18 +827,7 @@ section h2::after {
 }
 
 /* Reduce scanline visibility on skill cards */
-.skill-category::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(29, 29, 29, 0.85);
-    /* Note: This is intentionally dark to create contrast */
-    pointer-events: none;
-    z-index: 1;
-}
+/* Scanline overlay removed for cleaner black aesthetic */
 
 .skill-category>* {
     position: relative;
