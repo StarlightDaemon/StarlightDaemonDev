@@ -38,8 +38,8 @@
     --space-3xl: 4rem;
 
     /* Typography - Terminal/Monospace */
-    --font-mono: 'IBM Plex Mono', 'Courier Prime', 'Courier New', monospace;
-    --font-display: 'IBM Plex Mono', monospace;
+    --font-mono: 'IBM Plex Mono';
+    --font-display: 'IBM Plex Mono';
 
     --text-xs: 0.75rem;
     --text-sm: 0.875rem;
