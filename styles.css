@@ -416,20 +416,6 @@ img {
     /* Indication it might be clickable later */
 }
 
-/* Screen reflection/scanline overlay */
-.terminal-output::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(rgba(255, 255, 255, 0.03) 0%,
-            rgba(255, 255, 255, 0) 20%);
-    /* Subtle screen gloss */
-    pointer-events: none;
-}
-
 .terminal-line {
     color: var(--accent-primary);
     text-shadow: 0 0 2px var(--accent-glow);
