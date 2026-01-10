@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Font Comparison</title>
+    <!-- Loading all candidate fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&family=IBM+Plex+Mono:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500;600&family=Press+Start+2P&family=Source+Code+Pro:wght@300;400;500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=VT323&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --green: #00ff41;
+            --bg: #0d0d0d;
+            --card-bg: #151515;
+            --border: #333;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: #ddd;
+            padding: 2rem;
+            font-family: sans-serif;
+        }
+
+        h1 {
+            color: var(--green);
+            text-align: center;
+            font-family: 'IBM Plex Mono', monospace;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .card-header {
+            color: var(--green);
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+
+        .sample-text {
+            line-height: 1.6;
+            font-size: 0.95rem;
+            /* ~15px equivalent */
+        }
+
+        .code-block {
+            background: #000;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-left: 3px solid var(--green);
+            opacity: 0.8;
+            font-size: 0.85rem;
+        }
+
+        .meta {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 0.7rem;
+            color: #666;
+            font-family: sans-serif !important;
+        }
+
+        /* --- FONTS --- */
+        .ibm {
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .vt323 {
+            font-family: 'VT323', monospace;
+            font-size: 1.2rem;
+            /* VT323 is naturally small */
+        }
+
+        .space {
+            font-family: 'Space Mono', monospace;
+        }
+
+        .fira {
+            font-family: 'Fira Code', monospace;
+        }
+
+        .source {
+            font-family: 'Source Code Pro', monospace;
+        }
+
+        .jetbrains {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .press {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.7rem;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Global Terminal Font Lab</h1>
+
+    <div class="grid">
+
+        <!-- 1. IBM Plex Mono -->
+        <div class="card ibm">
+            <span class="meta">IBM PLEX MONO</span>
+            <div class="card-header">StarlightDaemon</div>
+            <div class="sample-text">
+                Developer & Open Source Enthusiast.<br>
+                Building digital systems with a retro soul.
+            </div>
+            <div class="code-block">
+                function initSystem() {
+                console.log("System Online");
+                return true; // Status: OK
+                }
+            </div>
+        </div>
+
+        <!-- 2. VT323 -->
+        <div class="card vt323">
+            <span class="meta">VT323 (Classic DOS)</span>
+            <div class="card-header">StarlightDaemon</div>
+            <div class="sample-text">
+                Developer & Open Source Enthusiast.<br>
+                Building digital systems with a retro soul.
+            </div>
+            <div class="code-block">
+                function initSystem() {
+                console.log("System Online");
+                return true; // Status: OK
+                }
+            </div>
+        </div>
+
+        <!-- 3. Space Mono -->
+        <div class="card space">
+            <span class="meta">SPACE MONO</span>
+            <div class="card-header">StarlightDaemon</div>
+            <div class="sample-text">
+                Developer & Open Source Enthusiast.<br>
+                Building digital systems with a retro soul.
+            </div>
+            <div class="code-block">
+                function initSystem() {
+                console.log("System Online");
+                return true; // Status: OK
+                }
+            </div>
+        </div>
+
+        <!-- 4. Fira Code -->
+        <div class="card fira">
+            <span class="meta">FIRA CODE</span>
+            <div class="card-header">StarlightDaemon</div>
+            <div class="sample-text">
+                Developer & Open Source Enthusiast.<br>
+                Building digital systems with a retro soul.
+            </div>
+            <div class="code-block">
+                function initSystem() {
+                console.log("System Online");
+                return true; // Status: OK
+                }
+            </div>
+        </div>
+
+        <!-- 5. JetBrains Mono -->
+        <div class="card jetbrains">
+            <span class="meta">JETBRAINS MONO</span>
+            <div class="card-header">StarlightDaemon</div>
+            <div class="sample-text">
+                Developer & Open Source Enthusiast.<br>
+                Building digital systems with a retro soul.
+            </div>
+            <div class="code-block">
+                function initSystem() {
+                console.log("System Online");
+                return true; // Status: OK
+                }
+            </div>
+        </div>
+
+        <!-- 6. Source Code Pro -->
+        <div class="card source">
+            <span class="meta">SOURCE CODE PRO</span>
+            <div class="card-header">StarlightDaemon</div>
+            <div class="sample-text">
+                Developer & Open Source Enthusiast.<br>
+                Building digital systems with a retro soul.
+            </div>
+            <div class="code-block">
+                function initSystem() {
+                console.log("System Online");
+                return true; // Status: OK
+                }
+            </div>
+        </div>
+
+        <!-- 7. Press Start 2P -->
+        <div class="card press">
+            <span class="meta">PRESS START 2P (Arcade)</span>
+            <div class="card-header">StarlightDaemon</div>
+            <div class="sample-text">
+                Developer & Open Source Enthusiast.<br>
+                Building digital systems with a retro soul.
+            </div>
+            <div class="code-block">
+                function initSystem() {
+                console.log("System Online");
+                return true; // Status: OK
+                }
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

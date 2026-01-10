@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header Design Lab - Selected V5 Variants</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            background: #111;
+            padding: 4rem 2rem;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .test-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 6rem;
+        }
+
+        .test-section {
+            border: 1px dashed #333;
+            padding: 0;
+            position: relative;
+            background: #0d0d0d;
+        }
+
+        .label {
+            position: absolute;
+            top: -2.5rem;
+            left: 0;
+            background: var(--accent-primary);
+            color: #000;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .desc {
+            position: absolute;
+            top: -2.5rem;
+            left: 250px;
+            color: #888;
+            padding: 0.4rem 0;
+            font-size: 0.9rem;
+        }
+
+        /* RESET HEADER POSITIONING FOR DEMO */
+        .site-header {
+            position: relative !important;
+            top: auto !important;
+            margin: 0 !important;
+        }
+
+        /* Cursor helper for all */
+        .header-title::after {
+            content: '▌';
+            display: inline-block;
+            margin-left: 6px;
+            animation: blink 1s step-end infinite;
+            color: inherit;
+            font-size: 0.9em;
+        }
+
+        /* --- VARIATIONS --- */
+
+        /* V5: Base (Production Match) */
+        /* Relying on updated styles.css for base layout, just ensuring background is solid */
+        .v5-base .site-header {
+            background: #000;
+        }
+
+        /* V5.1: Condensed / Tight - FIXED */
+        .v5-1 .site-header {
+            justify-content: flex-start;
+            align-items: center;
+            gap: 1rem;
+            background: #000;
+            padding: 0.5rem 1rem;
+            min-height: 70px;
+            /* Changed height to min-height for safety */
+        }
+
+        .v5-1 .logo img {
+            width: 48px !important;
+            height: 48px !important;
+        }
+
+        /* Slightly larger for balance */
+        .v5-1 .header-center {
+            text-align: left;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            line-height: 1.3;
+            /* Improved line height */
+        }
+
+        .v5-1 .header-title {
+            font-size: 1.4rem;
+            margin-bottom: 2px;
+        }
+
+        .v5-1 .header-tagline {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            opacity: 0.8;
+            letter-spacing: 0.05em;
+        }
+
+        /* Improved readability */
+        .v5-1 .upper-right-info {
+            margin-left: auto;
+            transform: scale(0.75);
+            transform-origin: right center;
+        }
+
+        /* V5.2: Horizontal Layout - FIXED ALIGNMENT */
+        .v5-2 .site-header {
+            justify-content: flex-start;
+            align-items: center;
+            gap: 1.5rem;
+            background: #000;
+            padding: 1rem 1.5rem;
+            /* Added explicit padding */
+        }
+
+        .v5-2 .logo img {
+            width: 60px !important;
+            height: 60px !important;
+        }
+
+        .v5-2 .header-center {
+            text-align: left;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            height: 100%;
+            /* Ensure full height for alignment */
+        }
+
+        .v5-2 .header-title {
+            margin: 0;
+            font-size: 1.6rem;
+            line-height: 1;
+        }
+
+        .v5-2 .header-tagline {
+            margin: 0;
+            padding-left: 1.5rem;
+            border-left: 1px solid #333;
+            height: 2.5rem;
+            /* Taller divider */
+            display: flex;
+            align-items: center;
+            font-size: 0.85rem;
+            line-height: 1;
+            color: var(--text-secondary);
+        }
+
+        /* V5.4: Strong Underline */
+        .v5-4 .site-header {
+            justify-content: flex-start;
+            gap: 1.5rem;
+            background: #000;
+            border-bottom: 3px solid var(--accent-primary);
+            align-items: center;
+            /* Ensure vertical center */
+        }
+
+        .v5-4 .header-center {
+            text-align: left;
+            padding: 0;
+        }
+
+        .v5-4 .logo img {
+            width: 80px;
+            height: 80px;
+        }
+
+
+        /* V5.5: Minimal - FIXED OVERFLOW */
+        .v5-5 .site-header {
+            justify-content: flex-start;
+            gap: 1.5rem;
+            background: #000;
+            padding: 0.75rem 1.5rem;
+            /* increased padding */
+            align-items: center;
+        }
+
+        .v5-5 .logo img {
+            width: 64px !important;
+            height: 64px !important;
+        }
+
+        /* Reduced logo slightly to fit */
+        .v5-5 .header-center {
+            text-align: left;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .v5-5 .header-title {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .v5-5 .header-tagline {
+            display: none;
+        }
+    </style>
+</head>
+
+<body data-theme="p1-matrix">
+
+    <div class="test-container">
+
+        <!-- V5 Original -->
+        <div class="test-section v5-base">
+            <span class="label">V5: Original Base</span>
+            <span class="desc">The new production standard. Left aligned, standard spacing.</span>
+            <header class="site-header">
+                <div class="logo"><img src="assets/thinker-logo.png" alt="Logo"></div>
+                <div class="header-center">
+                    <h1 class="header-title">StarlightDaemon</h1>
+                    <p class="header-tagline">Developer & Open Source Enthusiast</p>
+                </div>
+                <div class="upper-right-info">
+                    <div class="sg-terminal mini-mode"
+                        style="width:100px; height:100px; border:1px solid #333; position:relative; overflow:hidden;">
+                        <div style="font-size:10px; padding:5px; color:var(--accent-primary);">[TERM]</div>
+                    </div>
+                </div>
+            </header>
+        </div>
+
+        <!-- V5.1 -->
+        <div class="test-section v5-1">
+            <span class="label">V5.1: Condensed</span>
+            <span class="desc">Smaller footprint (40px logo, 70px height). Tighter text grouping.</span>
+            <header class="site-header">
+                <div class="logo"><img src="assets/thinker-logo.png" alt="Logo"></div>
+                <div class="header-center">
+                    <h1 class="header-title">StarlightDaemon</h1>
+                    <p class="header-tagline">Developer & Open Source Enthusiast</p>
+                </div>
+                <div class="upper-right-info">
+                    <div class="sg-terminal mini-mode"
+                        style="width:100px; height:100px; border:1px solid #333; position:relative; overflow:hidden;">
+                        <div style="font-size:10px; padding:5px; color:var(--accent-primary);">[TERM]</div>
+                    </div>
+                </div>
+            </header>
+        </div>
+
+        <!-- V5.2 -->
+        <div class="test-section v5-2">
+            <span class="label">V5.2: Horizontal Split</span>
+            <span class="desc">Tagline inline with title, separated by divider. Very wide and efficient.</span>
+            <header class="site-header">
+                <div class="logo"><img src="assets/thinker-logo.png" alt="Logo"></div>
+                <div class="header-center">
+                    <h1 class="header-title">StarlightDaemon</h1>
+                    <p class="header-tagline">Developer & Open Source Enthusiast</p>
+                </div>
+                <div class="upper-right-info">
+                    <div class="sg-terminal mini-mode"
+                        style="width:100px; height:100px; border:1px solid #333; position:relative; overflow:hidden;">
+                        <div style="font-size:10px; padding:5px; color:var(--accent-primary);">[TERM]</div>
+                    </div>
+                </div>
+            </header>
+        </div>
+
+        <!-- V5.4 -->
+        <div class="test-section v5-4">
+            <span class="label">V5.4: Strong Underline</span>
+            <span class="desc">Thick (3px) green accent border. Solid black background.</span>
+            <header class="site-header">
+                <div class="logo"><img src="assets/thinker-logo.png" alt="Logo"></div>
+                <div class="header-center">
+                    <h1 class="header-title">StarlightDaemon</h1>
+                    <p class="header-tagline">Developer & Open Source Enthusiast</p>
+                </div>
+                <div class="upper-right-info">
+                    <div class="sg-terminal mini-mode"
+                        style="width:100px; height:100px; border:1px solid #333; position:relative; overflow:hidden;">
+                        <div style="font-size:10px; padding:5px; color:var(--accent-primary);">[TERM]</div>
+                    </div>
+                </div>
+            </header>
+        </div>
+
+        <!-- V5.5 -->
+        <div class="test-section v5-5">
+            <span class="label">V5.5: Minimal</span>
+            <span class="desc">No tagline. Center-aligned vertically. Pure branding.</span>
+            <header class="site-header">
+                <div class="logo"><img src="assets/thinker-logo.png" alt="Logo"></div>
+                <div class="header-center">
+                    <h1 class="header-title">StarlightDaemon</h1>
+                    <p class="header-tagline">Developer & Open Source Enthusiast</p>
+                </div>
+                <div class="upper-right-info">
+                    <div class="sg-terminal mini-mode"
+                        style="width:100px; height:100px; border:1px solid #333; position:relative; overflow:hidden;">
+                        <div style="font-size:10px; padding:5px; color:var(--accent-primary);">[TERM]</div>
+                    </div>
+                </div>
+            </header>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
