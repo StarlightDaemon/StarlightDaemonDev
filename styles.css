@@ -303,8 +303,8 @@ img {
 
 /* Blinking Terminal Cursor */
 .header-title::after {
-    content: '▮';
-    /* Thinner vertical rectangle cursor */
+    content: '▌';
+    /* Half Block cursor */
     display: inline-block;
     margin-left: 6px;
     animation: blink 1s step-end infinite;
