@@ -254,10 +254,12 @@ img {
     gap: var(--space-lg);
     /* Space between Logo and Title */
     padding: var(--space-md) var(--space-lg);
-    background: rgba(var(--bg-primary-rgb, 13, 13, 13), 0.95);
-    border-bottom: 1px solid var(--border-accent);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    background: #000;
+    /* V5.4: Solid Black */
+    border-bottom: 3px solid var(--accent-primary);
+    /* V5.4: Strong Underline */
+    backdrop-filter: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
 }
 
 /* ===========================
