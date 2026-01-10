@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Scanline Toggle panel visibility
+    // Settings Panel visibility
     toggleBtn.addEventListener('click', function (e) {
         e.stopPropagation();
         togglePanel.classList.toggle('active');

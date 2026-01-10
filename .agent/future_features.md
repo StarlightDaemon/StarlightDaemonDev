@@ -74,5 +74,21 @@ A live terminal/info widget in the upper-right corner of the header showing dyna
 ## Other Ideas
 - Konami code easter egg
 - Matrix rain background effect (toggleable)
-- Typewriter effect for project descriptions
 - Keyboard shortcuts for theme/font switching
+
+### TypeWriter Effect
+Disabled in v2.0.0 cleanup. Can be restored for taglines.
+```javascript
+function typeWriter(element, text, speed = 50) {
+    let i = 0;
+    element.textContent = '';
+    function type() {
+        if (i < text.length) {
+            element.textContent += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        }
+    }
+    type();
+}
+```

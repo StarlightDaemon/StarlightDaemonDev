@@ -181,35 +181,7 @@ function updateCopyrightYear() {
 /**
  * Terminal commands rotation
  */
-/**
- * Terminal commands - Static for now
- */
-function updateTerminalCommands() {
-    // Static content handled in HTML
-    return;
-}
 
 
-/**
- * Optional: Add typing effect to tagline
- * Uncomment to enable
- */
-/*
-function typeWriter(element, text, speed = 50) {
-    let i = 0;
-    element.textContent = '';
-    
-    function type() {
-        if (i < text.length) {
-            element.textContent += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-        }
-    }
-    type();
-}
 
-// Usage:
-// const tagline = document.querySelector('.tagline');
-// typeWriter(tagline, 'Developer & Open Source Enthusiast');
-*/
+
