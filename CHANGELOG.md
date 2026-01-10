@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Settings Panel**: Added scrolling support (max-height: 80vh) for expanded options
 - **Terminal Widget**: Removed Stargate terminal from header (archived)
 - **Spacing**: Increased gap between header and content (space-3xl)
+- **Card Styling**: Updated project and skill cards to "Almost Black" (#050505) for unified premium aesthetic
 
 ### Removed
 - **Scanlines Effect**: Deprecated feature removed from settings and codebase
