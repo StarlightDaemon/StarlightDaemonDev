@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function () {
             document.documentElement.setAttribute('data-font', font);
             localStorage.setItem('site-font', font);
             updateActiveButton(fontBtns, font, 'data-font');
-            playClickSound();
         });
     });
 
