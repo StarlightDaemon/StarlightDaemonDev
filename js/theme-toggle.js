@@ -32,13 +32,15 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Helper to update active state
+    // Helper to update active state and ARIA
     function updateActiveButton(buttons, value, dataAttr) {
         buttons.forEach(btn => {
             if (btn.getAttribute(dataAttr) === value) {
                 btn.classList.add('active');
+                btn.setAttribute('aria-checked', 'true');
             } else {
                 btn.classList.remove('active');
+                btn.setAttribute('aria-checked', 'false');
             }
         });
     }
@@ -46,13 +48,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // Settings Panel visibility
     toggleBtn.addEventListener('click', function (e) {
         e.stopPropagation();
-        togglePanel.classList.toggle('active');
+        const isExpanded = togglePanel.classList.toggle('active');
+        toggleBtn.setAttribute('aria-expanded', isExpanded);
     });
 
     // Close panel when clicking outside
     document.addEventListener('click', function (e) {
         if (!togglePanel.contains(e.target) && !toggleBtn.contains(e.target)) {
             togglePanel.classList.remove('active');
+            toggleBtn.setAttribute('aria-expanded', 'false');
         }
     });
 
@@ -68,8 +72,12 @@ document.addEventListener('DOMContentLoaded', function () {
             localStorage.setItem('theme', theme);
 
             // Update active state
-            themeOptions.forEach(opt => opt.classList.remove('active'));
+            themeOptions.forEach(opt => {
+                opt.classList.remove('active');
+                opt.setAttribute('aria-checked', 'false');
+            });
             this.classList.add('active');
+            this.setAttribute('aria-checked', 'true');
         });
     });
 });
