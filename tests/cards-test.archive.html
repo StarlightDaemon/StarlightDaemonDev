@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Background Comparison</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            padding: 3rem 2rem;
+            background: #0d0d0d;
+        }
+
+        h1 {
+            color: var(--accent-primary);
+            text-align: center;
+            margin-bottom: 4rem;
+            font-size: 2rem;
+        }
+
+        .comparison-section {
+            margin-bottom: 5rem;
+        }
+
+        .section-label {
+            color: var(--accent-primary);
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.5rem 1rem;
+            background: rgba(0, 255, 65, 0.1);
+            border-left: 3px solid var(--accent-primary);
+        }
+
+        /* Force proper grid for all sections */
+        .comparison-section .projects-grid {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+            gap: 2rem !important;
+        }
+
+        /* Background Variations - OFFENSIVE OVERRIDE */
+
+        /* Option 1: Pure Black */
+        .bg-black .project-card,
+        .bg-black .skill-category {
+            background-color: #000000 !important;
+            background: #000000 !important;
+            --bg-card: #000000 !important;
+        }
+
+        /* Option 2: Slightly Lighter */
+        .bg-lighter .project-card,
+        .bg-lighter .skill-category {
+            background-color: #050505 !important;
+            background: #050505 !important;
+            --bg-card: #050505 !important;
+        }
+
+        /* Option 3: Subtle Gray */
+        .bg-gray .project-card,
+        .bg-gray .skill-category {
+            background-color: #111111 !important;
+            background: #111111 !important;
+            --bg-card: #111111 !important;
+        }
+
+        /* Option 4: Black w/ 80% opacity */
+        .bg-opacity80 .project-card,
+        .bg-opacity80 .skill-category {
+            background-color: rgba(0, 0, 0, 0.8) !important;
+            background: rgba(0, 0, 0, 0.8) !important;
+            --bg-card: rgba(0, 0, 0, 0.8) !important;
+        }
+
+        /* Option 5: Header Match */
+        .bg-header .project-card,
+        .bg-header .skill-category {
+            background-color: #000000 !important;
+            /* Force solid black for header match context */
+            background: #000000 !important;
+            border-bottom: 3px solid var(--accent-primary) !important;
+            /* Copy header style */
+        }
+
+        /* Kill any ::before/::after overlays that might be brightening it */
+        .project-card::before,
+        .project-card::after,
+        .skill-category::before,
+        .skill-category::after {
+            display: none !important;
+        }
+
+        /* Header match (95%) */
+    </style>
+</head>
+
+<body data-theme="p1-matrix">
+
+    <div class="compact-container">
+        <h1 style="color: var(--accent-primary); text-align: center; margin-bottom: 2rem; font-size: 1.5rem;">Card
+            Background Comparison (Compact)</h1>
+
+        <div class="compact-grid">
+
+            <!-- Option 1 -->
+            <div class="bg-black wrapper">
+                <div class="label">1. Pure Black (#000)</div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>ARC</h3>
+                        <span class="status-badge active">ACTIVE</span>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">HTML</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option 2 -->
+            <div class="bg-lighter wrapper">
+                <div class="label">2. Lighter (#050505)</div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>ARC</h3>
+                        <span class="status-badge active">ACTIVE</span>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">HTML</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option 3 -->
+            <div class="bg-gray wrapper">
+                <div class="label">3. Gray (#111)</div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>ARC</h3>
+                        <span class="status-badge active">ACTIVE</span>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">HTML</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option 4 -->
+            <div class="bg-opacity80 wrapper">
+                <div class="label">4. Opacity 80%</div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>ARC</h3>
+                        <span class="status-badge active">ACTIVE</span>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">HTML</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option 5 -->
+            <div class="bg-header wrapper">
+                <div class="label">5. Header Match</div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>ARC</h3>
+                        <span class="status-badge active">ACTIVE</span>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">HTML</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <style>
+        .compact-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .compact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .label {
+            font-size: 0.8rem;
+            color: #888;
+            text-transform: uppercase;
+            font-family: monospace;
+        }
+
+        /* Force minimal card height for density */
+        .project-card {
+            min-height: 120px !important;
+            padding: 1rem !important;
+        }
+
+        .project-description {
+            display: none;
+        }
+
+        /* Re-apply overrides locally to ensure they stick */
+        .bg-black .project-card {
+            background: #000000 !important;
+            --bg-card: #000000 !important;
+        }
+
+        .bg-lighter .project-card {
+            background: #050505 !important;
+            --bg-card: #050505 !important;
+        }
+
+        .bg-gray .project-card {
+            background: #111111 !important;
+            --bg-card: #111111 !important;
+        }
+
+        .bg-opacity80 .project-card {
+            background: rgba(0, 0, 0, 0.8) !important;
+            --bg-card: rgba(0, 0, 0, 0.8) !important;
+        }
+
+        .bg-header .project-card {
+            background: #000000 !important;
+            border-bottom: 3px solid var(--accent-primary) !important;
+        }
+
+        .project-card::before,
+        .project-card::after {
+            display: none !important;
+        }
+    </style>
+</body>
+
+</html>

@@ -598,18 +598,19 @@ section h2::after {
 /* ===========================
    Projects Section
    =========================== */
-.project-grid {
+.projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--space-lg);
+    gap: var(--space-xl);
 }
 
 .project-card {
-    background: var(--bg-card);
-    border: 2px solid var(--border-default);
+    background: #050505;
+    /* Almost Black (User Selection) */
+    border: 1px solid var(--border-default);
     border-radius: var(--radius-md);
     padding: var(--space-lg);
-    transition: all var(--transition-base);
+    transition: all var(--transition-normal);
     aspect-ratio: 2/3;
     /* Movie Poster Ratio (27x40) */
     width: 100%;
@@ -820,13 +821,13 @@ section h2::after {
 }
 
 .skill-category {
-    background: var(--bg-card);
-    border: 2px solid var(--border-default);
-    border-radius: var(--radius-md);
+    background: #050505;
+    /* Almost Black (User Selection) */
+    border: 1px solid var(--border-default);
     padding: var(--space-lg);
-    transition: all var(--transition-base);
+    height: 100%;
+    transition: all var(--transition-normal);
     position: relative;
-    z-index: 10;
     overflow: hidden;
     aspect-ratio: 1/1;
     /* Square box */
