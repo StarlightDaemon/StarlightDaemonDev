@@ -45,6 +45,32 @@ function playClickSound() {
 
 ---
 
+## Header Terminal Widget
+**Status:** Removed (v2.0.0 cleanup)  
+**Original Location:** `styles.css:360-451`, `index.html` header
+
+### Concept
+A live terminal/info widget in the upper-right corner of the header showing dynamic status information (uptime, current command, system stats).
+
+### Original Styling Features
+- Retro CRT terminal aesthetic with scan lines
+- Animated blinking cursor
+- Glowing border on hover
+- Backdrop blur effect
+- Monospace font with `>` prompt prefix
+
+### Possible Future Implementations
+1. **Live Uptime Counter**: Days since site launch
+2. **GitHub Stats**: Latest commit, star count
+3. **Build Info**: Last deployment timestamp
+4. **Mini Terminal**: Rotating tech stack one-liners
+5. **Visitor Counter**: Retro hit counter aesthetic
+
+### Reserved CSS Class
+`.upper-right-info` - Placeholder kept in `styles.css` for future use
+
+---
+
 ## Other Ideas
 - Konami code easter egg
 - Matrix rain background effect (toggleable)

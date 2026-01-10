@@ -263,78 +263,21 @@ img {
 }
 
 /* ===========================
-   Logo (Left Side)
+   Upper Right Header Widget (Reserved for Future Use)
    =========================== */
-.logo {
-    opacity: 0.8;
-    transition: opacity var(--transition-fast);
-    flex-shrink: 0;
+/* This slot is reserved for a future header widget.
+   Placeholder styling kept minimal until needed. */
+
+.upper-right-info {
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-lg);
+    display: none;
+    /* Hidden until implemented */
+    z-index: 100;
 }
 
-.logo:hover {
-    opacity: 1;
-}
-
-.logo img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    display: block;
-    filter: brightness(1.1) contrast(1.1);
-}
-
-/* ===========================
-   Buttons
-   =========================== */
-.header-center {
-    text-align: left;
-    /* V5: Left align text */
-    flex: 0 1 auto;
-    /* Allow it to take necessary space but not force center */
-    padding: 0;
-}
-
-.header-title {
-    font-family: var(--font-display);
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: var(--accent-primary);
-    /* text-transform: uppercase; - Removed to preserve StarlightDaemon casing */
-    letter-spacing: 0.1em;
-    margin-bottom: 0.25rem;
-    text-shadow: 0 0 15px var(--accent-glow);
-    position: relative;
-    display: inline-block;
-    animation: glow 3s ease-in-out infinite alternate;
-}
-
-/* Blinking Terminal Cursor */
-.header-title::after {
-    content: '▌';
-    /* Half Block cursor */
-    display: inline-block;
-    margin-left: 6px;
-    animation: blink 1s step-end infinite;
-    opacity: 1;
-    color: var(--accent-primary);
-    text-shadow: 0 0 10px var(--accent-glow);
-    vertical-align: baseline;
-    font-size: 0.9em;
-}
-
-/* Animation Keyframes */
-@keyframes blink {
-
-    0%,
-    50% {
-        opacity: 1;
-    }
-
-    51%,
-    100% {
-        opacity: 0;
-    }
-}
+/* Placeholder for future terminal or info widget styling */
 
 @keyframes glow {
     from {
