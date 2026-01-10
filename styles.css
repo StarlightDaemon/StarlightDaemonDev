@@ -430,59 +430,6 @@ img {
     font-size: var(--text-sm);
 }
 
-/* ===========================
-/* ===========================
-   Buttons
-   =========================== */
-.btn {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-sm);
-    padding: var(--space-sm) var(--space-lg);
-    border-radius: var(--radius-sm);
-    font-weight: 500;
-    font-size: var(--text-sm);
-    transition: all var(--transition-base);
-    text-decoration: none;
-    border: 2px solid transparent;
-    font-family: var(--font-mono);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.btn:hover {
-    text-decoration: none;
-    transform: translate(-2px, -2px);
-    box-shadow: 4px 4px 0 var(--accent-primary);
-}
-
-.btn-primary {
-    background: var(--accent-primary);
-    color: var(--text-primary);
-    border-color: var(--accent-primary);
-}
-
-.btn-primary:hover {
-    background: var(--bg-card);
-    border-color: var(--accent-primary);
-    box-shadow: var(--shadow-neon);
-    color: var(--accent-primary);
-}
-
-.btn-secondary {
-    background: transparent;
-    color: var(--text-primary);
-    border-color: var(--border-default);
-}
-
-.btn-secondary:hover {
-    background: var(--bg-card);
-    border-color: var(--accent-primary);
-    transform: translate(-2px, -2px);
-    box-shadow: 4px 4px 0 var(--accent-primary);
-    color: var(--accent-primary);
-}
-
 .icon {
     width: 18px;
     height: 18px;
@@ -611,22 +558,6 @@ section h2::after {
     background: var(--bg-secondary);
 }
 
-/* Placeholder cards */
-.project-card.placeholder-card {
-    opacity: 0.5;
-    border-style: dashed;
-}
-
-.project-card.placeholder-card::before {
-    background: var(--border-muted);
-    box-shadow: none;
-    animation: none;
-}
-
-.project-card.placeholder-card:hover {
-    opacity: 0.8;
-}
-
 .project-header {
     display: flex;
     justify-content: space-between;
@@ -656,16 +587,17 @@ section h2::after {
     border: 1px solid var(--accent-primary);
 }
 
+/* Status badges - Maintained & Archived preserved for future use */
 .status-maintained {
-    background: rgba(255, 170, 0, 0.15);
-    color: #cc8800;
-    border: 1px solid var(--status-maintained);
+    background: rgba(255, 149, 0, 0.15);
+    color: #ff9500;
+    border: 1px solid #ff9500;
 }
 
 .status-archived {
-    background: rgba(136, 136, 136, 0.15);
-    color: var(--status-archived);
-    border: 1px solid var(--border-default);
+    background: rgba(128, 128, 128, 0.15);
+    color: #808080;
+    border: 1px solid #808080;
 }
 
 .status-beta {
@@ -1140,24 +1072,6 @@ section:nth-child(3) {
 section:nth-child(4) {
     animation: slideInLeft 0.7s ease-out;
     animation-delay: 0.3s;
-}
-
-/* Glow pulse for focus states */
-@keyframes glow-pulse {
-
-    0%,
-    100% {
-        box-shadow: 0 0 5px var(--accent-glow);
-    }
-
-    50% {
-        box-shadow: 0 0 20px var(--accent-glow), 0 0 30px var(--accent-glow);
-    }
-}
-
-.btn-primary:focus,
-.project-card:focus-within {
-    animation: glow-pulse 2s ease-in-out infinite;
 }
 
 /* Font Families via Data Attribute */
