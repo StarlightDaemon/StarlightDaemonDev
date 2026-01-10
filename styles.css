@@ -303,15 +303,16 @@ img {
 
 /* Blinking Terminal Cursor */
 .header-title::after {
-    content: '▊';
-    /* Full block cursor */
+    content: '▮';
+    /* Thinner vertical rectangle cursor */
     display: inline-block;
-    margin-left: 8px;
+    margin-left: 6px;
     animation: blink 1s step-end infinite;
     opacity: 1;
     color: var(--accent-primary);
     text-shadow: 0 0 10px var(--accent-glow);
     vertical-align: baseline;
+    font-size: 0.9em;
 }
 
 /* Animation Keyframes */
