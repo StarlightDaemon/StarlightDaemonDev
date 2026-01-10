@@ -283,12 +283,10 @@ img {
     width: 80px;
     height: auto;
     display: block;
-    filter: drop-shadow(0 0 5px rgba(0, 255, 65, 0.3));
     transition: all var(--transition-base);
 }
 
 .logo:hover img {
-    filter: drop-shadow(0 0 10px var(--accent-primary));
     transform: scale(1.05);
 }
 
