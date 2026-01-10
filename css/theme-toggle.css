@@ -113,3 +113,54 @@
     color: var(--bg-primary);
     border-color: var(--accent-primary);
 }
+
+/* Theme-specific colors for visual preview */
+.theme-option[data-theme="p1-green"] {
+    color: #00ff00;
+    border-color: #00ff00;
+}
+
+.theme-option[data-theme="p1-green"].active {
+    background: #00ff00;
+    color: #000;
+}
+
+.theme-option[data-theme="p1-matrix"] {
+    color: #00ff41;
+    border-color: #00ff41;
+}
+
+.theme-option[data-theme="p1-matrix"].active {
+    background: #00ff41;
+    color: #000;
+}
+
+.theme-option[data-theme="p3-amber"] {
+    color: #ff9500;
+    border-color: #ff9500;
+}
+
+.theme-option[data-theme="p3-amber"].active {
+    background: #ff9500;
+    color: #000;
+}
+
+.theme-option[data-theme="p4-white"] {
+    color: #e0e0e0;
+    border-color: #e0e0e0;
+}
+
+.theme-option[data-theme="p4-white"].active {
+    background: #e0e0e0;
+    color: #000;
+}
+
+.theme-option[data-theme="ibm-blue"] {
+    color: #00a6ed;
+    border-color: #00a6ed;
+}
+
+.theme-option[data-theme="ibm-blue"].active {
+    background: #00a6ed;
+    color: #000;
+}
