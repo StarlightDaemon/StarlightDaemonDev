@@ -296,6 +296,45 @@ img {
     letter-spacing: 0.2em;
     margin-bottom: 0.25rem;
     text-shadow: 0 0 15px var(--accent-glow);
+    position: relative;
+    display: inline-block;
+    animation: glow 3s ease-in-out infinite alternate;
+}
+
+/* Blinking Terminal Cursor */
+.header-title::after {
+    content: '_';
+    display: inline-block;
+    margin-left: 5px;
+    animation: blink 1s step-end infinite;
+    opacity: 1;
+    color: var(--accent-primary);
+    text-shadow: 0 0 10px var(--accent-glow);
+    vertical-align: bottom;
+}
+
+/* Animation Keyframes */
+@keyframes blink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    to {
+        text-shadow: 0 0 20px var(--accent-glow), 0 0 30px var(--accent-glow);
+    }
 }
 
 .header-tagline {
