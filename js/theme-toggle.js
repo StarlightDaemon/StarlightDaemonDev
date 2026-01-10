@@ -15,7 +15,36 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Toggle panel visibility
+    // Font Management
+    const fontBtns = document.querySelectorAll('.font-options .theme-btn');
+    const savedFont = localStorage.getItem('site-font') || 'ibm';
+
+    // Apply saved font
+    document.documentElement.setAttribute('data-font', savedFont);
+    updateActiveButton(fontBtns, savedFont, 'data-font');
+
+    fontBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const font = btn.getAttribute('data-font');
+            document.documentElement.setAttribute('data-font', font);
+            localStorage.setItem('site-font', font);
+            updateActiveButton(fontBtns, font, 'data-font');
+            playClickSound();
+        });
+    });
+
+    // Helper to update active state
+    function updateActiveButton(buttons, value, dataAttr) {
+        buttons.forEach(btn => {
+            if (btn.getAttribute(dataAttr) === value) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+    }
+
+    // Scanline Toggle panel visibility
     toggleBtn.addEventListener('click', function (e) {
         e.stopPropagation();
         togglePanel.classList.toggle('active');

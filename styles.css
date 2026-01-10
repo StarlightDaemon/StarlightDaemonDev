@@ -1343,6 +1343,34 @@ section:nth-child(4) {
     animation: glow-pulse 2s ease-in-out infinite;
 }
 
+/* Font Families via Data Attribute */
+[data-font="ibm"] {
+    --font-display: 'IBM Plex Mono', monospace;
+    --font-mono: 'IBM Plex Mono', monospace;
+}
+
+[data-font="vt323"] {
+    --font-display: 'VT323', monospace;
+    --font-mono: 'VT323', monospace;
+    font-size: 1.1em;
+}
+
+/* VT323 is small, boost size */
+[data-font="space"] {
+    --font-display: 'Space Mono', monospace;
+    --font-mono: 'Space Mono', monospace;
+}
+
+[data-font="fira"] {
+    --font-display: 'Fira Code', monospace;
+    --font-mono: 'Fira Code', monospace;
+}
+
+[data-font="jetbrains"] {
+    --font-display: 'JetBrains Mono', monospace;
+    --font-mono: 'JetBrains Mono', monospace;
+}
+
 /* --- STARGATE TERMINAL WIDGET --- */
 :root {
     --lcd-green: #00ff41;
