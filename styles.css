@@ -568,7 +568,7 @@ img {
    Main Content Area
    =========================== */
 .main-content {
-    padding-top: var(--space-lg);
+    padding-top: var(--space-3xl);
 }
 
 /* ===========================
