@@ -241,15 +241,29 @@ img {
 }
 
 /* ===========================
-   Logo (Upper Left)
+   Unified Sticky Header
+   =========================== */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-md) var(--space-lg);
+    background: rgba(var(--bg-primary-rgb, 13, 13, 13), 0.95);
+    border-bottom: 1px solid var(--border-accent);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* ===========================
+   Logo (Left Side)
    =========================== */
 .logo {
-    position: fixed;
-    top: var(--space-lg);
-    left: var(--space-lg);
-    z-index: 1000;
     opacity: 0.8;
     transition: opacity var(--transition-fast);
+    flex-shrink: 0;
 }
 
 .logo:hover {
@@ -257,22 +271,46 @@ img {
 }
 
 .logo img {
-    width: 130px;
-    height: 130px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
-    /* Subtle rounded look */
     display: block;
     filter: brightness(1.1) contrast(1.1);
 }
 
 /* ===========================
-   Upper Right Info
+   Buttons
+   =========================== */
+.header-center {
+    text-align: center;
+    flex: 1;
+    padding: 0 var(--space-lg);
+}
+
+.header-title {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 0.25rem;
+    text-shadow: 0 0 15px var(--accent-glow);
+}
+
+.header-tagline {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+}
+
+/* ===========================
+   Upper Right Info (Stargate)
    =========================== */
 .upper-right-info {
-    position: fixed;
-    top: var(--space-lg);
-    right: var(--space-lg);
-    z-index: 1000;
+    flex-shrink: 0;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -378,12 +416,10 @@ img {
 .page-wrapper {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr auto;
-    gap: var(--space-xl);
+    gap: var(--space-2xl);
     max-width: 1400px;
-    /* Increased from 1000px for comfortable 4-column layout */
     margin: 0 auto;
-    padding: 0 var(--space-2xl) var(--space-2xl);
+    padding: 0 var(--space-lg) var(--space-3xl);
     min-height: 100vh;
 }
 
@@ -416,61 +452,6 @@ img {
 }
 
 /* ===========================
-   Hero Section
-   =========================== */
-.hero {
-    padding: 0;
-    text-align: center;
-    position: relative;
-}
-
-.title {
-    font-size: var(--text-4xl);
-    font-weight: 700;
-    color: var(--accent-primary);
-    text-shadow: 0 0 20px var(--accent-glow);
-    margin-bottom: var(--space-sm);
-    letter-spacing: 0.05em;
-    font-family: var(--font-display);
-    position: relative;
-    display: inline-block;
-}
-
-/* Terminal cursor effect */
-.title::after {
-    content: '▊';
-    color: var(--accent-primary);
-    animation: blink 1.5s step-end infinite;
-    margin-left: 4px;
-}
-
-@keyframes blink {
-
-    0%,
-    50% {
-        opacity: 1;
-    }
-
-    51%,
-    100% {
-        opacity: 0;
-    }
-}
-
-.tagline {
-    font-size: var(--text-xl);
-    color: var(--text-secondary);
-    margin-bottom: var(--space-xl);
-    font-weight: 400;
-}
-
-.cta-buttons {
-    display: flex;
-    gap: var(--space-md);
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
 /* ===========================
    Buttons
    =========================== */
@@ -534,10 +515,17 @@ img {
 }
 
 /* ===========================
-   Sections
+   Main Content Area
+   =========================== */
+.main-content {
+    padding-top: var(--space-lg);
+}
+
+/* ===========================
+   Section Styles
    =========================== */
 section {
-    padding: 0;
+    margin-bottom: var(--space-3xl);
 }
 
 section h2 {
@@ -1015,6 +1003,37 @@ section h2::after {
    Responsive Design
    =========================== */
 @media (max-width: 900px) {
+
+    /* Sticky Header - Mobile */
+    .site-header {
+        flex-direction: column;
+        gap: var(--space-md);
+        padding: var(--space-md);
+    }
+
+    .header-center {
+        order: -1;
+        padding: 0;
+    }
+
+    .header-title {
+        font-size: 1.5rem;
+    }
+
+    .header-tagline {
+        font-size: 0.75rem;
+    }
+
+    .logo img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .upper-right-info {
+        display: none;
+        /* Hide Stargate on mobile for cleaner header */
+    }
+
     .page-wrapper {
         grid-template-columns: 1fr;
         padding: var(--space-lg);

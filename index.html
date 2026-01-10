@@ -18,48 +18,50 @@
 </head>
 
 <body>
-    <!-- Logo -->
-    <div class="logo">
-        <a href="https://github.com/StarlightDaemon" target="_blank" rel="noopener"
-            aria-label="Visit StarlightDaemon on GitHub">
-            <img src="assets/thinker-logo.png" alt="StarlightDaemon Logo" />
-        </a>
-    </div>
+    <!-- Unified Sticky Header -->
+    <header class="site-header">
+        <!-- Logo -->
+        <div class="logo">
+            <a href="https://github.com/StarlightDaemon" target="_blank" rel="noopener"
+                aria-label="Visit StarlightDaemon on GitHub">
+                <img src="assets/thinker-logo.png" alt="StarlightDaemon Logo" />
+            </a>
+        </div>
 
-    <!-- Upper Right Info - Terminal Commands -->
-    <div class="upper-right-info">
+        <!-- Center Title -->
+        <div class="header-center">
+            <h1 class="header-title">StarlightDaemon</h1>
+            <p class="header-tagline">Developer & Open Source Enthusiast</p>
+        </div>
 
         <!-- Stargate Terminal Widget -->
-        <!-- Stargate Terminal Widget (Mini Mode) -->
-        <a href="stargate.html" class="sg-link" aria-label="Open Stargate Terminal">
-            <div class="sg-terminal mini-mode">
-                <div class="sg-display">
-                    <div class="stargate">
-                        <div class="ring outer-ring">
-                            <div class="chevron c1" id="c1"></div>
-                            <div class="chevron c2" id="c2"></div>
-                            <div class="chevron c3" id="c3"></div>
-                            <div class="chevron c4" id="c4"></div>
-                            <div class="chevron c5" id="c5"></div>
-                            <div class="chevron c6" id="c6"></div>
-                            <div class="chevron c7" id="c7"></div>
-                            <div class="chevron c8" id="c8"></div>
-                            <div class="chevron c9" id="c9"></div>
+        <div class="upper-right-info">
+            <a href="stargate.html" class="sg-link" aria-label="Open Stargate Terminal">
+                <div class="sg-terminal mini-mode">
+                    <div class="sg-display">
+                        <div class="stargate">
+                            <div class="ring outer-ring">
+                                <div class="chevron c1" id="c1"></div>
+                                <div class="chevron c2" id="c2"></div>
+                                <div class="chevron c3" id="c3"></div>
+                                <div class="chevron c4" id="c4"></div>
+                                <div class="chevron c5" id="c5"></div>
+                                <div class="chevron c6" id="c6"></div>
+                                <div class="chevron c7" id="c7"></div>
+                                <div class="chevron c8" id="c8"></div>
+                                <div class="chevron c9" id="c9"></div>
+                            </div>
+                            <div class="ring inner-ring" id="innerRing"></div>
+                            <div class="event-horizon" id="horizon"></div>
                         </div>
-                        <div class="ring inner-ring" id="innerRing"></div>
-                        <div class="event-horizon" id="horizon"></div>
                     </div>
                 </div>
-            </div>
-        </a>
-    </div>
+            </a>
+        </div>
+    </header>
 
     <div class="page-wrapper">
         <main class="main-content">
-            <header class="hero">
-                <h1 class="title">StarlightDaemon</h1>
-                <p class="tagline">Developer &amp; Open Source Enthusiast</p>
-            </header>
 
             <section class="projects" id="projects">
                 <h2>Open Source Projects</h2>
