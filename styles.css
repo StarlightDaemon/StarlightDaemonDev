@@ -330,6 +330,7 @@ img {
     margin: 0;
     line-height: 1.1;
     text-shadow: 0 0 10px var(--accent-glow);
+    animation: glow 2s ease-in-out infinite alternate;
     position: relative;
     display: inline-block;
 }
