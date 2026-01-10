@@ -99,9 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Dynamic year in footer
     updateCopyrightYear();
 
-    // Uptime counter
-    updateUptime();
-
     // Terminal commands rotation
     updateTerminalCommands();
 });
@@ -178,21 +175,6 @@ function updateCopyrightYear() {
     if (footer) {
         const currentYear = new Date().getFullYear();
         footer.innerHTML = footer.innerHTML.replace(/©\s*\d{4}/, `© ${currentYear}`);
-    }
-}
-
-/**
- * Update uptime counter - days since site launch
- */
-function updateUptime() {
-    const launchDate = new Date('2025-12-23'); // Site launch date
-    const now = new Date();
-    const diffTime = Math.abs(now - launchDate);
-    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-
-    const uptimeElement = document.getElementById('uptime');
-    if (uptimeElement) {
-        uptimeElement.textContent = diffDays + 'd';
     }
 }
 
