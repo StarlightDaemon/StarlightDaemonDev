@@ -87,3 +87,29 @@
     color: var(--bg-primary);
     border-color: var(--accent-primary);
 }
+
+/* Font buttons - same styling as theme buttons */
+.theme-btn {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-default);
+    color: var(--text-primary);
+    padding: var(--space-sm) var(--space-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    text-align: left;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.theme-btn:hover {
+    border-color: var(--accent-primary);
+    background: var(--bg-secondary);
+}
+
+.theme-btn.active {
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+    border-color: var(--accent-primary);
+}
