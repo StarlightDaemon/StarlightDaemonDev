@@ -248,8 +248,11 @@ img {
     top: 0;
     z-index: 1000;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    /* V5: Start from left */
     align-items: center;
+    gap: var(--space-lg);
+    /* Space between Logo and Title */
     padding: var(--space-md) var(--space-lg);
     background: rgba(var(--bg-primary-rgb, 13, 13, 13), 0.95);
     border-bottom: 1px solid var(--border-accent);
@@ -282,9 +285,11 @@ img {
    Buttons
    =========================== */
 .header-center {
-    text-align: center;
-    flex: 1;
-    padding: 0 var(--space-lg);
+    text-align: left;
+    /* V5: Left align text */
+    flex: 0 1 auto;
+    /* Allow it to take necessary space but not force center */
+    padding: 0;
 }
 
 .header-title {
@@ -359,6 +364,8 @@ img {
     font-family: var(--font-mono);
     opacity: 0.7;
     transition: opacity var(--transition-fast);
+    margin-left: auto;
+    /* V5: Push to far right */
 }
 
 .upper-right-info:hover {
