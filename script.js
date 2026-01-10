@@ -90,9 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Main Init
 document.addEventListener('DOMContentLoaded', () => {
-    // Smooth scroll for anchor links
-    initSmoothScroll();
-
     // Intersection Observer for scroll animations
     initScrollAnimations();
 
@@ -102,24 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Terminal commands rotation
     updateTerminalCommands();
 });
-
-/**
- * Initialize smooth scrolling for anchor links
- */
-function initSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-}
 
 /**
  * Initialize scroll-triggered animations using Intersection Observer

@@ -3,7 +3,7 @@
     position: fixed;
     bottom: var(--space-lg);
     right: var(--space-lg);
-    z-index: 10000;
+    z-index: var(--z-modal);
 }
 
 .toggle-btn {
