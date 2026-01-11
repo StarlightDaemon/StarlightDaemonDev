@@ -309,16 +309,11 @@ img {
 
 @keyframes glow {
     from {
-        text-shadow:
-            0 0 5px var(--accent-glow),
-            0 0 10px rgba(0, 255, 65, 0.2);
+        text-shadow: 0 0 10px var(--accent-glow);
     }
 
     to {
-        text-shadow:
-            0 0 5px var(--accent-glow),
-            0 0 20px var(--accent-glow),
-            0 0 30px rgba(0, 255, 65, 0.4);
+        text-shadow: 0 0 20px var(--accent-glow), 0 0 30px var(--accent-glow);
     }
 }
 
