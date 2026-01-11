@@ -27,6 +27,8 @@
     --status-maintained: #ffaa00;
     --status-archived: #666666;
     --status-beta: #00e5ff;
+    --status-library: #bd93f9;
+    /* Purple */
 
     /* Spacing */
     --space-xs: 0.25rem;
@@ -659,6 +661,12 @@ section h2::after {
     background: rgba(var(--accent-primary-rgb), 0.15);
     color: var(--accent-primary);
     border: 1px solid var(--accent-primary);
+}
+
+.status-library {
+    background: rgba(189, 147, 249, 0.15);
+    color: var(--status-library);
+    border: 1px solid var(--status-library);
 }
 
 .project-description {
