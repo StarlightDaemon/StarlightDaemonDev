@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bento Lab Finals | StarlightDaemon</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&family=IBM+Plex+Mono:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=VT323&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* === LAB UTILITIES === */
+        body {
+            padding-bottom: 300px;
+            background-color: var(--bg-primary);
+        }
+
+        .lab-header {
+            text-align: center;
+            margin: 6rem 0 4rem;
+            border-bottom: 2px solid var(--border-muted);
+            padding-bottom: 2rem;
+        }
+
+        .lab-title {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .lab-subtitle {
+            font-family: var(--font-mono);
+            color: var(--accent-primary);
+            letter-spacing: 2px;
+        }
+
+        .variation-section {
+            margin-bottom: 10rem;
+        }
+
+        .var-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .var-badge {
+            background: var(--bg-card);
+            border: 1px solid var(--accent-primary);
+            color: var(--accent-primary);
+            padding: 0.25rem 0.75rem;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .var-name {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .var-desc {
+            color: var(--text-secondary);
+            max-width: 500px;
+            font-size: 0.9rem;
+        }
+
+        /* === SHARED BENTO GRID (The Skeleton) === */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, minmax(180px, auto));
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .span-2 {
+            grid-column: span 2;
+        }
+
+        .row-2 {
+            grid-row: span 2;
+        }
+
+        /* === VARIATION A: MODERN MINIMALIST (Clean) === */
+        .theme-minimal .bento-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-muted);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: border-color 0.3s ease;
+        }
+
+        .theme-minimal .bento-card:hover {
+            border-color: var(--accent-primary);
+        }
+
+        .theme-minimal h3 {
+            font-family: 'Inter', sans-serif;
+            /* Clean sans */
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .theme-minimal ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .theme-minimal li {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+        }
+
+        .theme-minimal .highlight-card {
+            background: rgba(var(--accent-primary-rgb), 0.03);
+            border-color: rgba(var(--accent-primary-rgb), 0.2);
+        }
+
+        .theme-minimal .hero-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .theme-minimal .hero-list li {
+            font-weight: 500;
+            color: var(--text-primary);
+            border-left: 2px solid var(--accent-primary);
+            padding-left: 10px;
+        }
+
+        /* === VARIATION B: SYSTEM MONITOR (Technical) === */
+        .theme-monitor .bento-card {
+            background: #0a0a0a;
+            border: 1px solid #333;
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .theme-monitor .bento-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #333;
+        }
+
+        .theme-monitor .status-led {
+            width: 8px;
+            height: 8px;
+            background: #333;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        .theme-monitor .bento-card:hover .status-led {
+            background: var(--accent-primary);
+            box-shadow: 0 0 8px var(--accent-primary);
+        }
+
+        .theme-monitor h3 {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #222;
+            padding-bottom: 0.5rem;
+        }
+
+        .theme-monitor .stat-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .theme-monitor .val {
+            color: var(--accent-primary);
+        }
+
+        /* Seg Bars */
+        .theme-monitor .seg-bar {
+            display: flex;
+            gap: 2px;
+            height: 4px;
+            width: 100%;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .theme-monitor .seg {
+            flex: 1;
+            background: #222;
+        }
+
+        .theme-monitor .seg.fill {
+            background: var(--accent-primary);
+        }
+
+        /* === VARIATION C: FUTURE GLASS (Premium) === */
+        .theme-glass .bento-grid {
+            gap: 1rem;
+        }
+
+        .theme-glass .bento-card {
+            background: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 2rem;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .theme-glass .bento-card:hover {
+            border-color: rgba(var(--accent-primary-rgb), 0.3);
+            box-shadow: 0 0 30px rgba(var(--accent-primary-rgb), 0.1);
+            transform: translateY(-5px);
+        }
+
+        /* Inner Glow */
+        .theme-glass .bento-card::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(var(--accent-primary-rgb), 0.05), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.5s;
+            pointer-events: none;
+        }
+
+        .theme-glass .bento-card:hover::after {
+            opacity: 1;
+        }
+
+        .theme-glass h3 {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.05em;
+        }
+
+        .theme-glass .sub {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: var(--accent-primary);
+            margin-bottom: 1.5rem;
+            display: block;
+            letter-spacing: 2px;
+        }
+
+        .theme-glass li {
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 0.5rem;
+        }
+
+        .theme-glass li:last-child {
+            border: 0;
+        }
+
+        /* === VARIATION D: TERMINAL DENSITY (Hacker) === */
+        .theme-term {
+            background-color: #000;
+            padding: 2rem;
+            border: 1px solid #333;
+        }
+
+        .theme-term .bento-grid {
+            gap: 0;
+            border: 1px solid #333;
+            padding: 0;
+        }
+
+        .theme-term .bento-card {
+            background: #000;
+            border: 1px solid #333;
+            /* Doubled borders in grid */
+            margin: -1px;
+            /* Collapse borders */
+            padding: 1rem;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .theme-term h3 {
+            color: #fff;
+            background: #222;
+            padding: 2px 8px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .theme-term ul {
+            font-size: 0.8rem;
+            line-height: 1.4;
+            color: #ccc;
+        }
+
+        .theme-term li {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .theme-term .dots {
+            flex: 1;
+            border-bottom: 1px dotted #444;
+            margin: 0 4px;
+            position: relative;
+            top: -4px;
+        }
+
+        .theme-term .term-ok {
+            color: var(--accent-primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+
+            .span-2,
+            .row-2 {
+                grid-column: auto;
+                grid-row: auto;
+            }
+
+            .theme-minimal .hero-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body class="theme-p1-matrix">
+    <div class="page-wrapper lab-wrapper">
+        <header class="lab-header">
+            <h1 class="lab-title">Bento Lab Finals</h1>
+            <p class="lab-subtitle">4 Variations. 1 Winner.</p>
+        </header>
+
+
+        <!-- VARIATION A -->
+        <div class="variation-section theme-minimal">
+            <div class="var-header">
+                <span class="var-badge">Variation A</span>
+                <span class="var-name">Modern Minimalist</span>
+                <p class="var-desc">Clean, readable, and timeless. Uses whitespace and subtle borders to create
+                    hierarchy without noise.</p>
+            </div>
+
+            <div class="bento-grid">
+                <!-- Hero Card -->
+                <div class="bento-card span-2 row-2 highlight-card">
+                    <h3>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                        </svg>
+                        Full Stack Mastery
+                    </h3>
+                    <ul class="hero-list">
+                        <li>Python 3.12</li>
+                        <li>TypeScript</li>
+                        <li>React Ecosystem</li>
+                        <li>System Architecture</li>
+                        <li>Docker / Containers</li>
+                        <li>Linux Administration</li>
+                    </ul>
+                </div>
+                <!-- Small Cards -->
+                <div class="bento-card">
+                    <h3>Frontend</h3>
+                    <ul>
+                        <li>CSS Variables</li>
+                        <li>WXT Framework</li>
+                        <li>Responsive UI</li>
+                    </ul>
+                </div>
+                <div class="bento-card">
+                    <h3>Backend</h3>
+                    <ul>
+                        <li>FastAPI / Flask</li>
+                        <li>RESTful APIs</li>
+                        <li>Data Pipelines</li>
+                    </ul>
+                </div>
+                <!-- Wide Card -->
+                <div class="bento-card span-2">
+                    <h3>Infrastructure & DevOps</h3>
+                    <ul style="display: flex; gap: 2rem; flex-wrap: wrap;">
+                        <li>Proxmox VE</li>
+                        <li>Nginx Proxy</li>
+                        <li>Git Workflows</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- VARIATION B -->
+        <div class="variation-section theme-monitor">
+            <div class="var-header">
+                <span class="var-badge">Variation B</span>
+                <span class="var-name">System Monitor</span>
+                <p class="var-desc">Refined V7 concept. Skills visualized as active system processes and resource
+                    metrics.</p>
+            </div>
+
+            <div class="bento-grid">
+                <!-- CPU Card -->
+                <div class="bento-card span-2">
+                    <h3><span class="status-led"></span> CPU0_CORE // LANGUAGES</h3>
+                    <div class="stat-row"><span>PYTHON_3</span><span class="val">98%</span></div>
+                    <div class="seg-bar">
+                        <div class="seg fill"></div>
+                        <div class="seg fill"></div>
+                        <div class="seg fill"></div>
+                        <div class="seg fill"></div>
+                        <div class="seg fill"></div>
+                        <div class="seg fill"></div>
+                        <div class="seg fill"></div>
+                        <div class="seg fill"></div>
+                    </div>
+
+                    <div class="stat-row"><span>TYPESCRIPT</span><span class="val">85%</span></div>
+                    <div class="seg-bar">
+                        <div class="seg fill"></div>
+                        <div class="seg fill"></div>
+                        <div class="seg fill"></div>
+                        <div class="seg fill"></div>
+                        <div class="seg fill"></div>
+                        <div class="seg fill"></div>
+                        <div class="seg"></div>
+                        <div class="seg"></div>
+                    </div>
+                </div>
+
+                <!-- MEM Card -->
+                <div class="bento-card row-2">
+                    <h3><span class="status-led"></span> MEM // FRONT</h3>
+                    <div class="stat-row"><span>REACT</span><span class="val">OK</span></div>
+                    <div class="seg-bar">
+                        <div class="seg fill"></div>
+                        <div class="seg fill"></div>
+                        <div class="seg fill"></div>
+                        <div class="seg fill"></div>
+                        <div class="seg"></div>
+                    </div>
+
+                    <div class="stat-row"><span>CSS3</span><span class="val">OK</span></div>
+                    <div class="seg-bar">
+                        <div class="seg fill"></div>
+                        <div class="seg fill"></div>
+                        <div class="seg fill"></div>
+                        <div class="seg fill"></div>
+                        <div class="seg fill"></div>
+                    </div>
+
+                    <div class="stat-row"><span>WXT</span><span class="val">LOAD</span></div>
+                    <div class="seg-bar">
+                        <div class="seg fill"></div>
+                        <div class="seg fill"></div>
+                        <div class="seg"></div>
+                        <div class="seg"></div>
+                        <div class="seg"></div>
+                    </div>
+                </div>
+
+                <!-- NET Card -->
+                <div class="bento-card">
+                    <h3><span class="status-led"></span> NET // BACK</h3>
+                    <div class="stat-row"><span>API</span><span class="val">UP</span></div>
+                    <div class="seg-bar">
+                        <div class="seg fill"></div>
+                        <div class="seg fill"></div>
+                        <div class="seg fill"></div>
+                        <div class="seg"></div>
+                    </div>
+                    <div class="stat-row"><span>SQL</span><span class="val">RDY</span></div>
+                    <div class="seg-bar">
+                        <div class="seg fill"></div>
+                        <div class="seg fill"></div>
+                        <div class="seg fill"></div>
+                        <div class="seg"></div>
+                    </div>
+                </div>
+
+                <!-- DISK Card -->
+                <div class="bento-card span-2">
+                    <h3><span class="status-led"></span> DSK // INFRASTRUCTURE</h3>
+                    <div class="stat-row">
+                        <span>DOCKER_CONTAINERS</span>
+                        <span class="val">RUNNING</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- VARIATION C -->
+        <div class="variation-section theme-glass"
+            style="background-image: radial-gradient(circle at center, #111 0%, #000 100%); padding: 3rem 0;">
+            <div class="var-header">
+                <span class="var-badge">Variation C</span>
+                <span class="var-name">Future Glass</span>
+                <p class="var-desc">Premium dark UI. Translucent cards with background blurs, gradients, and inner
+                    glows.</p>
+            </div>
+
+            <div class="bento-grid">
+                <div class="bento-card span-2 row-2">
+                    <h3>Engineering Stack</h3>
+                    <span class="sub">Level 5 Clearance</span>
+                    <ul>
+                        <li>Python 3 & Core Libs</li>
+                        <li>TypeScript Development</li>
+                        <li>Full Linux Administration</li>
+                        <li>System Architecture</li>
+                    </ul>
+                </div>
+                <div class="bento-card">
+                    <h3>Interface</h3>
+                    <span class="sub">Frontend</span>
+                    <li>React / Vite</li>
+                    <li>Design Systems</li>
+                </div>
+                <div class="bento-card">
+                    <h3>Services</h3>
+                    <span class="sub">Backend</span>
+                    <li>FastAPI</li>
+                    <li>Microservices</li>
+                </div>
+                <div class="bento-card span-2">
+                    <h3>Operations</h3>
+                    <span class="sub">Deployment</span>
+                    <li>Docker / Podman</li>
+                    <li>Proxmox Virtualization</li>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- VARIATION D -->
+        <div class="variation-section theme-term">
+            <div class="var-header">
+                <span class="var-badge">Variation D</span>
+                <span class="var-name">Terminal Density</span>
+                <p class="var-desc">Raw data table. High contrast, zero whitespace. Functional and brutalist.</p>
+            </div>
+
+            <div class="bento-grid">
+                <div class="bento-card span-2 row-2">
+                    <h3>root@starlight:~/skills/mastery#</h3>
+                    <ul>
+                        <li>PYTHON_3<div class="dots"></div><span class="term-ok">[INSTALLED]</span></li>
+                        <li>TYPESCRIPT<div class="dots"></div><span class="term-ok">[INSTALLED]</span></li>
+                        <li>BASH_SHELL<div class="dots"></div><span class="term-ok">[INSTALLED]</span></li>
+                        <li>DOCKER<div class="dots"></div><span class="term-ok">[ACTIVE]</span></li>
+                        <li>LINUX_ADMIN<div class="dots"></div><span class="term-ok">[SUDO]</span></li>
+                        <li>GIT_FLOW<div class="dots"></div><span class="term-ok">[SYNCED]</span></li>
+                    </ul>
+                </div>
+                <div class="bento-card">
+                    <h3>./frontend.sh</h3>
+                    <ul>
+                        <li>REACT<div class="dots"></div>v18</li>
+                        <li>CSS<div class="dots"></div>v3</li>
+                        <li>WXT<div class="dots"></div>beta</li>
+                    </ul>
+                </div>
+                <div class="bento-card">
+                    <h3>./backend.sh</h3>
+                    <ul>
+                        <li>API<div class="dots"></div>REST</li>
+                        <li>DB<div class="dots"></div>SQL</li>
+                        <li>CLI<div class="dots"></div>Typer</li>
+                    </ul>
+                </div>
+                <div class="bento-card span-2">
+                    <h3>./infrastructure.sh</h3>
+                    <div>Proxmox VE Cluster..........[ONLINE]</div>
+                    <div>Nginx Reverse Proxy.........[ONLINE]</div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <button class="toggle-btn"
+            onclick="document.body.classList.toggle('theme-p1-green'); document.body.classList.toggle('theme-p1-matrix')">
+            Theme
+        </button>
+    </div>
+
+</body>
+
+</html>

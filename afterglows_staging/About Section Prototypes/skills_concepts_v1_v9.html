@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills Prototypes (High Fidelity) | StarlightDaemon</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&family=IBM+Plex+Mono:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=VT323&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* [GLOBAL OVERRIDES FOR PROTOTYPE] */
+        body {
+            padding-bottom: 200px;
+        }
+
+        .prototype-header {
+            text-align: center;
+            margin: 8rem 0 3rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px dashed var(--border-muted);
+            position: relative;
+        }
+
+        .prototype-header::after {
+            content: "SECTION_END";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-primary);
+            padding: 0 1rem;
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            font-family: var(--font-mono);
+        }
+
+        .prototype-label {
+            display: inline-block;
+            background: rgba(var(--accent-primary-rgb), 0.1);
+            border: 1px solid var(--accent-primary);
+            color: var(--accent-primary);
+            padding: 0.5rem 1rem;
+            font-family: var(--font-mono);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            box-shadow: 0 0 10px rgba(var(--accent-primary-rgb), 0.2);
+        }
+
+        .prototype-desc {
+            color: var(--text-secondary);
+            font-family: var(--font-mono);
+            max-width: 600px;
+            margin: 1rem auto;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* [SHARED UTILS] */
+        .skill-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .win-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #333;
+        }
+
+        .win-dot.red {
+            background: #ff5f56;
+        }
+
+        .win-dot.yellow {
+            background: #ffbd2e;
+        }
+
+        .win-dot.green {
+            background: #27c93f;
+        }
+
+
+        /* === V1: CLASSIC GRID (Enhancing existing styles) === */
+        /* Relying on styles.css mostly, ensuring correct classes */
+
+
+        /* === V2: SPLIT STACK === */
+        .skills-grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .large-category-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-default);
+            padding: var(--space-xl);
+            transition: all 0.3s ease;
+        }
+
+        .large-category-card:hover {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 15px rgba(var(--accent-primary-rgb), 0.1);
+        }
+
+        .large-category-card h3 {
+            color: var(--accent-primary);
+            border-bottom: 1px solid var(--border-default);
+            padding-bottom: var(--space-md);
+            margin-bottom: var(--space-lg);
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sub-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+        }
+
+        .sub-group h4 {
+            opacity: 0.7;
+            margin-bottom: 0.8rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* === V3: UNIFIED WINDOW === */
+        .skills-grid-1col {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .unified-card {
+            background: #0f0f0f;
+            border: 1px solid var(--border-default);
+            padding: 0;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .unified-header {
+            background: #1a1a1a;
+            padding: 10px 15px;
+            border-bottom: 1px solid var(--border-default);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .win-title {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-family: var(--font-mono);
+        }
+
+        .unified-body {
+            padding: var(--space-2xl);
+        }
+
+        .unified-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-xl);
+        }
+
+        .unified-column {
+            border-left: 1px solid var(--border-muted);
+            padding-left: var(--space-md);
+        }
+
+        .unified-column h3 {
+            color: var(--accent-primary);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            font-family: var(--font-display);
+        }
+
+
+        /* === V4: BOOT LOG (Scanning Effect) === */
+        .terminal-log-container {
+            font-family: 'Fira Code', monospace;
+            background: #000;
+            border: 1px solid var(--accent-primary);
+            padding: var(--space-xl);
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--text-secondary);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(var(--accent-primary-rgb), 0.2);
+        }
+
+        /* Scanline Overlay */
+        .terminal-log-container::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        .log-entry {
+            margin-bottom: 0.5rem;
+            display: flex;
+            gap: 1rem;
+            font-size: 0.9rem;
+            opacity: 0;
+            animation: fadeInLog 0.5s forwards;
+        }
+
+        .log-time {
+            color: #555;
+        }
+
+        .log-status {
+            color: var(--accent-primary);
+            font-weight: bold;
+            text-shadow: 0 0 5px var(--accent-primary);
+        }
+
+        .log-msg {
+            color: #ccc;
+        }
+
+        @keyframes fadeInLog {
+            from {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Stagger animations */
+        .log-entry:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .log-entry:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .log-entry:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .log-entry:nth-child(4) {
+            animation-delay: 0.9s;
+        }
+
+        .log-entry:nth-child(5) {
+            animation-delay: 1.2s;
+        }
+
+
+        /* === V5: FOLDER TABS === */
+        .tab-container {
+            max-width: 900px;
+            margin: 0 auto;
+            border: 1px solid var(--border-default);
+            background: var(--bg-card);
+        }
+
+        .tab-nav {
+            display: flex;
+            background: #0f0f0f;
+            border-bottom: 1px solid var(--border-default);
+            padding-top: 5px;
+            padding-left: 5px;
+        }
+
+        .tab-btn {
+            padding: 0.8rem 1.5rem;
+            background: #1a1a1a;
+            border: 1px solid transparent;
+            border-bottom: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-right: 2px;
+            border-radius: 4px 4px 0 0;
+            transition: all 0.2s;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-primary);
+            background: #252525;
+        }
+
+        .tab-btn.active {
+            color: var(--accent-primary);
+            background: var(--bg-card);
+            /* Blend with container */
+            border-color: var(--border-default);
+            border-bottom: 1px solid var(--bg-card);
+            /* Mask the border */
+            margin-bottom: -1px;
+            /* Overlap border */
+            z-index: 10;
+        }
+
+        .tab-content {
+            padding: var(--space-xl);
+            display: none;
+            min-height: 200px;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+
+        /* === V6: BENTO DASHBOARD === */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: var(--space-md);
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .bento-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-muted);
+            padding: var(--space-lg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .bento-card:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-2px);
+        }
+
+        .bento-card h4 {
+            color: var(--accent-primary);
+            font-family: var(--font-display);
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Icon placeholders */
+        .bento-icon {
+            opacity: 0.3;
+        }
+
+        .bento-hero {
+            font-size: 1.1rem;
+            column-count: 2;
+            column-gap: 2rem;
+        }
+
+        .col-span-2 {
+            grid-column: span 2;
+            background: rgba(var(--accent-primary-rgb), 0.03);
+        }
+
+        .row-span-2 {
+            grid-row: span 2;
+        }
+
+
+        /* === V7: SYSTEM HEALTH (Segmented) === */
+        .sys-monitor-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .monitor-card {
+            background: #111;
+            border: 1px solid #333;
+            padding: var(--space-lg);
+            position: relative;
+        }
+
+        .monitor-card::after {
+            content: "●";
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: var(--accent-primary);
+            font-size: 0.8rem;
+            animation: pulse-dot 2s infinite;
+            text-shadow: 0 0 5px var(--accent-primary);
+        }
+
+        .monitor-head {
+            color: #666;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #222;
+            padding-bottom: 0.5rem;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.25rem;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+        }
+
+        .stat-val {
+            color: var(--accent-primary);
+        }
+
+        /* Segmented Bar */
+        .seg-bar {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 1.2rem;
+            height: 6px;
+        }
+
+        .seg {
+            flex: 1;
+            background: #222;
+        }
+
+        .seg.fill {
+            background: var(--accent-primary);
+            box-shadow: 0 0 2px var(--accent-primary);
+        }
+
+        .seg.warn {
+            background: #ffaa00;
+        }
+
+
+        /* === V8: IDE (Line Nums) === */
+        .ide-container {
+            display: flex;
+            max-width: 1000px;
+            margin: 0 auto;
+            border: 1px solid var(--border-default);
+            height: 450px;
+            background: #1e1e1e;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            font-family: 'Fira Code', monospace;
+        }
+
+        .ide-sidebar {
+            width: 220px;
+            background: #252526;
+            border-right: 1px solid #333;
+            padding: 1rem;
+            font-size: 0.85rem;
+            color: #ccc;
+        }
+
+        .file-tree-head {
+            margin-bottom: 1rem;
+            font-size: 0.7rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .file-item {
+            padding: 4px 0;
+            display: flex;
+            gap: 6px;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+
+        .file-item:hover {
+            opacity: 1;
+            color: #fff;
+        }
+
+        .ide-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ide-tab-bar {
+            background: #2d2d2d;
+            height: 35px;
+            display: flex;
+        }
+
+        .ide-tab {
+            background: #1e1e1e;
+            color: #fff;
+            padding: 0 1.5rem;
+            display: flex;
+            align-items: center;
+            border-top: 2px solid var(--accent-primary);
+            font-size: 0.8rem;
+        }
+
+        .ide-content {
+            flex: 1;
+            display: flex;
+            padding-top: 1rem;
+            overflow: auto;
+        }
+
+        .line-nums {
+            width: 40px;
+            text-align: right;
+            padding-right: 1rem;
+            color: #555;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            user-select: none;
+        }
+
+        .code-area {
+            flex: 1;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #d4d4d4;
+        }
+
+        /* Syntax Colors */
+        .kwd {
+            color: #569cd6;
+        }
+
+        .str {
+            color: #ce9178;
+        }
+
+        .cls {
+            color: #4ec9b0;
+        }
+
+        .cmnt {
+            color: #6a9955;
+        }
+
+
+        /* === V9: PIPELINE (Responsive) === */
+        .pipeline-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            max-width: 1100px;
+            margin: 0 auto;
+            gap: 2rem;
+            position: relative;
+        }
+
+        .pipeline-stage {
+            flex: 1;
+            background: var(--bg-card);
+            border: 1px solid var(--border-default);
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pipeline-arrow {
+            position: absolute;
+            right: -1.7rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent-primary);
+            font-size: 1.5rem;
+            z-index: 2;
+        }
+
+        .pipeline-stage:last-child .pipeline-arrow {
+            display: none;
+        }
+
+        .stage-header {
+            text-align: center;
+            border-bottom: 2px solid var(--accent-primary);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stage-num {
+            display: block;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .stage-title {
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        @keyframes pulse-dot {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* === MOBILE RESPONSIVENESS === */
+        @media (max-width: 768px) {
+
+            .skills-grid-2col,
+            .unified-grid,
+            .bento-grid,
+            .sys-monitor-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sub-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .unified-column {
+                border-left: none;
+                border-top: 1px solid var(--border-muted);
+                padding-left: 0;
+                padding-top: 1rem;
+            }
+
+            .col-span-2,
+            .row-span-2 {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+
+            /* V8 Mobile */
+            .ide-sidebar {
+                display: none;
+            }
+
+            .ide-container {
+                height: auto;
+            }
+
+            /* V9 Mobile */
+            .pipeline-container {
+                flex-direction: column;
+                gap: 4rem;
+            }
+
+            .pipeline-arrow {
+                right: 50%;
+                top: auto;
+                bottom: -2.8rem;
+                transform: translateX(50%) rotate(90deg);
+            }
+        }
+    </style>
+</head>
+
+<body class="theme-p1-matrix">
+    <div class="page-wrapper">
+        <header class="site-header">
+            <div class="header-center">
+                <h1 class="header-title">PROTOTYPE LAB</h1>
+                <p class="header-tagline">High Fidelity Design Study (v2.0)</p>
+                <div style="margin-top: 1rem; font-family: monospace; font-size: 0.8rem;">
+                    <a href="#v1" style="color: var(--accent-primary); margin: 0 5px;">[V1]</a>
+                    <a href="#v2" style="color: var(--accent-primary); margin: 0 5px;">[V2]</a>
+                    <a href="#v3" style="color: var(--accent-primary); margin: 0 5px;">[V3]</a>
+                    <a href="#v4" style="color: var(--accent-primary); margin: 0 5px;">[V4]</a>
+                    <a href="#v5" style="color: var(--accent-primary); margin: 0 5px;">[V5]</a>
+                    <a href="#v6" style="color: var(--accent-primary); margin: 0 5px;">[V6]</a>
+                    <a href="#v7" style="color: var(--accent-primary); margin: 0 5px;">[V7]</a>
+                    <a href="#v8" style="color: var(--accent-primary); margin: 0 5px;">[V8]</a>
+                    <a href="#v9" style="color: var(--accent-primary); margin: 0 5px;">[V9]</a>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+
+            <!-- V1 -->
+            <div id="v1" class="prototype-header">
+                <span class="prototype-label">Variation 1</span>
+                <h2>Original Grid</h2>
+                <p class="prototype-desc">Baseline Current Implementation (Polished)</p>
+            </div>
+            <section class="skills">
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Languages</h3>
+                        <ul class="skill-list">
+                            <li>Python 3</li>
+                            <li>TypeScript</li>
+                            <li>Bash</li>
+                            <li>HTML5</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Frontend</h3>
+                        <ul class="skill-list">
+                            <li>React</li>
+                            <li>Components</li>
+                            <li>UI/UX</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Backend</h3>
+                        <ul class="skill-list">
+                            <li>FastAPI</li>
+                            <li>REST APIs</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>DevOps</h3>
+                        <ul class="skill-list">
+                            <li>Docker</li>
+                            <li>Linux</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- V2 -->
+            <div id="v2" class="prototype-header">
+                <span class="prototype-label">Variation 2</span>
+                <h2>Split (2-Col)</h2>
+                <p class="prototype-desc">Separation of Concerns: Dev Stack vs Ops Stack.</p>
+            </div>
+            <section class="skills">
+                <div class="skills-grid-2col">
+                    <div class="large-category-card">
+                        <h3>Dev Stack</h3>
+                        <div class="sub-grid">
+                            <div class="sub-group">
+                                <h4>Languages</h4>
+                                <ul class="skill-list">
+                                    <li>Python 3</li>
+                                    <li>TypeScript</li>
+                                    <li>SQL</li>
+                                </ul>
+                            </div>
+                            <div class="sub-group">
+                                <h4>Frontend</h4>
+                                <ul class="skill-list">
+                                    <li>React / JSX</li>
+                                    <li>CSS Variables</li>
+                                    <li>WXT</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="large-category-card">
+                        <h3>Ops Stack</h3>
+                        <div class="sub-grid">
+                            <div class="sub-group">
+                                <h4>Backend</h4>
+                                <ul class="skill-list">
+                                    <li>Flask / FastAPI</li>
+                                    <li>Daemons</li>
+                                    <li>CLI Tools</li>
+                                </ul>
+                            </div>
+                            <div class="sub-group">
+                                <h4>Infra</h4>
+                                <ul class="skill-list">
+                                    <li>Docker</li>
+                                    <li>Proxmox VE</li>
+                                    <li>Nginx</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- V3 -->
+            <div id="v3" class="prototype-header">
+                <span class="prototype-label">Variation 3</span>
+                <h2>Unified Window</h2>
+                <p class="prototype-desc">Monolithic view. Mimics a single system window.</p>
+            </div>
+            <section class="skills">
+                <div class="skills-grid-1col">
+                    <div class="unified-card">
+                        <div class="unified-header">
+                            <div class="window-controls">
+                                <div class="win-dot red"></div>
+                                <div class="win-dot yellow"></div>
+                                <div class="win-dot green"></div>
+                            </div>
+                            <div class="win-title">skills_matrix.exe</div>
+                            <div style="width: 40px"></div>
+                        </div>
+                        <div class="unified-body">
+                            <div class="unified-grid">
+                                <div class="unified-column">
+                                    <h3>Lang</h3>
+                                    <ul class="skill-list">
+                                        <li>Python</li>
+                                        <li>JS / TS</li>
+                                        <li>Bash</li>
+                                    </ul>
+                                </div>
+                                <div class="unified-column">
+                                    <h3>Front</h3>
+                                    <ul class="skill-list">
+                                        <li>React</li>
+                                        <li>WXT</li>
+                                        <li>CSS3</li>
+                                    </ul>
+                                </div>
+                                <div class="unified-column">
+                                    <h3>Back</h3>
+                                    <ul class="skill-list">
+                                        <li>APIs</li>
+                                        <li>CLI</li>
+                                        <li>Data</li>
+                                    </ul>
+                                </div>
+                                <div class="unified-column">
+                                    <h3>Ops</h3>
+                                    <ul class="skill-list">
+                                        <li>Linux</li>
+                                        <li>Docker</li>
+                                        <li>Net</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- V4 -->
+            <div id="v4" class="prototype-header">
+                <span class="prototype-label">Variation 4</span>
+                <h2>Boot Log</h2>
+                <p class="prototype-desc">Retro terminal boot sequence. Staggered load animation.</p>
+            </div>
+            <section class="skills">
+                <div class="terminal-log-container">
+                    <div class="log-entry"><span class="log-time">[00:00:01]</span><span
+                            class="log-status">[OK]</span><span class="log-msg">Loading KERNEL... Python 3.12
+                            detected.</span></div>
+                    <div class="log-entry"><span class="log-time">[00:00:03]</span><span
+                            class="log-status">[OK]</span><span class="log-msg">Initializing TS_COMPILER... TypeScript
+                            v5.3 ready.</span></div>
+                    <div class="log-entry"><span class="log-time">[00:00:08]</span><span
+                            class="log-status">[OK]</span><span class="log-msg">Mounting FILESYSTEM... React Components
+                            loaded.</span></div>
+                    <div class="log-entry"><span class="log-time">[00:00:12]</span><span
+                            class="log-status">[OK]</span><span class="log-msg">Starting SERVICES... Docker Daemon
+                            active.</span></div>
+                    <div class="log-entry"><span class="log-time">[00:00:15]</span><span
+                            class="log-status">[OK]</span><span class="log-msg">System Ready. Waiting for
+                            input...</span></div>
+                </div>
+            </section>
+
+            <!-- V5 -->
+            <div id="v5" class="prototype-header">
+                <span class="prototype-label">Variation 5</span>
+                <h2>Folder Tabs</h2>
+                <p class="prototype-desc">Saves vertical space. Organized like a file cabinet.</p>
+            </div>
+            <section class="skills">
+                <div class="tab-container">
+                    <div class="tab-nav">
+                        <button class="tab-btn active" onclick="openTab(event, 'tab-lang')">Languages</button>
+                        <button class="tab-btn" onclick="openTab(event, 'tab-front')">Frontend</button>
+                        <button class="tab-btn" onclick="openTab(event, 'tab-back')">Backend</button>
+                        <button class="tab-btn" onclick="openTab(event, 'tab-ops')">DevOps</button>
+                    </div>
+                    <div id="tab-lang" class="tab-content active">
+                        <h4>Core Languages</h4>
+                        <ul class="skill-list">
+                            <li>Python 3 & Libraries</li>
+                            <li>TypeScript / JavaScript</li>
+                            <li>Bash Shell</li>
+                            <li>SQL</li>
+                        </ul>
+                    </div>
+                    <div id="tab-front" class="tab-content">
+                        <h4>UI Engineering</h4>
+                        <ul class="skill-list">
+                            <li>React / JSX</li>
+                            <li>Modern CSS3</li>
+                            <li>Browser Extensions</li>
+                        </ul>
+                    </div>
+                    <div id="tab-back" class="tab-content">
+                        <h4>Server Side</h4>
+                        <ul class="skill-list">
+                            <li>FastAPI / Flask</li>
+                            <li>REST Frameworks</li>
+                            <li>Data Pipelines</li>
+                        </ul>
+                    </div>
+                    <div id="tab-ops" class="tab-content">
+                        <h4>Infrastructure</h4>
+                        <ul class="skill-list">
+                            <li>Headless Linux</li>
+                            <li>Docker Compose</li>
+                            <li>Nginx Reverse Proxy</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- V6 -->
+            <div id="v6" class="prototype-header">
+                <span class="prototype-label">Variation 6</span>
+                <h2>Bento Grid</h2>
+                <p class="prototype-desc">Hierarchy-driven asymmetrical layout.</p>
+            </div>
+            <section class="skills">
+                <div class="bento-grid">
+                    <div class="bento-card col-span-2 row-span-2">
+                        <h4><span>Core Mastery</span> <span class="bento-icon">★</span></h4>
+                        <ul class="bento-hero">
+                            <li>PYTHON 3</li>
+                            <li>TYPESCRIPT</li>
+                            <li>LINUX / BASH</li>
+                            <li>DOCKER</li>
+                        </ul>
+                    </div>
+                    <div class="bento-card">
+                        <h4>Frontend</h4>
+                        <ul class="skill-list">
+                            <li>React</li>
+                            <li>CSS Vars</li>
+                            <li>WXT</li>
+                        </ul>
+                    </div>
+                    <div class="bento-card">
+                        <h4>Backend</h4>
+                        <ul class="skill-list">
+                            <li>FastAPI</li>
+                            <li>Flask</li>
+                            <li>SQL</li>
+                        </ul>
+                    </div>
+                    <div class="bento-card col-span-2">
+                        <h4><span>Lab Utils</span> <span class="bento-icon">⚙</span></h4>
+                        <ul class="skill-list" style="display:flex; gap: 2rem;">
+                            <li>Proxmox VE</li>
+                            <li>Nginx</li>
+                            <li>Git / CI</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- V7 -->
+            <div id="v7" class="prototype-header">
+                <span class="prototype-label">Variation 7</span>
+                <h2>System Monitor</h2>
+                <p class="prototype-desc">Segmented health bars and status indicators.</p>
+            </div>
+            <section class="skills">
+                <div class="sys-monitor-grid">
+                    <div class="monitor-card">
+                        <div class="monitor-head">CPU_0 /// LANGUAGES</div>
+                        <div class="stat-row"><span>PYTHON</span><span class="stat-val">v3.12</span></div>
+                        <div class="seg-bar">
+                            <div class="seg fill"></div>
+                            <div class="seg fill"></div>
+                            <div class="seg fill"></div>
+                            <div class="seg fill"></div>
+                            <div class="seg fill"></div>
+                            <div class="seg fill"></div>
+                            <div class="seg"></div>
+                            <div class="seg"></div>
+                        </div>
+
+                        <div class="stat-row"><span>TYPESCRIPT</span><span class="stat-val">v5.3</span></div>
+                        <div class="seg-bar">
+                            <div class="seg fill"></div>
+                            <div class="seg fill"></div>
+                            <div class="seg fill"></div>
+                            <div class="seg fill"></div>
+                            <div class="seg"></div>
+                            <div class="seg"></div>
+                            <div class="seg"></div>
+                            <div class="seg"></div>
+                        </div>
+                    </div>
+
+                    <div class="monitor-card">
+                        <div class="monitor-head">MEM_0 /// FRONTEND</div>
+                        <div class="stat-row"><span>REACT_DOM</span><span class="stat-val">OK</span></div>
+                        <div class="seg-bar">
+                            <div class="seg fill"></div>
+                            <div class="seg fill"></div>
+                            <div class="seg fill"></div>
+                            <div class="seg fill"></div>
+                            <div class="seg fill"></div>
+                            <div class="seg"></div>
+                            <div class="seg"></div>
+                            <div class="seg"></div>
+                        </div>
+
+                        <div class="stat-row"><span>CSS_CORE</span><span class="stat-val">OK</span></div>
+                        <div class="seg-bar">
+                            <div class="seg fill"></div>
+                            <div class="seg fill"></div>
+                            <div class="seg fill"></div>
+                            <div class="seg fill"></div>
+                            <div class="seg fill"></div>
+                            <div class="seg fill"></div>
+                            <div class="seg"></div>
+                            <div class="seg"></div>
+                        </div>
+                    </div>
+
+                    <div class="monitor-card">
+                        <div class="monitor-head">NET_0 /// OPS</div>
+                        <div class="stat-row"><span>DOCKER</span><span class="stat-val">UP</span></div>
+                        <div class="seg-bar">
+                            <div class="seg fill"></div>
+                            <div class="seg fill"></div>
+                            <div class="seg fill"></div>
+                            <div class="seg fill"></div>
+                            <div class="seg fill"></div>
+                            <div class="seg"></div>
+                            <div class="seg"></div>
+                            <div class="seg"></div>
+                        </div>
+
+                        <div class="stat-row"><span>LINUX_KRNL</span><span class="stat-val">6.5</span></div>
+                        <div class="seg-bar">
+                            <div class="seg warn"></div>
+                            <div class="seg warn"></div>
+                            <div class="seg warn"></div>
+                            <div class="seg warn"></div>
+                            <div class="seg warn"></div>
+                            <div class="seg warn"></div>
+                            <div class="seg warn"></div>
+                            <div class="seg warn"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- V8 -->
+            <div id="v8" class="prototype-header">
+                <span class="prototype-label">Variation 8</span>
+                <h2>IDE Workspace</h2>
+                <p class="prototype-desc">Developer environment. Syntax highlighted skills.</p>
+            </div>
+            <section class="skills">
+                <div class="ide-container">
+                    <div class="ide-sidebar">
+                        <div class="file-tree-head">EXPLORER</div>
+                        <div class="file-item">📂 src</div>
+                        <div class="file-item" style="padding-left: 1rem">📂 languages</div>
+                        <div class="file-item" style="padding-left: 2rem">📄 python.py</div>
+                        <div class="file-item" style="padding-left: 2rem">📄 typescript.ts</div>
+                        <div class="file-item" style="padding-left: 1rem">📂 stack</div>
+                        <div class="file-item" style="padding-left: 2rem">📄 react.jsx</div>
+                        <div class="file-item" style="padding-left: 2rem">🐳 dockerfile</div>
+                    </div>
+                    <div class="ide-main">
+                        <div class="ide-tab-bar">
+                            <div class="ide-tab">python.py</div>
+                        </div>
+                        <div class="ide-content">
+                            <div class="line-nums">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9</div>
+                            <div class="code-area">
+                                <span class="kwd">import</span> talents<br><br>
+                                <span class="kwd">class</span> <span class="cls">Developer</span>:<br>
+                                &nbsp;&nbsp;<span class="kwd">def</span> <span class="cmnt">__init__</span>(self):<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;self.languages = [<span class="str">"Python 3"</span>, <span
+                                    class="str">"TypeScript"</span>]<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;self.frontend = [<span class="str">"React"</span>, <span
+                                    class="str">"WXT"</span>]<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;self.backend = [<span class="str">"FastAPI"</span>, <span
+                                    class="str">"Postgres"</span>]<br><br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmnt"># Critical Services</span><br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;self.deploy()
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- V9 -->
+            <div id="v9" class="prototype-header">
+                <span class="prototype-label">Variation 9</span>
+                <h2>Pipeline Flow</h2>
+                <p class="prototype-desc">From Concept to Deployment.</p>
+            </div>
+            <section class="skills">
+                <div class="pipeline-container">
+                    <div class="pipeline-stage">
+                        <div class="pipeline-arrow">➔</div>
+                        <div class="stage-header">
+                            <span class="stage-num">STAGE 01</span>
+                            <h3 class="stage-title">Source</h3>
+                        </div>
+                        <ul class="skill-list">
+                            <li>Python 3</li>
+                            <li>TypeScript</li>
+                            <li>Modern JS</li>
+                            <li>Bash Shell</li>
+                        </ul>
+                    </div>
+                    <div class="pipeline-stage">
+                        <div class="pipeline-arrow">➔</div>
+                        <div class="stage-header">
+                            <span class="stage-num">STAGE 02</span>
+                            <h3 class="stage-title">Build</h3>
+                        </div>
+                        <ul class="skill-list">
+                            <li>React / Vite</li>
+                            <li>FastAPI / Flask</li>
+                            <li>WXT Extension</li>
+                            <li>Design Systems</li>
+                        </ul>
+                    </div>
+                    <div class="pipeline-stage">
+                        <div class="pipeline-arrow">➔</div>
+                        <div class="stage-header">
+                            <span class="stage-num">STAGE 03</span>
+                            <h3 class="stage-title">Deploy</h3>
+                        </div>
+                        <ul class="skill-list">
+                            <li>Docker / Podman</li>
+                            <li>Nginx Proxy</li>
+                            <li>Proxmox VE</li>
+                            <li>CI/CD</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <div class="theme-toggle">
+        <button class="toggle-btn"
+            onclick="document.body.classList.toggle('theme-p1-green'); document.body.classList.toggle('theme-p1-matrix')">
+            Theme
+        </button>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabContent, tabBtn;
+            tabContent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].style.display = "none";
+                tabContent[i].classList.remove("active");
+            }
+            tabBtn = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tabBtn.length; i++) {
+                tabBtn[i].className = tabBtn[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.className += " active";
+        }
+    </script>
+
+</body>
+
+</html>
