@@ -547,7 +547,7 @@ section h2::after {
    =========================== */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: var(--space-xl);
 }
 
@@ -560,12 +560,10 @@ section h2::after {
 
     background: var(--bg-card);
     border: 1px solid var(--border-default);
-    padding: 1.5rem;
-    /* Hardcoded to Demo value */
-    /* aspect-ratio: 2/3; REMOVED per expert review */
-    height: 100%;
-    /* Fill grid cell */
-    min-height: 30rem;
+    padding: 1.5rem 1.5rem 0.75rem 1.5rem;
+    /* Enforce 2:3 Poster Ratio */
+    aspect-ratio: 2 / 3;
+    min-height: auto;
     /* Enforce tall stature (Standard) */
     display: flex;
     flex-direction: column;
@@ -600,10 +598,12 @@ section h2::after {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
 }
 
 .project-header h3 {
-    font-size: clamp(1.1rem, 10cqi, 1.8rem);
+    font-size: clamp(1.1rem, 5cqi, 1.4rem);
     font-weight: 600;
     margin: 0;
     white-space: nowrap;
