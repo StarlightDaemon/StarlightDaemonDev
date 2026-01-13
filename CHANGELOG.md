@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Refactored
+- **Project Cards**: Complete overhaul of CSS architecture.
+    - Implemented "Badge Block" subtitle style (Option 3).
+    - Enforced strict grid layout with standard 1.5rem padding across all breakpoints (fixed 4K text truncation).
+    - Introduced `.project-top` and `.header-row` structural classes for consistent spacing.
+    - Isolated card themes variables (`--bg-card: #161616`) to maintain "Modern Dark" aesthetic regardless of global theme.
+- **Skills Section**:
+    - Replaced inline styles with new `.infra-grid` utility class.
+- **Codebase Hygiene**:
+    - Purged legacy "Pulse" animations and redundant comments from stylesheet.
+
 ### Added
 - **Font Switcher**: Global font selection system with 4 retro terminal fonts (IBM Plex Mono, VT323, Space Mono, Fira Code)
 - **Color-Coded Theme Buttons**: Theme buttons now preview their phosphor colors
