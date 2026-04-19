@@ -1,72 +1,63 @@
-# StarlightDaemon.github.io
+# StarlightDaemonDev
 
-My personal portfolio website hosted on GitHub Pages.
+Canonical production repository for the StarlightDaemon website.
 
-## 🚀 Live Site
+This repository is the main development and codebase source for the live site. It contains the production pages, shared assets, local development helpers, and a small set of retained non-production reference areas.
 
-Visit: [https://starlightdaemon.github.io](https://starlightdaemon.github.io)
+## Live Site
 
-## 📁 Structure
+Canonical URL: [https://www.starlightdaemon.dev/](https://www.starlightdaemon.dev/)
 
-```
-├── index.html      # Main HTML page
-├── styles.css      # CSS styling (dark theme)
-├── script.js       # Interactive features
-└── README.md       # This file
-```
+GitHub Pages is already configured and working for this repository. This README describes the current repository and deployment reality only; it does not change deployment behavior.
 
-## ✨ Features
+## Repository Layout
 
-- **Dark theme** with gradient accents
-- **Responsive design** for mobile and desktop
-- **Project showcase** with status badges
-- **Skills section** organized by category
-- **Smooth animations** on scroll
-- **GitHub Pages** ready
+### Production / live files
 
-## 🛠️ Customization
+- `index.html`
+- `stargate.html`
+- `styles.css`
+- `script.js`
+- `css/`
+- `js/`
+- `assets/`
+- `CNAME`
 
-1. Edit `index.html` to update:
-   - Your name and tagline
-   - About me section
-   - Project cards (add your real projects!)
-   - Skills and technologies
-   - Contact links
+### Support / development files
 
-2. Update `styles.css` to change:
-   - Colors (see `:root` CSS variables)
-   - Fonts and spacing
-   - Layout preferences
+- `README.md`
+- `CHANGELOG.md`
+- `LICENSE`
+- `.agent/`
+- `start-dev-server.sh`
 
-## 📝 Adding Projects
+### Retained non-production areas
 
-To add a new project, copy this template in the `project-grid` section:
+- `tests/`
+- `afterglows_staging/`
+- `concepts/`
+- `ideas/`
 
-```html
-<article class="project-card">
-    <div class="project-header">
-        <h3>Project Name</h3>
-        <span class="project-status status-active">Active</span>
-    </div>
-    <p class="project-description">
-        Your project description here.
-    </p>
-    <div class="project-tech">
-        <span class="tech-tag">Language</span>
-        <span class="tech-tag">Framework</span>
-    </div>
-    <div class="project-links">
-        <a href="https://github.com/..." class="project-link">Source</a>
-        <a href="https://..." class="project-link">Demo</a>
-    </div>
-</article>
+Some folders are intentionally non-production and are being retained for now as reference, staging, or documentation material. They should not be treated as the canonical live site implementation.
+
+## Local Development
+
+Start the local server with:
+
+```bash
+./start-dev-server.sh
 ```
 
-Status options:
-- `status-active` (green)
-- `status-maintained` (purple)
-- `status-archived` (gray)
+The site is a root-published static site, so most day-to-day work happens directly in the root HTML, CSS, JS, and supporting asset folders.
 
-## 📄 License
+## Deployment Notes
 
-MIT License - feel free to use this as a template!
+- The canonical live site is `https://www.starlightdaemon.dev/`
+- GitHub Pages is already configured and live
+- The repository root is the active published site source
+- `CNAME` is deployment-critical and should be treated conservatively
+- Non-production folders may exist alongside live files without being part of the deployed homepage flow
+
+## License
+
+MIT. See `LICENSE`.
