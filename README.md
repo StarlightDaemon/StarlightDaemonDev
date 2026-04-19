@@ -1,63 +1,60 @@
 # StarlightDaemonDev
 
-Canonical production repository for the StarlightDaemon website.
+> **Canonical production repository for the StarlightDaemon website.**
 
-This repository is the main development and codebase source for the live site. It contains the production pages, shared assets, local development helpers, and a small set of retained non-production reference areas.
+This repository is the main development source for the live site. It contains the production pages, shared assets, local development helpers, and a curated set of retained non-production reference areas.
 
-## Live Site
+---
 
-Canonical URL: [https://www.starlightdaemon.dev/](https://www.starlightdaemon.dev/)
+## 🌐 Live Site
 
-GitHub Pages is already configured and working for this repository. This README describes the current repository and deployment reality only; it does not change deployment behavior.
+**Canonical URL:** [https://www.starlightdaemon.dev/](https://www.starlightdaemon.dev/)
 
-## Repository Layout
+> [!NOTE]
+> GitHub Pages is already configured and working for this repository. This README documents the current repository and deployment state only.
 
-### Production / live files
+## 🏗️ Repository Layout
 
-- `index.html`
-- `stargate.html`
-- `styles.css`
-- `script.js`
-- `css/`
-- `js/`
-- `assets/`
-- `CNAME`
+### Production / Live Files
+The active static site footprint published to the root domain.
+- `index.html` & `stargate.html` — Core page routes
+- `styles.css` & `script.js` — Global styling and logic
+- `css/` & `js/` — Modular feature code and theme handling
+- `assets/` — Media and graphical resources
+- `CNAME` — Custom domain configuration
 
-### Support / development files
+### Support / Development
+Tooling and documentation for local engineering.
+- `README.md`, `CHANGELOG.md`, `LICENSE` — Core project context
+- `.agent/` — Automation and workflow definitions
+- `start-dev-server.sh` — Local development helper
 
-- `README.md`
-- `CHANGELOG.md`
-- `LICENSE`
-- `.agent/`
-- `start-dev-server.sh`
+### Retained Non-Production Areas
+Historical contexts, staging environments, and ongoing ideas kept for reference.
+- `tests/` — Exploratory rendering and unit validation
+- `afterglows_staging/` — Draft concepts and layout iterations
+- `concepts/` & `ideas/` — Tracked architectural thoughts and documentation
 
-### Retained non-production areas
+*(These folders are intentionally non-production. They are retained as reference material and should not be treated as the canonical live site implementation.)*
 
-- `tests/`
-- `afterglows_staging/`
-- `concepts/`
-- `ideas/`
+## 💻 Local Development
 
-Some folders are intentionally non-production and are being retained for now as reference, staging, or documentation material. They should not be treated as the canonical live site implementation.
+The site is a root-published static environment, so most day-to-day work happens directly in the root HTML, CSS, JS, and supporting asset folders.
 
-## Local Development
-
-Start the local server with:
+To start the local server:
 
 ```bash
 ./start-dev-server.sh
 ```
 
-The site is a root-published static site, so most day-to-day work happens directly in the root HTML, CSS, JS, and supporting asset folders.
-
-## Deployment Notes
+## 🚀 Deployment Notes
 
 - The canonical live site is `https://www.starlightdaemon.dev/`
-- GitHub Pages is already configured and live
-- The repository root is the active published site source
+- GitHub Pages is already configured and deployed
+- The repository root is the active published source.
 - `CNAME` is deployment-critical and should be treated conservatively
 - Non-production folders may exist alongside live files without being part of the deployed homepage flow
 
-## License
+## 📄 License
 
-MIT. See `LICENSE`.
+MIT. See [`LICENSE`](LICENSE).
