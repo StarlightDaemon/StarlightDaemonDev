@@ -10,13 +10,12 @@ This workflow starts a local web server for testing your portfolio before pushin
 
 1. **Navigate to project directory**
 ```bash
-cd /mnt/e/StarlightDaemon
+cd /mnt/e/StarlightDaemonDev
 ```
 
-// turbo
-2. **Start live-server**
+2. **Start the local dev helper**
 ```bash
-export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && live-server --port=8080 --open=/index.html
+./start-dev-server.sh
 ```
 
 The server will:
