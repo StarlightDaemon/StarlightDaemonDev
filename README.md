@@ -18,6 +18,7 @@ This repository is the main development source for the live site. It contains th
 ### Production / Live Files
 The active static site footprint published to the root domain.
 - `index.html` & `stargate.html` — Core page routes
+- `afterglows/` — Live experimental archive route published under the main site
 - `styles.css` & `script.js` — Global styling and logic
 - `css/` & `js/` — Modular feature code and theme handling
 - `assets/` — Media and graphical resources
@@ -25,7 +26,7 @@ The active static site footprint published to the root domain.
 
 ### Support / Development
 Tooling and documentation for local engineering.
-- `README.md`, `CHANGELOG.md`, `LICENSE` — Core project context
+- `README.md` & `CHANGELOG.md` — Core project context
 - `.agent/` — Automation and workflow definitions
 - `start-dev-server.sh` — Local development helper
 
@@ -47,6 +48,67 @@ To start the local server:
 ./start-dev-server.sh
 ```
 
+## ✨ Current Site Features
+
+- Responsive static portfolio published from the repository root
+- Multi-section homepage covering projects, libraries, and skills
+- Theme and font controls implemented through shared CSS/JS modules
+- Dedicated `afterglows/` route for the migrated experimental archive and demo collection
+- Dedicated `stargate.html` route for the archived Stargate terminal experience
+- GitHub Pages deployment with a custom domain via `CNAME`
+
+## 🛠️ Editing Guide
+
+Most content and structure changes happen in a small number of files:
+
+- `index.html` — Header copy, project cards, library cards, skill blocks, and outbound links
+- `styles.css` — Global layout, typography, spacing, and component styling
+- `script.js` — Main page interactions and shared behavior
+- `css/theme-toggle.css` & `js/theme-toggle.js` — Theme/font selector UI and behavior
+- `assets/` — Logos and shared visual assets
+
+For routine site updates:
+
+1. Edit the content directly in `index.html`
+2. Adjust layout or visual treatment in `styles.css` or `css/theme-toggle.css`
+3. Update behavior in `script.js` or `js/theme-toggle.js`
+4. Preview locally with `./start-dev-server.sh`
+
+## 📝 Adding or Updating Project Cards
+
+Project and library entries use the same card structure in `index.html`. Use the existing cards as the canonical pattern.
+
+```html
+<article class="project-card">
+    <div class="project-top">
+        <div class="header-row">
+            <div class="project-header">
+                <h3>Project Name</h3>
+            </div>
+            <span class="project-status status-active">Active</span>
+        </div>
+        <div class="project-subtitle">Short one-line summary</div>
+    </div>
+    <p class="project-description">
+        Project description goes here.
+    </p>
+    <div class="project-tech">
+        <span class="tech-tag">Language</span>
+        <span class="tech-tag">Framework</span>
+    </div>
+    <div class="project-links">
+        <a href="https://github.com/..." class="project-link">Source</a>
+        <a href="https://..." class="project-link">Demo</a>
+    </div>
+</article>
+```
+
+Status styles currently in use include:
+
+- `status-active`
+- `status-beta`
+- `status-library`
+
 ## 🚀 Deployment Notes
 
 - The canonical live site is `https://www.starlightdaemon.dev/`
@@ -54,7 +116,3 @@ To start the local server:
 - The repository root is the active published source.
 - `CNAME` is deployment-critical and should be treated conservatively
 - Non-production folders may exist alongside live files without being part of the deployed homepage flow
-
-## 📄 License
-
-MIT. See [`LICENSE`](LICENSE).

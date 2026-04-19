@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Code | Live Demo Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --matrix-green: #00ff00;
+            --matrix-dim: #00dd00;
+            --matrix-dark: #00aa00;
+            --bg-primary: #0a0f0a;
+            --bg-card: rgba(0, 40, 0, 0.4);
+            --text-bright: #44ff44;
+        }
+
+        html,
+        body {
+            height: 100%;
+            background: var(--bg-primary);
+            color: var(--matrix-green);
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            overflow: hidden;
+        }
+
+        .gallery-layout {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: var(--bg-primary);
+            border-right: 1px solid var(--matrix-dark);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .sidebar-header {
+            padding: 30px 20px;
+            border-bottom: 1px solid var(--matrix-dark);
+            text-align: center;
+        }
+
+        .sidebar-header h1 {
+            font-size: 20px;
+            letter-spacing: 4px;
+            color: var(--matrix-green);
+            text-shadow: 0 0 10px var(--matrix-green);
+            margin-bottom: 5px;
+        }
+
+        .sidebar-header p {
+            font-size: 10px;
+            color: var(--matrix-dim);
+            letter-spacing: 2px;
+        }
+
+        .sidebar {
+            background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(0, 30, 0, 0.95) 100%);
+        }
+
+        .demo-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .demo-card {
+            background: transparent;
+            border: none;
+            border-left: 2px solid var(--matrix-dark);
+            padding: 8px 15px;
+            margin-bottom: 2px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .demo-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3px;
+            height: 100%;
+            background: transparent;
+            transition: background 0.3s;
+        }
+
+        .demo-card:hover {
+            border-color: var(--matrix-dim);
+            transform: translateX(5px);
+        }
+
+        .demo-card:hover::before {
+            background: var(--matrix-dim);
+        }
+
+        .demo-card.active {
+            border-left-color: var(--matrix-green);
+            background: rgba(0, 255, 0, 0.05);
+        }
+
+        .demo-card.active::before {
+            display: none;
+        }
+
+        .demo-card h3 {
+            font-size: 12px;
+            color: var(--matrix-dim);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .demo-card.active h3 {
+            color: var(--matrix-green);
+        }
+
+        .demo-card h3 .indicator {
+            width: 6px;
+            height: 6px;
+            background: var(--matrix-dark);
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+
+        .demo-card.active h3 .indicator {
+            background: var(--matrix-green);
+            box-shadow: 0 0 8px var(--matrix-green);
+        }
+
+        .demo-card p,
+        .demo-card .tags {
+            display: none;
+        }
+
+        .demo-card h3 {
+            font-size: 14px;
+            color: var(--matrix-green);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .demo-card h3 .indicator {
+            width: 8px;
+            height: 8px;
+            background: var(--matrix-dark);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .demo-card.active h3 .indicator {
+            background: var(--matrix-green);
+            box-shadow: 0 0 8px var(--matrix-green);
+        }
+
+        .demo-card p {
+            font-size: 11px;
+            color: var(--matrix-dim);
+            line-height: 1.5;
+        }
+
+        .demo-card .tags {
+            margin-top: 10px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .tag {
+            font-size: 9px;
+            padding: 3px 8px;
+            border: 1px solid var(--matrix-dark);
+            color: var(--matrix-dark);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tag.css {
+            border-color: var(--matrix-dim);
+            color: var(--matrix-dim);
+        }
+
+        .tag.js {
+            border-color: var(--matrix-green);
+            color: var(--matrix-green);
+        }
+
+        /* Back Link */
+        .back-link {
+            padding: 20px;
+            border-top: 1px solid var(--matrix-dark);
+            text-align: center;
+        }
+
+        .back-link a {
+            color: var(--matrix-dark);
+            text-decoration: none;
+            font-size: 11px;
+            letter-spacing: 2px;
+            transition: color 0.3s;
+        }
+
+        .back-link a:hover {
+            color: var(--matrix-green);
+        }
+
+        /* Preview Area */
+        .preview-area {
+            position: relative;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .preview-header {
+            padding: 15px 25px;
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--matrix-dark);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .preview-title {
+            font-size: 12px;
+            color: var(--matrix-dim);
+            letter-spacing: 2px;
+        }
+
+        .preview-title span {
+            color: var(--matrix-green);
+        }
+
+        .preview-controls {
+            display: flex;
+            gap: 15px;
+        }
+
+        .preview-btn {
+            background: none;
+            border: 1px solid var(--matrix-dark);
+            color: var(--matrix-dim);
+            padding: 6px 12px;
+            font-family: inherit;
+            font-size: 10px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+
+        .preview-btn:hover {
+            border-color: var(--matrix-green);
+            color: var(--matrix-green);
+        }
+
+        .preview-frame {
+            flex: 1;
+            border: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        .preview-placeholder {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+            color: var(--matrix-dark);
+        }
+
+        .preview-placeholder .icon {
+            font-size: 48px;
+            opacity: 0.5;
+        }
+
+        .preview-placeholder p {
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .gallery-layout {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto 1fr;
+            }
+
+            .sidebar {
+                max-height: 40vh;
+            }
+
+            .demo-list {
+                display: flex;
+                overflow-x: auto;
+                padding: 15px;
+                gap: 15px;
+            }
+
+            .demo-card {
+                min-width: 200px;
+                margin-bottom: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="gallery-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>MATRIX CODE</h1>
+                <p>Digital Rain FX Library</p>
+            </div>
+
+            <div class="demo-list">
+                <div class="demo-card active" data-src="demo_classic.html" data-title="Classic Rain">
+                    <h3><span class="indicator"></span> CLASSIC RAIN</h3>
+                    <p>CSS-based falling matrix columns with Japanese katakana characters.</p>
+                    <div class="tags">
+                        <span class="tag css">CSS</span>
+                        <span class="tag js">JS</span>
+                    </div>
+                </div>
+
+                <div class="demo-card" data-src="demo_canvas.html" data-title="Canvas Interactive">
+                    <h3><span class="indicator"></span> CANVAS INTERACTIVE</h3>
+                    <p>HTML5 Canvas rain with mouse interaction. Columns react to cursor.</p>
+                    <div class="tags">
+                        <span class="tag js">Canvas</span>
+                        <span class="tag js">JS</span>
+                    </div>
+                </div>
+
+
+
+                <div class="demo-card" data-src="demo_binary.html" data-title="Binary Rain">
+                    <h3><span class="indicator"></span> BINARY RAIN</h3>
+                    <p>Pure 0s and 1s falling. Clean, minimal hacker aesthetic.</p>
+                    <div class="tags">
+                        <span class="tag js">Canvas</span>
+                    </div>
+                </div>
+
+                <div class="demo-card" data-src="demo_themes.html" data-title="Color Themes">
+                    <h3><span class="indicator"></span> COLOR THEMES</h3>
+                    <p>Switchable palettes: Matrix Green, Resurrections Blue, Virus Red.</p>
+                    <div class="tags">
+                        <span class="tag js">Canvas</span>
+                        <span class="tag css">Themes</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="back-link">
+                <a href="../index.html">← BACK TO AFTERGLOWS</a>
+            </div>
+        </aside>
+
+        <main class="preview-area">
+            <div class="preview-header">
+                <div class="preview-title">PREVIEW: <span id="currentDemo">Classic Rain</span></div>
+                <div class="preview-controls">
+                    <button class="preview-btn" onclick="reloadPreview()">↻ RELOAD</button>
+                    <button class="preview-btn halt" id="haltBtn" onclick="toggleHalt()">⏸ HALT</button>
+                    <button class="preview-btn" onclick="openFullscreen()">⛶ FULLSCREEN</button>
+                </div>
+            </div>
+
+            <iframe id="previewFrame" class="preview-frame" src="demo_classic.html"></iframe>
+        </main>
+    </div>
+
+    <script>
+        const cards = document.querySelectorAll('.demo-card');
+        const previewFrame = document.getElementById('previewFrame');
+        const currentDemoLabel = document.getElementById('currentDemo');
+
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                // Remove active from all
+                cards.forEach(c => c.classList.remove('active'));
+                // Add active to clicked
+                card.classList.add('active');
+
+                // Load demo
+                const src = card.dataset.src;
+                const title = card.dataset.title;
+                previewFrame.src = src;
+                currentDemoLabel.textContent = title;
+            });
+        });
+
+        function reloadPreview() {
+            previewFrame.src = previewFrame.src;
+        }
+
+        function openFullscreen() {
+            const activeCard = document.querySelector('.demo-card.active');
+            if (activeCard) {
+                window.open(activeCard.dataset.src, '_blank');
+            }
+        }
+
+        let isHalted = false;
+        function toggleHalt() {
+            const haltBtn = document.getElementById('haltBtn');
+            isHalted = !isHalted;
+
+            if (isHalted) {
+                previewFrame.src = 'about:blank';
+                haltBtn.textContent = '▶ RESUME';
+                haltBtn.style.borderColor = '#ff6600';
+                haltBtn.style.color = '#ff6600';
+            } else {
+                const activeCard = document.querySelector('.demo-card.active');
+                if (activeCard) {
+                    previewFrame.src = activeCard.dataset.src;
+                }
+                haltBtn.textContent = '⏸ HALT';
+                haltBtn.style.borderColor = '';
+                haltBtn.style.color = '';
+            }
+        }
+    </script>
+</body>
+
+</html>
