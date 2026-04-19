@@ -1,46 +1,30 @@
 # Concepts Directory
 
-This directory contains experimental features and design explorations for the StarlightDaemon portfolio.
+This directory currently contains tracked documentation only.
 
-## Contents
+## Current State
 
-### Header Terminal Experiments
-**Location:** `header-terminal/`
+- Present file(s):
+  - `README.md`
+- No active concept prototype files are currently stored in this directory
+- If earlier concept files are needed, use git history rather than assuming they still exist locally
 
-Explorations of different header/terminal UI concepts:
-- **header_mockups.html** (27KB) - Various header layout mockups
-- **stargate_lcd_retro.html** (9KB) - Retro LCD-style Stargate terminal
-- **README.md** - Documentation of terminal experiments
+## Purpose
 
-**Status:** Experimental - Not in production
+Use this directory as a lightweight documentation placeholder for concept work that is not part of the production site.
 
-**Purpose:** Testing different approaches for the terminal command display in the upper-right corner of the main site.
+Typical uses:
 
----
+- recording what concept areas existed previously
+- noting where removed experiments can be recovered from git history
+- describing future concept work before files are added
 
-## Archived Features
+## Historical Note
 
-### Scanline Effects
-Previously had 7 scanline CSS variants for CRT-style effects. These were removed from production as they were unused. If you need to reference them, check git history:
+Some older concept experiments referenced in past documentation are no longer present in this working tree. If you need to recover prior concept assets, inspect git history, for example:
 
 ```bash
 git show HEAD~2:css/scanline-classic.css
 ```
 
-Available scanline variants in git history:
-- `scanline-classic` - Traditional CRT scanlines
-- `scanline-heavy` - Thick prominent scanlines
-- `scanline-matrix` - Matrix-style green phosphor
-- `scanline-mega` - Extra pronounced effect
-- `scanline-rgb` - RGB color separation
-- `scanline-subtle` - Minimal scanline overlay
-- `scanline-ultra` - Maximum retro effect
-
----
-
-## How to Use This Directory
-
-1. **Experiment Freely** - This directory is gitignored (except READMEs)
-2. **Document New Ideas** - Add entries to this README
-3. **Prototype Features** - Test concepts before adding to production
-4. **Archive Old Work** - Keep references to removed features
+Keep this directory documentation-only until new concept files are intentionally added.
