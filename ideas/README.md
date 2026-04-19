@@ -1,34 +1,26 @@
 # Ideas Directory
 
-This directory contains design mockups and visual explorations for the portfolio.
+This directory currently contains tracked documentation only.
 
-## Contents
+## Current State
 
-### Header Mockups
-**File:** `header-mockups.html` (10.6KB)
-
-Collection of header design variations and layout experiments.
-
-**Status:** Exploration phase
-
----
+- Present file(s):
+  - `README.md`
+- No active mockup or prototype files are currently stored here
 
 ## Purpose
 
-This is a sandbox for:
-- Testing new visual concepts
-- Experimenting with layouts
-- Prototyping UI components
-- Exploring alternative designs
+Use this directory as a placeholder for early-stage ideas that are not ready to enter the production file set.
 
-All files in this directory (except this README) are gitignored, so feel free to experiment without worrying about cluttering the repository.
+Typical uses:
 
----
+- noting future design directions
+- documenting ideas before implementation
+- reserving a location for throwaway local exploration that should stay outside the production root
 
-## Contributing Ideas
+## Workflow
 
-When you have a new idea:
-1. Create a new HTML/CSS/JS file here
+1. Create idea files here only when needed
 2. Test locally with `./start-dev-server.sh`
-3. If it works well, integrate into main project
-4. Update this README with what was promoted
+3. Promote successful work into the production root deliberately
+4. Update this README if the directory gains real tracked content
