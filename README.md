@@ -116,3 +116,9 @@ Status styles currently in use include:
 - The repository root is the active published source.
 - `CNAME` is deployment-critical and should be treated conservatively
 - Non-production folders may exist alongside live files without being part of the deployed homepage flow
+
+## 📄 License
+
+This repository is licensed under the MIT License. See [`LICENSE`](LICENSE).
+
+Bundled areas may include their own `LICENSE` files for clarity, but the current intended default for this repository is MIT unless a future file explicitly states otherwise.
