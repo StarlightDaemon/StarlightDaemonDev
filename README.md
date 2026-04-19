@@ -18,7 +18,6 @@ This repository is the main development source for the live site. It contains th
 ### Production / Live Files
 The active static site footprint published to the root domain.
 - `index.html` & `stargate.html` — Core page routes
-- `afterglows/` — Live experimental archive route published under the main site
 - `styles.css` & `script.js` — Global styling and logic
 - `css/` & `js/` — Modular feature code and theme handling
 - `assets/` — Media and graphical resources
@@ -53,7 +52,6 @@ To start the local server:
 - Responsive static portfolio published from the repository root
 - Multi-section homepage covering projects, libraries, and skills
 - Theme and font controls implemented through shared CSS/JS modules
-- Dedicated `afterglows/` route for the migrated experimental archive and demo collection
 - Dedicated `stargate.html` route for the archived Stargate terminal experience
 - GitHub Pages deployment with a custom domain via `CNAME`
 
