@@ -32,10 +32,12 @@ Tooling and documentation for local engineering.
 ### Retained Non-Production Areas
 Historical contexts, staging environments, and ongoing ideas kept for reference.
 - `tests/` — Exploratory rendering and unit validation
-- `afterglows_staging/` — Draft concepts and layout iterations
+- `afterglows_staging/` — Draft concepts and layout iterations retained for reference only; not the live Afterglows site
 - `concepts/` & `ideas/` — Tracked architectural thoughts and documentation
 
 *(These folders are intentionally non-production. They are retained as reference material and should not be treated as the canonical live site implementation.)*
+
+External project sites such as `Afterglows` may have their own standalone repositories and custom domains. This repository only links to those sites unless their files are explicitly present in the production root.
 
 ## 💻 Local Development
 
