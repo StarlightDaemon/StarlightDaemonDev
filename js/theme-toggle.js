@@ -8,12 +8,20 @@ document.addEventListener('DOMContentLoaded', function () {
     const savedTheme = localStorage.getItem('theme') || 'p1-matrix';
     document.body.dataset.theme = savedTheme;
 
-    // Update active button
-    themeOptions.forEach(option => {
-        if (option.dataset.theme === savedTheme) {
-            option.classList.add('active');
-        }
-    });
+    // Helper to update active state and ARIA
+    function updateActiveButton(buttons, value, dataAttr) {
+        buttons.forEach(btn => {
+            if (btn.getAttribute(dataAttr) === value) {
+                btn.classList.add('active');
+                btn.setAttribute('aria-checked', 'true');
+            } else {
+                btn.classList.remove('active');
+                btn.setAttribute('aria-checked', 'false');
+            }
+        });
+    }
+
+    updateActiveButton(themeOptions, savedTheme, 'data-theme');
 
     // Font Management
     const fontBtns = document.querySelectorAll('.font-options .theme-btn');
@@ -31,19 +39,6 @@ document.addEventListener('DOMContentLoaded', function () {
             updateActiveButton(fontBtns, font, 'data-font');
         });
     });
-
-    // Helper to update active state and ARIA
-    function updateActiveButton(buttons, value, dataAttr) {
-        buttons.forEach(btn => {
-            if (btn.getAttribute(dataAttr) === value) {
-                btn.classList.add('active');
-                btn.setAttribute('aria-checked', 'true');
-            } else {
-                btn.classList.remove('active');
-                btn.setAttribute('aria-checked', 'false');
-            }
-        });
-    }
 
     // Settings Panel visibility
     toggleBtn.addEventListener('click', function (e) {
@@ -72,12 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
             localStorage.setItem('theme', theme);
 
             // Update active state
-            themeOptions.forEach(opt => {
-                opt.classList.remove('active');
-                opt.setAttribute('aria-checked', 'false');
-            });
-            this.classList.add('active');
-            this.setAttribute('aria-checked', 'true');
+            updateActiveButton(themeOptions, theme, 'data-theme');
         });
     });
 });
