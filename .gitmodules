@@ -1,0 +1,3 @@
+[submodule "homelab.starlightdaemon.dev"]
+	path = homelab.starlightdaemon.dev
+	url = https://github.com/StarlightDaemon/homelab.starlightdaemon.dev.git
