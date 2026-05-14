@@ -15,6 +15,7 @@ Thumbs.db
 *.log
 
 # Editor/Agent
+
 .vscode/
 .idea/
 *.swp
@@ -24,3 +25,10 @@ old_brain/
 # Node.js (if using local packages)
 node_modules/
 
+# Local tooling scratch
+.codex
+
+# RAIDEN audit outputs — operational findings, not framework content
+audit-reports/
+.raiden/state/AUDIT_LOG.md
+.raiden/state/last-audit.md
