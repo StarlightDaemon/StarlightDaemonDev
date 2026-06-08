@@ -58,8 +58,8 @@ Still open:
 4. Verify clean tree: git status --porcelain should be empty.
 5. Signal to the operator: StarlightDaemonDev is ready for the RAIDEN central agent
    to run the v0.4.0 migration prompt from
-   /mnt/e/Raiden/toolkit/prompts/audit-protocol-migration-v0.4.0-prompt.md
-   targeting --instance /mnt/e/StarlightDaemonDev. (v0.3.0 skipped; v0.4.0 direct.)
+   /Users/dante/Citadel/Raiden/toolkit/prompts/audit-protocol-migration-v0.4.0-prompt.md
+   targeting --instance /Users/dante/Citadel/StarlightDaemonDev. (v0.3.0 skipped; v0.4.0 direct.)
 
 Do not:
 - reopen settled naming or architecture
