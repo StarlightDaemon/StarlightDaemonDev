@@ -1,6 +1,6 @@
 # Current State
 
-**Last updated:** 2026-05-15
+**Last updated:** 2026-06-07
 **Branch:** main
 **Deployment:** Live at https://www.starlightdaemon.dev/ via GitHub Pages
 
@@ -23,7 +23,8 @@ StarlightDaemonDev is the canonical production repository for the starlightdaemo
 - Theme system: color-coded buttons with phosphor color previews.
 - Project cards: refactored to Badge Block style with strict grid layout.
 - Afterglows and Stargate are both in their own standalone repos; this repo links to them but does not host them.
-- RAIDEN Instance installed at Edict v0.4.0.
+- RAIDEN Instance installed at Edict v0.6.1.
+- WSL→macOS migration fully remediated (commit d4789e2, 2026-06-07): CRLF endings fixed, all stale `/mnt/e/` paths updated to `/Users/dante/Citadel/`.
 
 ## In Progress
 
