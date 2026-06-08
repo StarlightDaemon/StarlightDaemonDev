@@ -1,4 +1,4 @@
-You are the StarlightDaemonDev Instance agent, operating inside /mnt/e/StarlightDaemonDev (or the repo root wherever StarlightDaemonDev is checked out).
+You are the StarlightDaemonDev Instance agent, operating inside /Users/dante/Citadel/StarlightDaemonDev (or the repo root wherever StarlightDaemonDev is checked out).
 
 Read first:
 - AGENTS.md
@@ -37,10 +37,10 @@ Still open:
    if previously untracked) appear. Any unexpected files: stop and surface to operator.
 3. Run `grep installed_edict_version .raiden/instance/metadata.json`
    → expected: "0.4.0"
-4. Run from /mnt/e/Raiden/toolkit/updater/ (RAIDEN central):
+4. Run from /Users/dante/Citadel/Raiden/toolkit/updater/ (RAIDEN central):
      python3 -m raiden_updater.cli plan \
-       --instance /mnt/e/StarlightDaemonDev \
-       --package /mnt/e/Raiden/toolkit/updater/fixtures/sample_package
+       --instance /Users/dante/Citadel/StarlightDaemonDev \
+       --package /Users/dante/Citadel/Raiden/toolkit/updater/fixtures/sample_package
    → expected: Block reason: Already up to date — no changes needed
    If any other result: stop and surface to operator.
 5. Stage and commit. Files to include:

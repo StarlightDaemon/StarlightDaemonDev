@@ -10,7 +10,7 @@ This workflow starts a local web server for testing your portfolio before pushin
 
 1. **Navigate to project directory**
 ```bash
-cd /mnt/e/StarlightDaemonDev
+cd /Users/dante/Citadel/StarlightDaemonDev
 ```
 
 2. **Start the local dev helper**
