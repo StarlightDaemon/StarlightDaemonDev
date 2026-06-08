@@ -24,7 +24,7 @@ StarlightDaemonDev is the canonical production repository for the starlightdaemo
 - Project cards: refactored to Badge Block style with strict grid layout.
 - Afterglows and Stargate are both in their own standalone repos; this repo links to them but does not host them.
 - RAIDEN Instance installed at Edict v0.6.1.
-- WSL→macOS migration fully remediated (commit d4789e2, 2026-06-07): CRLF endings fixed, all stale `/mnt/e/` paths updated to `/Users/dante/Citadel/`.
+- Migration audit completed 2026-06-07; all findings (P1–P3) remediated. WSL→macOS migration fully remediated (commits d4789e2, fcd1804): CRLF endings fixed, all stale `/mnt/e/` paths updated to `/Users/dante/Citadel/`.
 
 ## In Progress
 
