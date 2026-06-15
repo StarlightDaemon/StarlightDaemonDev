@@ -32,3 +32,8 @@ node_modules/
 audit-reports/
 .raiden/state/AUDIT_LOG.md
 .raiden/state/last-audit.md
+
+# Unfinished prototypes (no longer deployed)
+tests/
+afterglows_staging/
+backups/
