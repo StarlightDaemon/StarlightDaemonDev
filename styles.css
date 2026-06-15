@@ -571,7 +571,7 @@ section h2::after {
     overflow: hidden;
     container-type: inline-size;
     /* CHANGED from size to inline-size */
-    transition: all var(--transition-normal);
+    transition: all var(--transition-base);
 }
 
 .project-card>* {
@@ -1066,7 +1066,7 @@ section h2::after {
         max-width: 280px;
     }
 
-    .project-grid {
+    .projects-grid {
         grid-template-columns: 1fr;
     }
 
