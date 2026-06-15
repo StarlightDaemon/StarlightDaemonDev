@@ -723,23 +723,6 @@ section h2::after {
     text-wrap: pretty;
     hyphens: none;
     overflow: hidden;
-    position: relative;
-}
-
-.project-description::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 3.5rem;
-    background: linear-gradient(to bottom, transparent, var(--bg-card));
-    pointer-events: none;
-    z-index: 1;
-}
-
-.project-card:hover .project-description::after {
-    background: linear-gradient(to bottom, transparent, var(--bg-secondary));
 }
 
 .project-tech {
