@@ -97,7 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCopyrightYear();
 
     // Terminal commands rotation
-    updateTerminalCommands();
 });
 
 /**
