@@ -38,3 +38,6 @@ audit-reports/
 tests/
 afterglows_staging/
 backups/
+
+# Card proposal drafts — keep on disk, exclude from repo
+CARD_PROPOSALS.md
