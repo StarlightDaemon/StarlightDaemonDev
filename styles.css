@@ -871,11 +871,6 @@ section h2::after {
         height: 60px;
     }
 
-    .upper-right-info {
-        display: none;
-        /* Hide Stargate on mobile for cleaner header */
-    }
-
     .page-wrapper {
         grid-template-columns: 1fr;
         padding: var(--space-lg);
@@ -962,21 +957,6 @@ section h2::after {
     .logo img {
         width: 150px;
         height: 150px;
-    }
-
-    /* Scale up terminal output to match logo */
-    .terminal-output {
-        width: 150px;
-        height: 150px;
-        font-size: 13px;
-    }
-
-    /* Scale up terminal output to match logo */
-    .terminal-output {
-        width: 150px;
-        height: 150px;
-        font-size: 13px;
-        /* Slightly larger text inside */
     }
 
     /* Scale up section headings */
