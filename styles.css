@@ -299,23 +299,6 @@ img {
     transform: scale(1.05);
 }
 
-/* ===========================
-   Upper Right Header Widget (Reserved for Future Use)
-   =========================== */
-/* This slot is reserved for a future header widget.
-   Placeholder styling kept minimal until needed. */
-
-.upper-right-info {
-    position: absolute;
-    top: var(--space-md);
-    right: var(--space-lg);
-    display: none;
-    /* Hidden until implemented */
-    z-index: 100;
-}
-
-/* Placeholder for future terminal or info widget styling */
-
 @keyframes glow {
     from {
         text-shadow: 0 0 10px var(--accent-glow);
@@ -359,86 +342,6 @@ img {
     color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.15em;
-}
-
-/* ===========================
-   Upper Right Info (Stargate)
-   =========================== */
-.upper-right-info {
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: var(--space-xs);
-    font-family: var(--font-mono);
-    opacity: 0.7;
-    transition: opacity var(--transition-fast);
-    margin-left: auto;
-    /* V5: Push to far right */
-}
-
-.upper-right-info:hover {
-    opacity: 1;
-}
-
-/* Terminal output styling */
-/* Terminal output styling - Themed Mini Screen */
-.terminal-output {
-    font-size: 11px;
-    color: var(--accent-primary);
-    font-family: var(--font-mono);
-    line-height: 1.4;
-    text-align: left;
-    transition: opacity 0.3s ease;
-
-    /* Themed Box Style (Matches Project Cards) */
-    width: 125px;
-    /* Square to match logo */
-    height: 125px;
-    background: #000;
-    /* Deep black for screen contrast */
-    border: 1px solid var(--border-default);
-    /* Standard theme border */
-    border-radius: var(--radius-sm);
-    padding: var(--space-sm);
-
-    /* Screen Effects */
-    box-shadow:
-        inset 0 0 15px rgba(0, 255, 65, 0.05);
-    /* Subtle inner glow */
-
-    /* Content Alignment */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Light hover glow for future interactivity */
-.terminal-output:hover {
-    border-color: var(--accent-primary);
-    box-shadow: 0 0 15px rgba(0, 255, 65, 0.15);
-    cursor: pointer;
-    /* Indication it might be clickable later */
-}
-
-.terminal-line {
-    color: var(--accent-primary);
-    text-shadow: 0 0 2px var(--accent-glow);
-    white-space: normal;
-    /* Allow text wrapping in small box */
-    word-break: break-all;
-    /* Break long strings if needed */
-    z-index: 10;
-}
-
-/* Blinking cursor for terminal feel */
-.terminal-line::after {
-    content: '_';
-    opacity: 1;
-    animation: cursor-blink 1s step-end infinite;
-    margin-left: 2px;
 }
 
 @keyframes cursor-blink {
@@ -492,11 +395,6 @@ img {
     border-top: 2px dashed var(--border-default);
     color: var(--text-secondary);
     font-size: var(--text-sm);
-}
-
-.icon {
-    width: 18px;
-    height: 18px;
 }
 
 .icon-sm {
@@ -680,17 +578,6 @@ section h2::after {
     color: var(--accent-primary);
     border: 1px solid var(--accent-primary);
     background: transparent;
-}
-
-/* Status badges - Maintained & Archived preserved for future use */
-.status-maintained {
-    color: #ff9500;
-    border: 1px solid #ff9500;
-}
-
-.status-archived {
-    color: #808080;
-    border: 1px solid #808080;
 }
 
 .status-beta {
@@ -912,13 +799,6 @@ section h2::after {
     }
 }
 
-.infra-sub {
-    font-size: 0.75rem;
-    color: #666;
-    margin-top: -0.2rem;
-    margin-bottom: 0.8rem;
-}
-
 /* Helper Spans for Bento */
 .span-2 {
     grid-column: span 2;
@@ -962,52 +842,6 @@ section h2::after {
 }
 
 /* ===========================
-   Contact Section
-   =========================== */
-.contact p {
-    color: var(--text-secondary);
-    margin-bottom: var(--space-lg);
-    font-size: var(--text-base);
-}
-
-.contact-links {
-    display: flex;
-    gap: var(--space-md);
-    flex-wrap: wrap;
-}
-
-.contact-link {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-sm);
-    padding: var(--space-sm) var(--space-lg);
-    background: transparent;
-    border: 2px solid var(--border-default);
-    border-radius: var(--radius-sm);
-    color: var(--text-primary);
-    font-weight: 500;
-    transition: all var(--transition-base);
-    font-family: var(--font-mono);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-size: var(--text-sm);
-}
-
-.contact-link:hover {
-    border-color: var(--accent-primary);
-    background: var(--bg-secondary);
-    color: var(--accent-primary);
-    transform: translate(-2px, -2px);
-    box-shadow: 4px 4px 0 var(--accent-primary);
-    text-shadow: none;
-}
-
-.sidebar-badge span {
-    display: block;
-    margin-bottom: var(--space-xs);
-}
-
-/* ===========================
    Responsive Design
    =========================== */
 @media (max-width: 900px) {
@@ -1046,43 +880,9 @@ section h2::after {
         grid-template-columns: 1fr;
         padding: var(--space-lg);
     }
-
-    .sidebar {
-        grid-column: 1;
-        position: static;
-        order: -1;
-    }
-
-    .sidebar-card {
-        max-width: 400px;
-        margin: 0 auto;
-    }
-
-    .hero {
-        padding: var(--space-xl) 0;
-    }
-
-    .title {
-        font-size: var(--text-3xl);
-    }
-
-    .tagline {
-        font-size: var(--text-lg);
-    }
 }
 
 @media (max-width: 600px) {
-    .cta-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .btn {
-        width: 100%;
-        justify-content: center;
-        max-width: 280px;
-    }
-
     .projects-grid {
         grid-template-columns: 1fr;
     }
@@ -1115,15 +915,6 @@ section h2::after {
     .logo img {
         width: 130px;
         height: 130px;
-    }
-
-    /* Larger clock and date */
-    .clock {
-        font-size: 1.125rem;
-    }
-
-    .date {
-        font-size: 0.875rem;
     }
 }
 
@@ -1188,30 +979,10 @@ section h2::after {
         /* Slightly larger text inside */
     }
 
-    /* Larger clock and date for 4K */
-    .clock {
-        font-size: 1.25rem;
-    }
-
-    .date {
-        font-size: 1rem;
-    }
-
     /* Scale up section headings */
     section h2 {
         font-size: 2.5rem;
         padding: var(--space-md) var(--space-lg);
-    }
-
-    /* Larger title */
-    /* Larger title (scaled down slightly) */
-    .title {
-        font-size: 3rem;
-        /* Reduced from 3.5rem */
-    }
-
-    .tagline {
-        font-size: 1.75rem;
     }
 }
 
@@ -1287,256 +1058,17 @@ section:nth-child(4) {
     --font-mono: 'Fira Code', monospace;
 }
 
-[data-font="jetbrains"] {
-    --font-display: 'JetBrains Mono', monospace;
-    --font-mono: 'JetBrains Mono', monospace;
-}
-
-/* --- STARGATE TERMINAL WIDGET --- */
-:root {
-    --lcd-green: #00ff41;
-    --lcd-off: #003311;
-    --bg-dark: #0a0a0a;
-}
-
-/* Container adapted for Upper Right Header - Transparent (Gate Only) */
-.sg-terminal {
-    background: transparent;
-    /* Removed box background */
-    border: none;
-    /* Removed border */
-    padding: 10px;
-    font-family: 'Courier New', monospace;
-    color: var(--lcd-green);
-    box-shadow: none;
-    /* Removed box glow */
-    width: 180px;
-    /* Reduced from 300px to prevent overlap */
-    position: relative;
-    transform: scale(0.7);
-    /* Scale down slightly to fit */
-    transform-origin: top right;
-}
-
-/* Scanline Effect - Disabled for gate-only view */
-.sg-terminal::before {
-    display: none;
-    /* Removed scanline overlay */
-}
-
-@keyframes flicker {
-    0% {
-        opacity: 0.95
-    }
-
-    100% {
-        opacity: 1
-    }
-}
-
-.sg-header {
-    border-bottom: 2px dashed var(--lcd-green);
-    padding-bottom: 5px;
-    margin-bottom: 10px;
-    text-shadow: 2px 0 rgba(255, 0, 0, 0.5), -2px 0 rgba(0, 0, 255, 0.5);
-    /* Aberration */
-    font-weight: bold;
-    font-size: 12px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.sg-footer {
-    border-top: 2px dashed var(--lcd-green);
-    padding-top: 5px;
-    margin-top: 10px;
-    text-align: center;
-    text-shadow: 0 0 5px var(--lcd-green);
-    cursor: pointer;
-    font-size: 12px;
-    transition: background 0.2s;
-}
-
-.sg-footer:hover {
-    background: var(--lcd-off);
-    color: #fff;
-}
-
-/* The Gate Geometry */
-.sg-display {
-    position: relative;
-    height: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.stargate {
-    width: 160px;
-    height: 160px;
-    position: relative;
-}
-
-.ring {
-    border-radius: 50%;
-    position: absolute;
-    border: 2px solid var(--lcd-green);
-    box-sizing: border-box;
-    top: 0;
-    left: 0;
-}
-
-.outer-ring {
-    width: 100%;
-    height: 100%;
-    box-shadow: 0 0 10px var(--lcd-green), inset 0 0 8px rgba(0, 255, 65, 0.2);
-}
-
-.inner-ring {
-    width: 84%;
-    height: 84%;
-    top: 8%;
-    left: 8%;
-    border: 4px dashed var(--lcd-green);
-    opacity: 0.7;
-    transition: transform 0.5s cubic-bezier(0.5, 0, 0.5, 1);
-}
-
-/* Chevrons */
-.chevron {
-    position: absolute;
-    width: 12px;
-    height: 8px;
-    background: var(--bg-dark);
-    border: 1px solid var(--lcd-green);
-    top: -4px;
-    left: 50%;
-    margin-left: -6px;
-    transform-origin: center 84px;
-    /* 80px radius + 4px offset */
-    transition: all 0.2s;
-    z-index: 5;
-}
-
-.chevron.locked {
-    background: var(--lcd-green);
-    box-shadow: 0 0 10px var(--lcd-green);
-}
-
-.c1 {
-    transform: rotate(0deg);
-}
-
-.c2 {
-    transform: rotate(40deg);
-}
-
-.c3 {
-    transform: rotate(80deg);
-}
-
-.c4 {
-    transform: rotate(120deg);
-}
-
-.c5 {
-    transform: rotate(160deg);
-}
-
-.c6 {
-    transform: rotate(200deg);
-}
-
-.c7 {
-    transform: rotate(240deg);
-}
-
-.c8 {
-    transform: rotate(280deg);
-}
-
-.c9 {
-    transform: rotate(320deg);
-}
-
-/* Event Horizon */
-.event-horizon {
-    position: absolute;
-    top: 15%;
-    left: 15%;
-    width: 70%;
-    height: 70%;
-    background: radial-gradient(circle, var(--lcd-green) 0%, transparent 60%);
-    border-radius: 50%;
-    opacity: 0;
-    transform: scale(0);
-    transition: opacity 1s, transform 0.2s;
-}
-
-.event-horizon.active {
-    opacity: 0.6;
-    transform: scale(1);
-    animation: shimmer 0.1s infinite alternate;
-}
-
-.kawoosh {
-    animation: kawoosh-anim 1s ease-out forwards;
-}
-
-@keyframes shimmer {
-    from {
-        opacity: 0.5;
-    }
-
-    to {
-        opacity: 0.7;
-    }
-}
-
-@keyframes kawoosh-anim {
-    0% {
-        transform: scale(0);
-        opacity: 1;
-        background: #fff;
-    }
-
-    50% {
-        transform: scale(1.5);
-        opacity: 0.8;
-        background: var(--lcd-green);
-    }
-
-    100% {
-        transform: scale(1);
-        opacity: 0.6;
-        background: radial-gradient(circle, var(--lcd-green) 0%, transparent 60%);
-    }
-}
-
 @media (prefers-reduced-motion: reduce) {
     /* Respect user's OS-level reduced motion preference */
     a,
     .logo img,
-    .upper-right-info,
-    .terminal-output,
     .project-card,
     .project-link,
     .contact-link,
-    .sg-footer,
-    .inner-ring,
-    .chevron,
-    .event-horizon,
-    .event-horizon.active,
-    .kawoosh,
     .header-title,
     .header-title::after,
     .terminal-line::after,
-    .hero,
-    section,
-    .sidebar-card,
-    section:nth-child(2),
-    section:nth-child(3),
-    section:nth-child(4) {
+    section {
         transition: none;
         animation: none;
     }
