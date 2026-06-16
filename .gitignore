@@ -34,6 +34,11 @@ audit-reports/
 .raiden/state/AUDIT_LOG.md
 .raiden/state/last-audit.md
 
+# Internal documentation — not for public deploy
+REMEDIATION_REPORT.md
+AGENTS.md
+*AUDIT*.md
+
 # Unfinished prototypes (no longer deployed)
 tests/
 afterglows_staging/
