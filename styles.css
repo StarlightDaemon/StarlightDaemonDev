@@ -1092,16 +1092,6 @@ section h2::after {
 /* 2K+ Displays (Effective width > 1700px to account for OS chrome) */
 @media (min-width: 1700px) {
 
-    /* Reduce scanline opacity for better readability */
-    body::before {
-        background: repeating-linear-gradient(0deg,
-                transparent 0px,
-                transparent 2px,
-                rgba(0, 0, 0, 0.20) 2px,
-                /* Reduced from 0.40 */
-                rgba(0, 0, 0, 0.20) 4px);
-    }
-
     /* Larger base font size for 2K */
     html {
         font-size: 20px;
@@ -1132,17 +1122,6 @@ section h2::after {
 
 /* 4K+ Displays (Effective width > 2300px to account for OS chrome) */
 @media (min-width: 2300px) {
-
-    /* Further reduce scanline intensity with wider spacing */
-    body::before {
-        background: repeating-linear-gradient(0deg,
-                transparent 0px,
-                transparent 3px,
-                /* Wider spacing */
-                rgba(0, 0, 0, 0.15) 3px,
-                /* Even lighter */
-                rgba(0, 0, 0, 0.15) 5px);
-    }
 
     /* Optimal font size for 4K */
     html {
