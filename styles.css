@@ -255,6 +255,13 @@ img {
     height: auto;
 }
 
+/* Accessibility: keyboard focus indicator */
+:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
 /* ===========================
    Unified Sticky Header
    =========================== */
@@ -1503,6 +1510,35 @@ section:nth-child(4) {
         transform: scale(1);
         opacity: 0.6;
         background: radial-gradient(circle, var(--lcd-green) 0%, transparent 60%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    /* Respect user's OS-level reduced motion preference */
+    a,
+    .logo img,
+    .upper-right-info,
+    .terminal-output,
+    .project-card,
+    .project-link,
+    .contact-link,
+    .sg-footer,
+    .inner-ring,
+    .chevron,
+    .event-horizon,
+    .event-horizon.active,
+    .kawoosh,
+    .header-title,
+    .header-title::after,
+    .terminal-line::after,
+    .hero,
+    section,
+    .sidebar-card,
+    section:nth-child(2),
+    section:nth-child(3),
+    section:nth-child(4) {
+        transition: none;
+        animation: none;
     }
 }
 
