@@ -2,115 +2,18 @@
  * StarlightDaemon Portfolio - Interactive Features
  */
 
-
-/* --- STARGATE TERMINAL LOGIC --- */
-const innerRing = document.getElementById('innerRing');
-const horizon = document.getElementById('horizon');
-const statusText = document.getElementById('sgStatus');
-const chevrons = [1, 2, 3, 4, 5, 6, 7].map(i => document.getElementById('c' + i));
-
-let isDialing = false;
-let currentRotation = 0;
-
-async function dialSequence() {
-    if (isDialing) return;
-    isDialing = true;
-
-    // Determine mode based on active element
-    // Check if we are in full mode (has status text) or mini mode
-    const isFullMode = !!document.querySelector('.sg-terminal:not(.mini-mode)');
-
-    // Reset
-    horizon.className = 'event-horizon';
-    chevrons.forEach(c => { if (c) c.classList.remove('locked') });
-
-    if (statusText) statusText.innerText = "DIALING...";
-    currentRotation = 0;
-    innerRing.style.transform = `rotate(0deg)`;
-
-    // Dial 7 Chevrons
-    for (let i = 0; i < 7; i++) {
-        // Spin Ring
-        // Slower spin for mini mode? User asked for "a bit slower"
-        // Let's make the spin duration dynamic
-        let spinDuration = isFullMode ? 1000 : 2000; // Slower on mini
-        let spinAmount = Math.floor(Math.random() * 60) + 60;
-
-        if (i % 2 === 0) currentRotation += spinAmount;
-        else currentRotation -= spinAmount;
-
-        innerRing.style.transition = `transform ${spinDuration / 1000}s cubic-bezier(0.5, 0, 0.5, 1)`;
-        innerRing.style.transform = `rotate(${currentRotation}deg)`;
-
-        if (statusText) statusText.innerText = `ENCODING CHEVRON ${i + 1}...`;
-
-        // Wait for spin
-        await new Promise(r => setTimeout(r, spinDuration));
-
-        // Lock Chevron
-        if (chevrons[i]) chevrons[i].classList.add('locked');
-
-        // Short pause
-        await new Promise(r => setTimeout(r, isFullMode ? 200 : 500));
-    }
-
-    // Engage
-    if (statusText) statusText.innerText = "WORMHOLE ACTIVE";
-    horizon.classList.add('kawoosh');
-
-    // Hold wormhole
-    await new Promise(r => setTimeout(r, 4000));
-
-    // Shut down if mini mode to loop, or keep open if full?
-    // User said "dialer automatically" for mini.
-    if (!isFullMode) {
-        horizon.classList.remove('kawoosh');
-        horizon.classList.remove('active');
-        chevrons.forEach(c => { if (c) c.classList.remove('locked') });
-        isDialing = false;
-        // Wait before next dialing
-        setTimeout(dialSequence, 3000);
-        return;
-    }
-
-    horizon.classList.remove('kawoosh');
-    horizon.classList.add('active');
-    isDialing = false;
-}
-
-// Auto-start if mini mode
 document.addEventListener('DOMContentLoaded', () => {
-    if (document.querySelector('.sg-terminal.mini-mode')) {
-        setTimeout(dialSequence, 1000);
-    }
-});
-
-
-
-
-// Main Init
-document.addEventListener('DOMContentLoaded', () => {
-    // Dynamic year in footer
     updateCopyrightYear();
-
-    // Terminal commands rotation
 });
 
-/**
- * Update copyright year dynamically
- */
 function updateCopyrightYear() {
     const footer = document.querySelector('.footer p');
-    if (footer) {
-        const currentYear = new Date().getFullYear();
-        footer.innerHTML = footer.innerHTML.replace(/©\s*\d{4}/, `© ${currentYear}`);
+    if (!footer) return;
+    const currentYear = new Date().getFullYear();
+    for (const node of footer.childNodes) {
+        if (node.nodeType === Node.TEXT_NODE && /©\s*\d{4}/.test(node.textContent)) {
+            node.textContent = node.textContent.replace(/©\s*\d{4}/, `© ${currentYear}`);
+            break;
+        }
     }
 }
-
-/**
- * Terminal commands rotation
- */
-
-
-
-
