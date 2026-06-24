@@ -1,11 +1,11 @@
 # Open Loops
 
-## OL-001
+## OL-001 — CLOSED
 
 - Title: Version-tag unreleased changelog entries
-- Status: Open
-- Why it matters: the CHANGELOG has a substantial unreleased section (V5.4 header, font switcher, project card refactor, skills grid). These are live in production but not tagged.
-- Success condition: a version tag is cut and the unreleased section is promoted to a versioned entry.
+- Status: Closed 2026-06-24
+- What was done: v1.0.0 was tagged and the [Unreleased] section in CHANGELOG.md was promoted to [1.0.0] with the release date.
+- Success condition met: Version tag is cut and unreleased section is promoted to versioned entry.
 
 ---
 
