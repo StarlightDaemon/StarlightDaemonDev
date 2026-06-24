@@ -17,7 +17,8 @@ This repository is the main development source for the live site. It contains th
 
 ### Production / Live Files
 The active static site footprint published to the root domain.
-- `index.html` & `stargate.html` — Core page routes
+- `index.html` — Core page route
+- `homelab.html` — Meta-redirect to homelab.starlightdaemon.dev
 - `styles.css` & `script.js` — Global styling and logic
 - `css/` & `js/` — Modular feature code and theme handling
 - `assets/` — Media and graphical resources
@@ -43,6 +44,12 @@ External project sites such as `Afterglows` may have their own standalone reposi
 
 The site is a root-published static environment, so most day-to-day work happens directly in the root HTML, CSS, JS, and supporting asset folders.
 
+### Prerequisites
+
+Running the local dev server requires:
+- **Node.js** — installed via NVM (Node Version Manager)
+- **live-server** — install globally via npm: `npm install -g live-server`
+
 To start the local server:
 
 ```bash
@@ -54,7 +61,6 @@ To start the local server:
 - Responsive static portfolio published from the repository root
 - Multi-section homepage covering projects, libraries, and skills
 - Theme and font controls implemented through shared CSS/JS modules
-- Dedicated `stargate.html` route for the archived Stargate terminal experience
 - GitHub Pages deployment with a custom domain via `CNAME`
 
 ## 🛠️ Editing Guide

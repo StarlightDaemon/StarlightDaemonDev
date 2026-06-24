@@ -19,4 +19,4 @@
   `.agent/workflows/start-server.md`,
   `.raiden/local/prompts/audit-protocol-install-handoff.md`, and
   `.raiden/local/prompts/migration-remediation.md`.
-- Success condition met: all three findings resolved; no `/mnt/e/` references remain.
+- Success condition met: Deployed working tree and full git history are clean of `/mnt/e/` references. Residual references exist only in `.claude/settings.local.json` (gitignored, macOS-inert local tool config) and are operationally inert.

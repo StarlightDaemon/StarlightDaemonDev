@@ -1,5 +1,9 @@
 # Goals
 
+## Completed
+
+- Accessibility pass (WCAG) — Shipped in commit c81152c (skip-nav link, :focus-visible ring, prefers-reduced-motion support).
+
 ## Current
 
 - Keep the live site deployed, performant, and visually consistent.
@@ -9,4 +13,3 @@
 ## Future
 
 - Expand portfolio entries as new projects ship.
-- Consider accessibility pass (WCAG) once core visual system is settled.
