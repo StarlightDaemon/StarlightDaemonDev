@@ -1,5 +1,6 @@
 # Archives & Backups
 _DEPRECATED_ASSETS/
+.serena/
 
 # Experimental directories (but allow README.md for documentation)
 concepts/*
@@ -38,6 +39,7 @@ audit-reports/
 REMEDIATION_REPORT.md
 AGENTS.md
 *AUDIT*.md
+CSS_COVERAGE_REPORT.md
 
 # Unfinished prototypes (no longer deployed)
 tests/
