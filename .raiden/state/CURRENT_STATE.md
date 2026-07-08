@@ -1,6 +1,6 @@
 # Current State
 
-**Last updated:** 2026-06-24
+**Last updated:** 2026-07-08
 **Branch:** main
 **HEAD commit:** 9886e9d9e8f875f89dd2350cee4a74739e71cc54
 **Deployment:** Live at https://www.starlightdaemon.dev/ via GitHub Pages
@@ -37,7 +37,7 @@ StarlightDaemonDev is the canonical production repository for the starlightdaemo
 
 ## In Progress
 
-- OL-001 open: unreleased CHANGELOG section covers V5.4 header layout, font switcher, project card refactor, skills section infra-grid, and the full 2026-06-12–24 work wave. No version tag cut yet. Success condition: a version tag is cut and the unreleased section is promoted to a versioned entry.
+- None. OL-001 (version-tag unreleased changelog entries) was closed 2026-06-24 when v1.0.0 was tagged and the [Unreleased] section was promoted to [1.0.0].
 
 ## Not Yet Done
 
