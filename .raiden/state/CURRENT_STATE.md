@@ -1,6 +1,5 @@
 # Current State
 
-**Last updated:** 2026-07-08
 **Branch:** main
 **HEAD commit:** 9886e9d9e8f875f89dd2350cee4a74739e71cc54
 **Deployment:** Live at https://www.starlightdaemon.dev/ via GitHub Pages
@@ -19,7 +18,6 @@ StarlightDaemonDev is the canonical production repository for the starlightdaemo
 
 - Live site is published from the repository root via GitHub Pages (CNAME configured).
 - Core pages: `index.html` (portfolio), `homelab.html` (0-second meta-refresh redirect stub to homelab.starlightdaemon.dev). `stargate.html` was removed from this repository (commit `44883f8`) and extracted to a separate standalone repository.
-- RAIDEN Instance at Edict v1.0.0 (installed 2026-06-13, commits `2e4eb6e`).
 - V5.4 header layout active (left-aligned, IBM Plex Mono default font, green accent border).
 - Font switcher: 4 retro terminal fonts available (IBM Plex Mono, VT323, Space Mono, Fira Code), self-hosted as 44 `.woff2` files under `assets/fonts/` — Google Fonts CDN dependency removed (commit `d288a5e`, 2026-06-13).
 - Theme system: color-coded buttons with phosphor color previews.
@@ -37,7 +35,7 @@ StarlightDaemonDev is the canonical production repository for the starlightdaemo
 
 ## In Progress
 
-- None. OL-001 (version-tag unreleased changelog entries) was closed 2026-06-24 when v1.0.0 was tagged and the [Unreleased] section was promoted to [1.0.0].
+- None. See OL-001.
 
 ## Not Yet Done
 
