@@ -37,7 +37,6 @@ audit-reports/
 
 # Internal documentation — not for public deploy
 REMEDIATION_REPORT.md
-AGENTS.md
 *AUDIT*.md
 CSS_COVERAGE_REPORT.md
 

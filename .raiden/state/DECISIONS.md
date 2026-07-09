@@ -13,3 +13,10 @@
 - Status: Active
 - Decision: the homelab embedded submodule is removed; homelab.starlightdaemon.dev is a standalone repo linked via tile only.
 - Rationale: submodule coupling was fragile; the homelab site is fully independent and should not be tied to the portfolio repo's commit cadence.
+
+## D-003
+
+- Date: 2026-07-09
+- Status: Active
+- Decision: root AGENTS.md bridge is now git-tracked for fleet consistency.
+- Rationale: the prior gitignore rationale ("not for public deploy") conflated git tracking with site deployment — the site deploys built artifacts, not repo markdown.
