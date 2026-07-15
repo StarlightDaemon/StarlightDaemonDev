@@ -47,3 +47,6 @@ backups/
 
 # Card proposal drafts — keep on disk, exclude from repo
 CARD_PROPOSALS.md
+
+# macOS
+._*
