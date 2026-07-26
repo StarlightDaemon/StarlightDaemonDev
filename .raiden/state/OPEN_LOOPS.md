@@ -13,7 +13,7 @@
 
 - Title: WSL→macOS migration remediation
 - Status: Closed 2026-06-07
-- What was done: Audit findings P1–P3 resolved in commit d4789e2 —
+- What was done: Audit findings P1–P3 resolved in commit 94f8771 —
   CRLF line endings stripped from `start-dev-server.sh`,
   stale `/mnt/e/` WSL paths updated to `E:\Citadel/` in
   `.agent/workflows/start-server.md`,

@@ -16,7 +16,7 @@
   to preserve the "never commit local overlay" policy for the new file.
 - Bridge tracking fix: narrowed the root `.gitignore` (removed the bare
   `AGENTS.md` entry from the "internal documentation" block) and git-tracked
-  the root `AGENTS.md` bridge, bringing its untracked-since-`f2b7846` Phase B
+  the root `AGENTS.md` bridge, bringing its untracked-since-`af8edb6` Phase B
   de-path fix (relative `.raiden/...` paths, no absolute filesystem paths) into
   history. Recorded as D-003 in `DECISIONS.md`.
 - State normalization (Fact-Home Rule, `.raiden/writ/OPERATING_RULES.md`):
@@ -28,13 +28,13 @@
   - Removed the current-version claim "RAIDEN Instance at Edict v1.0.0" from
     `CURRENT_STATE.md` (installed Edict version now lives solely in
     `.raiden/instance/metadata.json`); the unique historical fact it carried
-    (v1.0.0 installed 2026-06-13, commit `2e4eb6e`) is relocated below.
+    (v1.0.0 installed 2026-06-13, commit `7caf282`) is relocated below.
   - Removed the hand-written `**Last updated:** 2026-07-08` footer from
     `CURRENT_STATE.md`; freshness is derived from git history per the Writ.
 
 ## 2026-06-13 — RAIDEN Edict v1.0.0 install
 
-- RAIDEN Instance updated to Edict v1.0.0 (commit `2e4eb6e`). Relocated here
+- RAIDEN Instance updated to Edict v1.0.0 (commit `7caf282`). Relocated here
   from `CURRENT_STATE.md` prose per the Fact-Home Rule (2026-07-09
   normalization).
 

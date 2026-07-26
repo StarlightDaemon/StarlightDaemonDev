@@ -2,7 +2,7 @@
 
 ## Completed
 
-- Accessibility pass (WCAG) — Shipped in commit c81152c (skip-nav link, :focus-visible ring, prefers-reduced-motion support).
+- Accessibility pass (WCAG) — Shipped in commit 3e37707 (skip-nav link, :focus-visible ring, prefers-reduced-motion support).
 
 ## Current
 
