@@ -1,7 +1,6 @@
 # Current State
 
 **Branch:** main
-**HEAD commit:** 69148fc33e266c8dd37544adb1eb78fd18452d77
 **Deployment:** Live at https://www.starlightdaemon.dev/ via GitHub Pages
 
 ---
@@ -25,6 +24,7 @@ StarlightDaemonDev is the canonical production repository for the starlightdaemo
 - Content Security Policy (`default-src 'self'`, no `unsafe-inline`) enforced on both pages via meta tag (commit `956837e`); SRI hash on `css/fonts.css` link verified in-sync (commit `bd36e58`).
 - Accessibility: skip-nav link, `:focus-visible` ring, `prefers-reduced-motion` support, ARIA labels on interactive controls (commit `3e37707`).
 - SEO: canonical link, Open Graph tags, `robots.txt`, `sitemap.xml` present (commit `b4724e2`).
+- Pre-launch readiness pass added a branded `404.html`, dedicated social preview, favicon/touch icon support, stronger meta-delivered CSP directives, and corrected display-settings semantics. The existing Pages/Jekyll pass-through remains intentional; deployment is operator-controlled and unverified for these working-tree changes.
 - Logo converted to WebP with PNG fallback, explicit dimensions set (commit `78d4b0b`).
 - CSS: approximately 29% dead-selector reduction across two pruning passes (commits `a2bb4f5`, `5fc5cce`); styles cache bumped to v1.0.8.
 - `afterglows_staging/` and `tests/` are excluded from Pages deploy via `.gitignore`/deploy config (commit `df03a1c`).

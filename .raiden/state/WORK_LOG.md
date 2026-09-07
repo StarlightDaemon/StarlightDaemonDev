@@ -1,5 +1,21 @@
 # Work Log
 
+## 2026-09-07 — GitHub Pages pre-launch readiness pass
+
+- Confirmed the custom-domain, branch/folder GitHub Pages architecture and retained
+  the working default Pages/Jekyll pass-through; no `.nojekyll` exception is needed.
+- Added a branded custom 404, favicon/touch icon assets, and a 1200×630 social
+  preview; improved page metadata, crawl intent, and fallback copyright content.
+- Corrected display-settings semantics and keyboard dismissal, made the skip link
+  transfer focus to main content, and added a non-color cue to the footer link.
+- Hardened CSP directives that are supported by meta delivery while removing the
+  unsupported `frame-ancestors` meta directive.
+- Verified locally with Lighthouse (Accessibility 100, Best Practices 100,
+  Performance 98; LCP 1.8 s, TBT 0 ms, CLS 0), responsive browser checks from
+  320 px through 1440 px, user-journey checks, case-sensitive asset checks, and
+  zero findings from working-tree and 224-commit-history secret scans.
+- No commit, push, merge, GitHub setting, DNS, or deployment action was performed.
+
 ## 2026-07-09 — Edict v2.0.0 + state normalization
 
 - Applied RAIDEN Edict update 1.0.1 → 2.0.0 via `raiden_updater.cli` (plan → apply →

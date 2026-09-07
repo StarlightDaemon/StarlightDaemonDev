@@ -412,6 +412,12 @@ img {
     font-size: var(--text-sm);
 }
 
+.footer a {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+}
+
 .icon-sm {
     width: 14px;
     height: 14px;
@@ -1043,6 +1049,98 @@ section:nth-child(4) {
 [data-font="fira"] {
     --font-display: 'Fira Code', monospace;
     --font-mono: 'Fira Code', monospace;
+}
+
+/* ===========================
+   Error Page
+   =========================== */
+.brand-home {
+    color: inherit;
+}
+
+.error-page {
+    display: grid;
+    min-height: calc(100vh - 120px);
+    padding: var(--space-3xl) var(--space-lg);
+    place-items: center;
+}
+
+.error-card {
+    width: min(100%, 720px);
+    margin: 0;
+    padding: clamp(1.5rem, 5vw, 3rem);
+    background: var(--bg-card);
+    border: 2px solid var(--accent-primary);
+    box-shadow: 8px 8px 0 rgba(var(--accent-primary-rgb), 0.25);
+}
+
+.error-code {
+    margin-bottom: var(--space-sm);
+    color: var(--accent-primary);
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 14vw, 7rem);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1;
+}
+
+.error-card h1 {
+    margin-bottom: var(--space-lg);
+    color: var(--text-primary);
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    text-transform: uppercase;
+}
+
+.error-card>p:not(.error-code) {
+    max-width: 60ch;
+    color: var(--text-secondary);
+}
+
+.recovery-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    margin-top: var(--space-xl);
+}
+
+.primary-link,
+.secondary-link {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-sm) var(--space-lg);
+    border: 2px solid var(--accent-primary);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.primary-link {
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+}
+
+.primary-link:hover {
+    background: transparent;
+    color: var(--accent-primary);
+}
+
+.secondary-link:hover {
+    background: rgba(var(--accent-primary-rgb), 0.1);
+}
+
+@media (max-width: 600px) {
+    .error-header .logo img {
+        width: 52px;
+        height: 52px;
+    }
+
+    .recovery-links,
+    .primary-link,
+    .secondary-link {
+        width: 100%;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {

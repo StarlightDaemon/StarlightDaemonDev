@@ -3,31 +3,39 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' data:; base-uri 'self'; frame-ancestors 'none'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; frame-src 'none'; form-action 'none'; base-uri 'none'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="StarlightDaemon - Developer Portfolio | Explore my current and past projects">
+    <meta name="description" content="Open-source projects, libraries, and infrastructure work by StarlightDaemon.">
     <meta name="author" content="StarlightDaemon">
+    <meta name="theme-color" content="#000000">
     <title>StarlightDaemon | Developer Portfolio</title>
     <link rel="canonical" href="https://www.starlightdaemon.dev/">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="StarlightDaemon">
     <meta property="og:title" content="StarlightDaemon | Developer Portfolio">
-    <meta property="og:description" content="StarlightDaemon - Developer Portfolio | Explore my current and past projects">
+    <meta property="og:description" content="Open-source projects, libraries, and infrastructure work by StarlightDaemon.">
     <meta property="og:url" content="https://www.starlightdaemon.dev/">
-    <meta property="og:image" content="https://www.starlightdaemon.dev/assets/thinker-logo.png">
+    <meta property="og:image" content="https://www.starlightdaemon.dev/assets/social-preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="StarlightDaemon developer portfolio in a green terminal-inspired design">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="StarlightDaemon | Developer Portfolio">
-    <meta name="twitter:description" content="StarlightDaemon - Developer Portfolio | Explore my current and past projects">
-    <meta name="twitter:image" content="https://www.starlightdaemon.dev/assets/thinker-logo.png">
-    <link rel="stylesheet" href="styles.css?v=1.0.8">
-    <link rel="stylesheet" href="css/theme-toggle.css">
+    <meta name="twitter:description" content="Open-source projects, libraries, and infrastructure work by StarlightDaemon.">
+    <meta name="twitter:image" content="https://www.starlightdaemon.dev/assets/social-preview.png">
+    <meta name="twitter:image:alt" content="StarlightDaemon developer portfolio in a green terminal-inspired design">
+    <link rel="stylesheet" href="styles.css?v=1.0.9">
+    <link rel="stylesheet" href="css/theme-toggle.css?v=1.0.1">
 
     <!-- Fonts -->
     <!-- SRI: if css/fonts.css is modified, recompute hash and update integrity attribute above -->
     <link rel="stylesheet" href="css/fonts.css" integrity="sha384-7BkNWl/WwSQmth8QBye9DsmbwIkMteW4c7dqTpump3evDwKg1SXXPn9NiggFfhxY" crossorigin="anonymous">
 
-    <script src="script.js" defer></script>
-    <script src="js/theme-toggle.js" defer></script>
+    <script src="script.js?v=1.0.1" defer></script>
+    <script src="js/theme-toggle.js?v=1.0.1" defer></script>
 </head>
 
 <body data-theme="p1-matrix">
@@ -55,7 +63,7 @@
     </header>
 
     <div class="page-wrapper">
-        <main id="main-content" class="main-content">
+        <main id="main-content" class="main-content" tabindex="-1">
 
             <section class="projects" id="projects">
                 <h2>Open Source Projects</h2>
@@ -292,14 +300,14 @@
                                 Source
                             </a>
                             <a href="https://afterglows.starlightdaemon.dev/" class="project-link" target="_blank"
-                                rel="noopener noreferrer" aria-label="View Afterglows Live Demo">
+                                rel="noopener noreferrer" aria-label="View Afterglows live demo">
                                 <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2" aria-hidden="true">
                                     <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
                                     <polyline points="15 3 21 3 21 9" />
                                     <line x1="10" y1="14" x2="21" y2="3" />
                                 </svg>
-                                Site
+                                Live demo
                             </a>
                         </div>
                     </article>
@@ -358,14 +366,14 @@
                             <span class="tech-tag">Unraid</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://homelab.starlightdaemon.dev" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="View Homelab Architecture page">
+                            <a href="https://homelab.starlightdaemon.dev" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Visit Homelab site">
                                 <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2" aria-hidden="true">
                                     <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
                                     <polyline points="15 3 21 3 21 9" />
                                     <line x1="10" y1="14" x2="21" y2="3" />
                                 </svg>
-                                Site
+                                Homelab site
                             </a>
                         </div>
                     </article>
@@ -457,7 +465,7 @@
 
 
         <footer class="footer">
-            <p>&copy; 2025 StarlightDaemon. Built with ♥ and hosted on <a href="https://pages.github.com"
+            <p>&copy; 2026 StarlightDaemon. Built with ♥ and hosted on <a href="https://pages.github.com"
                     target="_blank" rel="noopener noreferrer">GitHub Pages</a>.</p>
         </footer>
     </div>
@@ -465,24 +473,24 @@
 
     <!-- Settings Panel -->
     <div class="theme-toggle">
-        <button class="toggle-btn" id="toggleTheme" aria-label="Toggle Settings" aria-haspopup="true"
+        <button class="toggle-btn" id="toggleTheme" aria-label="Toggle display settings" aria-controls="themePanel"
             aria-expanded="false">
             <span class="toggle-icon" aria-hidden="true">⚙</span>
         </button>
-        <div class="toggle-panel" id="themePanel" role="dialog" aria-modal="false" aria-label="Theme Settings">
+        <div class="toggle-panel" id="themePanel" role="region" aria-label="Display settings">
             <!-- Theme Section -->
             <div class="settings-group">
                 <h3>CRT PHOSPHOR</h3>
-                <div class="theme-options" role="radiogroup" aria-label="Color Theme">
-                    <button class="theme-option" data-theme="p1-green" role="radio" aria-checked="false">P1
+                <div class="theme-options" role="group" aria-label="Color theme">
+                    <button class="theme-option" data-theme="p1-green" aria-pressed="false">P1
                         GREEN</button>
-                    <button class="theme-option active" data-theme="p1-matrix" role="radio" aria-checked="true">P1+
+                    <button class="theme-option active" data-theme="p1-matrix" aria-pressed="true">P1+
                         MATRIX</button>
-                    <button class="theme-option" data-theme="p3-amber" role="radio" aria-checked="false">P3
+                    <button class="theme-option" data-theme="p3-amber" aria-pressed="false">P3
                         AMBER</button>
-                    <button class="theme-option" data-theme="p4-white" role="radio" aria-checked="false">P4
+                    <button class="theme-option" data-theme="p4-white" aria-pressed="false">P4
                         WHITE</button>
-                    <button class="theme-option" data-theme="ibm-blue" role="radio" aria-checked="false">IBM
+                    <button class="theme-option" data-theme="ibm-blue" aria-pressed="false">IBM
                         BLUE</button>
                 </div>
             </div>
@@ -490,11 +498,11 @@
             <!-- Font Section -->
             <div class="settings-group">
                 <h3>TERMINAL FONT</h3>
-                <div class="theme-options font-options" role="radiogroup" aria-label="Font Selection">
-                    <button class="theme-btn active" data-font="ibm" role="radio" aria-checked="true">IBM</button>
-                    <button class="theme-btn" data-font="vt323" role="radio" aria-checked="false">VT323</button>
-                    <button class="theme-btn" data-font="space" role="radio" aria-checked="false">SPACE</button>
-                    <button class="theme-btn" data-font="fira" role="radio" aria-checked="false">FIRA</button>
+                <div class="theme-options font-options" role="group" aria-label="Font selection">
+                    <button class="theme-btn active" data-font="ibm" aria-pressed="true">IBM</button>
+                    <button class="theme-btn" data-font="vt323" aria-pressed="false">VT323</button>
+                    <button class="theme-btn" data-font="space" aria-pressed="false">SPACE</button>
+                    <button class="theme-btn" data-font="fira" aria-pressed="false">FIRA</button>
                 </div>
             </div>
         </div>

@@ -13,10 +13,10 @@ document.addEventListener('DOMContentLoaded', function () {
         buttons.forEach(btn => {
             if (btn.getAttribute(dataAttr) === value) {
                 btn.classList.add('active');
-                btn.setAttribute('aria-checked', 'true');
+                btn.setAttribute('aria-pressed', 'true');
             } else {
                 btn.classList.remove('active');
-                btn.setAttribute('aria-checked', 'false');
+                btn.setAttribute('aria-pressed', 'false');
             }
         });
     }
@@ -69,5 +69,14 @@ document.addEventListener('DOMContentLoaded', function () {
             // Update active state
             updateActiveButton(themeOptions, theme, 'data-theme');
         });
+    });
+
+    // Close the settings panel with Escape and return focus to its trigger.
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && togglePanel.classList.contains('active')) {
+            togglePanel.classList.remove('active');
+            toggleBtn.setAttribute('aria-expanded', 'false');
+            toggleBtn.focus();
+        }
     });
 });

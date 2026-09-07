@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Custom `404.html` recovery page matching the portfolio design.
+- SVG favicon, Apple touch icon, and a dedicated 1200×630 social preview image.
+
+### Changed
+- Strengthened document-level CSP directives supported by meta delivery and removed the unsupported `frame-ancestors` meta directive.
+- Improved Open Graph/Twitter metadata and updated the sitemap modification date.
+- Replaced incomplete ARIA radio semantics in display settings with toggle-button semantics and added Escape-key dismissal.
+
 ---
 
 ## [1.0.0] - 2026-06-24

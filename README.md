@@ -18,6 +18,7 @@ This repository is the main development source for the live site. It contains th
 ### Production / Live Files
 The active static site footprint published to the root domain.
 - `index.html` — Core page route
+- `404.html` — Branded recovery page for unknown routes
 - `homelab.html` — Meta-redirect to homelab.starlightdaemon.dev
 - `styles.css` & `script.js` — Global styling and logic
 - `css/` & `js/` — Modular feature code and theme handling
@@ -42,7 +43,7 @@ External project sites such as `Afterglows` may have their own standalone reposi
 
 ## 💻 Local Development
 
-The site is a root-published static environment, so most day-to-day work happens directly in the root HTML, CSS, JS, and supporting asset folders.
+The site is a root-published static environment with no framework, package manager, or generated-output directory. GitHub Pages publishes the `main` branch repository root. The default Pages/Jekyll pass-through is retained because the site has no Jekyll-sensitive asset paths and does not need a `.nojekyll` exception. Most day-to-day work happens directly in the root HTML, CSS, JS, and supporting asset folders.
 
 ### Prerequisites
 
@@ -119,7 +120,9 @@ Status styles currently in use include:
 
 - The canonical live site is `https://www.starlightdaemon.dev/`
 - GitHub Pages is already configured and deployed
-- The repository root is the active published source.
+- Branch/folder publishing from `main` at the repository root is the active publishing method
+- There is no build command or generated site directory; the checked-in production files are the deployable output
+- The absence of `.nojekyll` is intentional; the working default Pages/Jekyll pass-through is preserved
 - `CNAME` is deployment-critical and should be treated conservatively
 - Non-production folders may exist alongside live files without being part of the deployed homepage flow
 

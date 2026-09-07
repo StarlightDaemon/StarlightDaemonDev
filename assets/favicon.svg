@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="StarlightDaemon terminal mark">
+  <rect width="64" height="64" fill="#050505"/>
+  <rect x="3" y="3" width="58" height="58" fill="none" stroke="#00ff41" stroke-width="3"/>
+  <path d="M17 19 31 32 17 45" fill="none" stroke="#00ff41" stroke-linecap="square" stroke-linejoin="miter" stroke-width="6"/>
+  <path d="M34 45h14" fill="none" stroke="#00ff41" stroke-linecap="square" stroke-width="6"/>
+</svg>
