@@ -1,0 +1,24 @@
+name: Verify portfolio website
+
+# Static checks only. This workflow cannot deploy GitHub Pages.
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Validate portfolio source and assets
+        run: node scripts/validate-site.mjs
