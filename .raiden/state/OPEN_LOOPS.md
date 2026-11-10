@@ -15,8 +15,8 @@
 - Status: Closed 2026-06-07
 - What was done: Audit findings P1–P3 resolved in commit 94f8771 —
   CRLF line endings stripped from `start-dev-server.sh`,
-  stale `/mnt/e/` WSL paths updated to `E:\Citadel/` in
+  stale `/mnt/e/` WSL paths updated for the macOS checkout in
   `.agent/workflows/start-server.md`,
   `.raiden/local/prompts/audit-protocol-install-handoff.md`, and
   `.raiden/local/prompts/migration-remediation.md`.
-- Success condition met: Deployed working tree and full git history are clean of `/mnt/e/` references. Residual references exist only in `.claude/settings.local.json` (gitignored, macOS-inert local tool config) and are operationally inert.
+- Success condition met: the affected scripts and workflow documents were remediated for the macOS checkout. Historical commits retain their original paths; this was not a history rewrite. Later host changes are separate from this completed migration.

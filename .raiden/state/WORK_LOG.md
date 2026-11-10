@@ -1,5 +1,27 @@
 # Work Log
 
+## 2026-11-10 — Distribution hardening
+
+- Pulled `70f745d` (upstream validator and PR-only CI) under the uncommitted 2026-09-19 work; no conflicts.
+- Review found no secrets in tracked files or history and no critical issues. Live probe showed Pages publishing `AGENTS.md`/`.html`, `CHANGELOG.html`, `README.md`, `concepts/`, `scripts/validate-site.mjs`, and `start-dev-server.sh`.
+- Added `_config.yml` with an `exclude` list for those files. Jekyll was not available locally, so the exclusions are unverified until the next Pages build.
+- CI now runs on pushes to `main` and runs `_checks/` alongside the upstream validator. `_checks/` must be committed for that step to pass. Branch protection was not changed.
+- Replaced machine-specific absolute paths in `.raiden/local/` with `<RAIDEN_ROOT>`/`<INSTANCE_ROOT>` placeholders; real paths moved to gitignored `.raiden/local/MACHINE.md`. Git history still contains the old paths; no history rewrite.
+- Open external item: `http://starlightdaemon.dev` returns Cloudflare 522 (HTTPS apex redirects correctly); needs a Cloudflare HTTPS redirect, outside this repo.
+
+## 2026-09-19 — Portfolio refinement
+
+- Used a read-only delegated frontend/documentation review and a final diff review; this session was the sole repository writer.
+- Made display settings tolerate blocked reads/writes and obsolete saved values; preserved active-button and ARIA state independently of persistence.
+- Fixed settings-panel sizing and group spacing, narrow-page overflow, and clipped project text. Cards retain the grid and grow to fit their content. Added font fallbacks and removed duplicate button/status styles.
+- Completed reduced-motion CSS for smooth scrolling and settings transitions, including the specificity needed to override section entrance animations.
+- Replaced the global live-server/NVM requirement with localhost-bound Python preview helpers for PowerShell and Bash, preserving CSP. Documented manual refresh, direct 404 preview, cache-version updates, font licensing, and verification commands.
+- Corrected stale state claims about committed launch changes, deployment exclusions, font counts, stylesheet versions, and migration history. Retained historical maintenance context below; no closed loops were reopened.
+- Verification: 17 dependency-free Node checks passed for storage failures, selection/dismissal behavior, case-sensitive local resource paths, and stylesheet integrity. JavaScript syntax and Git whitespace checks passed. PowerShell preview successfully served the repository when launched from its parent directory; Bash syntax passed, but no native macOS/Linux execution was performed.
+- Browser verification: exercised all five themes; checked all four fonts at 320×640, 375×812, 768×1024, 1440×900, 2560×1440, and 640×360. No horizontal page overflow or settings-panel boundary overflow remained. Card text fits; Space Mono glyphs extend slightly beyond heading line boxes with visible overflow. Verified persistence on reload, Escape focus return, outside-click dismissal, skip-link focus, and 404 recovery. No warning/error console entries were observed on the homepage.
+- Reduced-motion rules were inspected in the browser's parsed stylesheets and reviewed for cascade specificity; OS media emulation and a fresh Lighthouse run were not performed.
+- Changes remain local and uncommitted. No push, tag, Pages settings, DNS, or deployment action was performed; live deployment remains unverified.
+
 ## 2026-09-07 — GitHub Pages pre-launch readiness pass
 
 - Confirmed the custom-domain, branch/folder GitHub Pages architecture and retained
@@ -68,3 +90,8 @@
 - homelab submodule removed; homelab.starlightdaemon.dev promoted to standalone repo.
 - Afterglows and Stargate spun off to their own standalone repos.
 - V5.4 header layout, font switcher, and project card refactor shipped (unreleased tag pending).
+
+## Historical maintenance context retained during state refinement
+
+- CSS pruning passes at `a2bb4f5` and `5fc5cce` were recorded as reducing dead selectors by approximately 29%.
+- The 2026-06-23 repository audit used instrument v4.3 at `5fc5cce`. The maintenance sweep at `69148fc` addressed findings F1c/F1d/F1e/F3/F4/F5/F6/F7/F8/F9/F12/F14; subsequent state documentation recorded F1a/F1b, the remaining state-file F1c, and F10 (font licensing) as addressed. These are retained historical records, not a new audit verification.

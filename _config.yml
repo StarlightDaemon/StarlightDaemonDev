@@ -1,0 +1,13 @@
+# GitHub Pages (Jekyll) build settings.
+# The site is plain static HTML; this file only keeps repository documentation
+# and tooling out of the published site. Dot- and underscore-prefixed paths
+# (.raiden/, .agent/, .github/, _checks/) are already excluded by Jekyll.
+exclude:
+  - AGENTS.md
+  - README.md
+  - CHANGELOG.md
+  - concepts/
+  - ideas/
+  - scripts/
+  - start-dev-server.sh
+  - start-dev-server.ps1

@@ -1,7 +1,10 @@
 name: Verify portfolio website
 
 # Static checks only. This workflow cannot deploy GitHub Pages.
+# Pages publishes every push to main, so pushes are checked as well as pull requests.
 on:
+  push:
+    branches: [main]
   pull_request:
     branches: [main]
 
@@ -22,3 +25,7 @@ jobs:
 
       - name: Validate portfolio source and assets
         run: node scripts/validate-site.mjs
+
+      # Runs on Linux, so wrong-case asset paths fail here as they would on Pages.
+      - name: Run display-settings and resource regression checks
+        run: node --test "_checks/*.test.cjs"

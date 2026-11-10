@@ -1,16 +1,16 @@
-#!/bin/bash
-# Quick start script for local development server
+#!/usr/bin/env bash
+# Serve unchanged files so the preview respects the production content policy.
+set -euo pipefail
 
-# Load NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+if command -v python3 >/dev/null 2>&1; then
+    python_command=python3
+elif command -v python >/dev/null 2>&1; then
+    python_command=python
+else
+    echo "Python 3 is required to run the local preview." >&2
+    exit 1
+fi
 
-# Start live-server
-echo "🚀 Starting local development server..."
-echo "📍 Server will run at: http://localhost:8080"
-echo "🔄 Auto-reload enabled - changes will refresh browser automatically"
-echo ""
-echo "Press Ctrl+C to stop the server"
-echo ""
-
-live-server --port=8080 --open=/index.html
+site_root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+echo "Open http://127.0.0.1:8080 — refresh after edits; Ctrl+C stops the server."
+exec "$python_command" -m http.server 8080 --bind 127.0.0.1 --directory "$site_root"

@@ -8,12 +8,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Dependency-free regression checks for display settings, local resource paths, and stylesheet integrity.
+- A PowerShell preview helper alongside the Bash helper, using Python's localhost-bound HTTP server.
 - Custom `404.html` recovery page matching the portfolio design.
 - SVG favicon, Apple touch icon, and a dedicated 1200×630 social preview image.
+- `_config.yml` excluding repository documentation and tooling from the published site.
 
 ### Changed
+- Preview instructions now preserve the production CSP and use manual refresh without globally installed npm tooling.
+- Project cards expand to fit their content and selected font; narrow layouts and settings panels stay within the viewport.
+- Display preferences tolerate blocked browser storage and reject obsolete saved values.
+- Completed reduced-motion handling for smooth scrolling and display-setting transitions.
 - Strengthened document-level CSP directives supported by meta delivery and removed the unsupported `frame-ancestors` meta directive.
 - Improved Open Graph/Twitter metadata and updated the sitemap modification date.
+- The verification workflow now runs on pushes to `main` as well as pull requests, and also runs the `_checks/` suite on Linux to catch filename-case errors.
+- Machine-specific paths in the local RAIDEN overlay are replaced with placeholders; the real paths live in a gitignored `MACHINE.md`.
 - Replaced incomplete ARIA radio semantics in display settings with toggle-button semantics and added Escape-key dismissal.
 
 ---

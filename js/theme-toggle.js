@@ -1,11 +1,32 @@
-// Theme Brightness Toggle
+// Display settings remain usable when browser storage is unavailable.
 document.addEventListener('DOMContentLoaded', function () {
     const toggleBtn = document.getElementById('toggleTheme');
     const togglePanel = document.getElementById('themePanel');
     const themeOptions = document.querySelectorAll('.theme-option');
+    const fontBtns = document.querySelectorAll('.font-options .theme-btn');
+
+    if (!toggleBtn || !togglePanel) return;
+
+    function readPreference(key, buttons, dataAttr, fallback) {
+        try {
+            const saved = localStorage.getItem(key);
+            return Array.from(buttons).some(btn => btn.getAttribute(dataAttr) === saved)
+                ? saved : fallback;
+        } catch {
+            return fallback;
+        }
+    }
+
+    function savePreference(key, value) {
+        try {
+            localStorage.setItem(key, value);
+        } catch {
+            // The selection still applies for this page when persistence is blocked.
+        }
+    }
 
     // Load saved theme or default to 'p1-matrix' (classic Matrix green)
-    const savedTheme = localStorage.getItem('theme') || 'p1-matrix';
+    const savedTheme = readPreference('theme', themeOptions, 'data-theme', 'p1-matrix');
     document.body.dataset.theme = savedTheme;
 
     // Helper to update active state and ARIA
@@ -24,8 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
     updateActiveButton(themeOptions, savedTheme, 'data-theme');
 
     // Font Management
-    const fontBtns = document.querySelectorAll('.font-options .theme-btn');
-    const savedFont = localStorage.getItem('site-font') || 'ibm';
+    const savedFont = readPreference('site-font', fontBtns, 'data-font', 'ibm');
 
     // Apply saved font
     document.documentElement.setAttribute('data-font', savedFont);
@@ -35,8 +55,8 @@ document.addEventListener('DOMContentLoaded', function () {
         btn.addEventListener('click', () => {
             const font = btn.getAttribute('data-font');
             document.documentElement.setAttribute('data-font', font);
-            localStorage.setItem('site-font', font);
             updateActiveButton(fontBtns, font, 'data-font');
+            savePreference('site-font', font);
         });
     });
 
@@ -63,11 +83,9 @@ document.addEventListener('DOMContentLoaded', function () {
             // Update body attribute
             document.body.dataset.theme = theme;
 
-            // Save to localStorage
-            localStorage.setItem('theme', theme);
-
             // Update active state
             updateActiveButton(themeOptions, theme, 'data-theme');
+            savePreference('theme', theme);
         });
     });
 

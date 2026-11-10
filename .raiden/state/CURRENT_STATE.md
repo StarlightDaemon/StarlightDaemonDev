@@ -16,26 +16,25 @@ StarlightDaemonDev is the canonical production repository for the starlightdaemo
 ## Confirmed Current State
 
 - Live site is published from the repository root via GitHub Pages (CNAME configured).
-- Core pages: `index.html` (portfolio), `homelab.html` (0-second meta-refresh redirect stub to homelab.starlightdaemon.dev). `stargate.html` was removed from this repository (commit `d4fba2f`) and extracted to a separate standalone repository.
+- Core pages: `index.html` (portfolio), `404.html` (recovery), and `homelab.html` (immediate redirect to homelab.starlightdaemon.dev).
 - V5.4 header layout active (left-aligned, IBM Plex Mono default font, green accent border).
-- Font switcher: 4 retro terminal fonts available (IBM Plex Mono, VT323, Space Mono, Fira Code), self-hosted as 44 `.woff2` files under `assets/fonts/` — Google Fonts CDN dependency removed (commit `c7bc6b4`, 2026-06-13).
-- Theme system: color-coded buttons with phosphor color previews.
-- Project cards: refactored to Badge Block style with strict grid layout. Active cards include Native Taskbar Media Controller, Audiobookshelf Now Playing, Hide RDP Connection Bar, Fujin, and others.
-- Content Security Policy (`default-src 'self'`, no `unsafe-inline`) enforced on both pages via meta tag (commit `956837e`); SRI hash on `css/fonts.css` link verified in-sync (commit `bd36e58`).
+- Fonts are self-hosted under `assets/fonts/`; available choices are defined in the homepage display settings. Font licensing is recorded in `assets/fonts/OFL.txt`.
+- Display settings use color-coded phosphor previews, validate saved preferences, and remain usable when browser storage is blocked. The panel scrolls within short viewports.
+- Project cards retain the Badge Block style and responsive grid, growing to fit complete titles and descriptions. Portfolio entries are maintained in `index.html`.
+- Content Security Policy (`default-src 'self'`, no `unsafe-inline`) is delivered via meta tags on all production pages; styled pages use SRI for `css/fonts.css`.
 - Accessibility: skip-nav link, `:focus-visible` ring, `prefers-reduced-motion` support, ARIA labels on interactive controls (commit `3e37707`).
 - SEO: canonical link, Open Graph tags, `robots.txt`, `sitemap.xml` present (commit `b4724e2`).
-- Pre-launch readiness pass added a branded `404.html`, dedicated social preview, favicon/touch icon support, stronger meta-delivered CSP directives, and corrected display-settings semantics. The existing Pages/Jekyll pass-through remains intentional; deployment is operator-controlled and unverified for these working-tree changes.
+- Launch-readiness changes are committed in `a08b44d`. The existing Pages/Jekyll pass-through remains intentional; deployment of that commit and subsequent refinements has not been verified in this pass.
 - Logo converted to WebP with PNG fallback, explicit dimensions set (commit `78d4b0b`).
-- CSS: approximately 29% dead-selector reduction across two pruning passes (commits `a2bb4f5`, `5fc5cce`); styles cache bumped to v1.0.8.
-- `afterglows_staging/` and `tests/` are excluded from Pages deploy via `.gitignore`/deploy config (commit `df03a1c`).
+- `afterglows_staging/` and `tests/` are ignored local reference directories, absent from tracked deployment input. `_checks/` holds regression checks and uses Jekyll's underscore-directory exclusion. `_config.yml` excludes repository docs and tooling from the published site. CI (`verify-site.yml`) runs `scripts/validate-site.mjs` and `_checks/` on pushes and pull requests to `main`; `main` has no branch protection, so CI reports but does not block deployment.
+- Preview and verification commands are documented in `README.md`; the preview serves unchanged files on localhost through Python without reload-code injection.
 - `.gitattributes` present for consistent line endings (commit `cdca54d`).
-- Afterglows and Stargate are both in their own standalone repositories; this repo links to Afterglows but does not host it.
-- 2026-06-23 repository audit complete (instrument v4.3, audited at commit `5fc5cce`). Findings F1c/F1d/F1e/F3/F4/F5/F6/F7/F8/F9/F12/F14 addressed in maintenance sweep (commit `69148fc`, 2026-06-24). Findings F1a/F1b and the CURRENT_STATE.md instance of F1c addressed in this update. Finding F10 (missing OFL license file for self-hosted fonts) addressed in this update via `assets/fonts/OFL.txt`.
-- Migration audit (WSL→macOS) completed 2026-06-07; all findings (P1–P3) remediated. OL-002 closed.
+- Project-site ownership boundaries are recorded in D-001 and D-002.
+- Historical audit and cleanup context is recorded in `WORK_LOG.md`; migration follow-up is recorded in OL-002.
 
 ## In Progress
 
-- None. See OL-001.
+- Local refinements are awaiting operator review and release. Verification is recorded in `WORK_LOG.md`; release goals are in `GOALS.md` and prior release follow-up is in OL-001.
 
 ## Not Yet Done
 

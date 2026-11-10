@@ -1,4 +1,4 @@
-/* Theme Brightness Toggle */
+/* Display settings */
 .theme-toggle {
     position: fixed;
     bottom: var(--space-lg);
@@ -30,7 +30,7 @@
     position: absolute;
     bottom: 60px;
     right: 0;
-    width: 250px;
+    width: min(250px, calc(100vw - 2 * var(--space-lg)));
     background: rgba(0, 0, 0, 0.95);
     border: 1px solid var(--accent-primary);
     padding: 1rem;
@@ -41,12 +41,13 @@
     z-index: 1000;
     /* Fix for content overflow */
     height: auto;
-    max-height: 80vh;
+    max-height: calc(100vh - 60px - 2 * var(--space-lg));
+    max-height: calc(100dvh - 60px - 2 * var(--space-lg));
     overflow-y: auto;
 }
 
 .toggle-panel.active {
-    display: block;
+    display: flex;
 }
 
 .toggle-panel h3 {
@@ -63,32 +64,7 @@
     gap: var(--space-xs);
 }
 
-.theme-option {
-    background: var(--bg-tertiary);
-    border: 1px solid var(--border-default);
-    color: var(--text-primary);
-    padding: var(--space-sm) var(--space-md);
-    cursor: pointer;
-    transition: all var(--transition-fast);
-    text-align: left;
-    font-family: var(--font-mono);
-    font-size: var(--text-xs);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.theme-option:hover {
-    border-color: var(--accent-primary);
-    background: var(--bg-secondary);
-}
-
-.theme-option.active {
-    background: var(--accent-primary);
-    color: var(--bg-primary);
-    border-color: var(--accent-primary);
-}
-
-/* Font buttons - same styling as theme buttons */
+.theme-option,
 .theme-btn {
     background: var(--bg-tertiary);
     border: 1px solid var(--border-default);
@@ -103,11 +79,13 @@
     letter-spacing: 0.05em;
 }
 
+.theme-option:hover,
 .theme-btn:hover {
     border-color: var(--accent-primary);
     background: var(--bg-secondary);
 }
 
+.theme-option.active,
 .theme-btn.active {
     background: var(--accent-primary);
     color: var(--bg-primary);
@@ -163,4 +141,12 @@
 .theme-option[data-theme="ibm-blue"].active {
     background: #00a6ed;
     color: #000;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .toggle-btn,
+    .theme-option,
+    .theme-btn {
+        transition: none;
+    }
 }

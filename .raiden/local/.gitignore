@@ -1,2 +1,5 @@
 # Local tier-to-model overlay — never commit to a public repo.
 ROUTING.md
+
+# Operator machine paths — never commit to a public repo.
+MACHINE.md
