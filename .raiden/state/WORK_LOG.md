@@ -3,6 +3,8 @@
 ## 2026-11-10 — Release v1.1.0
 
 - Promoted `CHANGELOG.md` [Unreleased] to [1.1.0] - 2026-11-10, adding the upstream validator/CI and homelab title entries from `70f745d`, and tagged `v1.1.0` (annotated, matching `v1.0.0`).
+- Pushed the release commit `f064cf2` and tag; CI passed and Pages rebuilt from the release commit.
+- Published GitHub releases for `v1.1.0` (marked Latest) and `v1.0.0` (not Latest), each using its `CHANGELOG.md` section as notes. GitHub cannot backdate releases, so `v1.0.0` shows a 2026-11-11 UTC publish date; its tag still points at `84bab4c` and its notes carry the 2026-06-24 date.
 
 ## 2026-11-10 — Distribution hardening
 
