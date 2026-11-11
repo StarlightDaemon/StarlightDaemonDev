@@ -36,7 +36,7 @@ StarlightDaemonDev is the canonical production repository for the starlightdaemo
 
 ## In Progress
 
-- `CHANGELOG.md` [Unreleased] entries are deployed but not yet version-tagged; tagging is an operator release decision (see `GOALS.md`).
+- None. `v1.1.0` (2026-11-10) covers all changes through the release commit; new work goes under `CHANGELOG.md` [Unreleased].
 
 ## Not Yet Done
 

@@ -1,5 +1,9 @@
 # Work Log
 
+## 2026-11-10 — Release v1.1.0
+
+- Promoted `CHANGELOG.md` [Unreleased] to [1.1.0] - 2026-11-10, adding the upstream validator/CI and homelab title entries from `70f745d`, and tagged `v1.1.0` (annotated, matching `v1.0.0`).
+
 ## 2026-11-10 — Distribution hardening
 
 - Pulled `70f745d` (upstream validator and PR-only CI) under the uncommitted 2026-09-19 work; no conflicts.
