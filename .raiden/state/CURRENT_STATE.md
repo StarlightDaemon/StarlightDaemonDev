@@ -16,6 +16,7 @@ StarlightDaemonDev is the canonical production repository for the starlightdaemo
 ## Confirmed Current State
 
 - Live site is published from the repository root via GitHub Pages (CNAME configured).
+- Domain routing: `www` is DNS-only to GitHub Pages. The apex is proxied by Cloudflare, where Always Use HTTPS upgrades HTTP and a redirect rule sends HTTPS apex requests to `www`, preserving path and query (verified 2026-11-10).
 - Core pages: `index.html` (portfolio), `404.html` (recovery), and `homelab.html` (immediate redirect to homelab.starlightdaemon.dev).
 - V5.4 header layout active (left-aligned, IBM Plex Mono default font, green accent border).
 - Fonts are self-hosted under `assets/fonts/`; available choices are defined in the homepage display settings. Font licensing is recorded in `assets/fonts/OFL.txt`.
@@ -40,7 +41,6 @@ StarlightDaemonDev is the canonical production repository for the starlightdaemo
 ## Not Yet Done
 
 - No active blocking work identified.
-- Non-blocking, outside this repo: `http://starlightdaemon.dev` returns Cloudflare 522 (HTTPS apex redirects correctly); needs a Cloudflare HTTPS redirect.
 
 ## Known Constraints
 
