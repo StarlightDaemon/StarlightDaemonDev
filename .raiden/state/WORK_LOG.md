@@ -4,9 +4,10 @@
 
 - Pulled `70f745d` (upstream validator and PR-only CI) under the uncommitted 2026-09-19 work; no conflicts.
 - Review found no secrets in tracked files or history and no critical issues. Live probe showed Pages publishing `AGENTS.md`/`.html`, `CHANGELOG.html`, `README.md`, `concepts/`, `scripts/validate-site.mjs`, and `start-dev-server.sh`.
-- Added `_config.yml` with an `exclude` list for those files. Jekyll was not available locally, so the exclusions are unverified until the next Pages build.
-- CI now runs on pushes to `main` and runs `_checks/` alongside the upstream validator. `_checks/` must be committed for that step to pass. Branch protection was not changed.
+- Added `_config.yml` with an `exclude` list for those files. Jekyll was not available locally; the exclusions were confirmed live after deployment (below).
+- CI now runs on pushes to `main` and runs `_checks/` alongside the upstream validator. Repository rules were not changed. The initial review checked only classic branch protection and wrongly reported `main` as unprotected; the push revealed the `protect-main` ruleset, which the owner account bypasses and which has no required status checks.
 - Replaced machine-specific absolute paths in `.raiden/local/` with `<RAIDEN_ROOT>`/`<INSTANCE_ROOT>` placeholders; real paths moved to gitignored `.raiden/local/MACHINE.md`. Git history still contains the old paths; no history rewrite.
+- Committed and pushed `de53209`. The verify workflow passed both suites on the push, the Pages build succeeded, and the live site returned 404 for every excluded path while serving pages and assets (including `styles.css?v=1.0.10`) normally.
 - Open external item: `http://starlightdaemon.dev` returns Cloudflare 522 (HTTPS apex redirects correctly); needs a Cloudflare HTTPS redirect, outside this repo.
 
 ## 2026-09-19 — Portfolio refinement

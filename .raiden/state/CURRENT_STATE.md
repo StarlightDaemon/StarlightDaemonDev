@@ -24,9 +24,10 @@ StarlightDaemonDev is the canonical production repository for the starlightdaemo
 - Content Security Policy (`default-src 'self'`, no `unsafe-inline`) is delivered via meta tags on all production pages; styled pages use SRI for `css/fonts.css`.
 - Accessibility: skip-nav link, `:focus-visible` ring, `prefers-reduced-motion` support, ARIA labels on interactive controls (commit `3e37707`).
 - SEO: canonical link, Open Graph tags, `robots.txt`, `sitemap.xml` present (commit `b4724e2`).
-- Launch-readiness changes are committed in `a08b44d`. The existing Pages/Jekyll pass-through remains intentional; deployment of that commit and subsequent refinements has not been verified in this pass.
+- Launch-readiness changes (`a08b44d`) and the 2026-09-19 refinement plus distribution hardening (`de53209`) are deployed. On 2026-11-10 the Pages build for `de53209` succeeded and the live site served the new asset versions. The Pages/Jekyll pass-through remains intentional.
 - Logo converted to WebP with PNG fallback, explicit dimensions set (commit `78d4b0b`).
-- `afterglows_staging/` and `tests/` are ignored local reference directories, absent from tracked deployment input. `_checks/` holds regression checks and uses Jekyll's underscore-directory exclusion. `_config.yml` excludes repository docs and tooling from the published site. CI (`verify-site.yml`) runs `scripts/validate-site.mjs` and `_checks/` on pushes and pull requests to `main`; `main` has no branch protection, so CI reports but does not block deployment.
+- `afterglows_staging/` and `tests/` are ignored local reference directories, absent from tracked deployment input. `_checks/` holds regression checks and uses Jekyll's underscore-directory exclusion. `_config.yml` excludes repository docs and tooling from the published site (live 404s confirmed 2026-11-10). CI (`verify-site.yml`) runs `scripts/validate-site.mjs` and `_checks/` on pushes and pull requests to `main`.
+- The `protect-main` repository ruleset blocks branch creation, update, deletion, and force-push for everyone except the repository owner, who has always-bypass. It has no required status checks, so CI reports on owner pushes but does not block deployment.
 - Preview and verification commands are documented in `README.md`; the preview serves unchanged files on localhost through Python without reload-code injection.
 - `.gitattributes` present for consistent line endings (commit `cdca54d`).
 - Project-site ownership boundaries are recorded in D-001 and D-002.
@@ -34,11 +35,12 @@ StarlightDaemonDev is the canonical production repository for the starlightdaemo
 
 ## In Progress
 
-- Local refinements are awaiting operator review and release. Verification is recorded in `WORK_LOG.md`; release goals are in `GOALS.md` and prior release follow-up is in OL-001.
+- `CHANGELOG.md` [Unreleased] entries are deployed but not yet version-tagged; tagging is an operator release decision (see `GOALS.md`).
 
 ## Not Yet Done
 
 - No active blocking work identified.
+- Non-blocking, outside this repo: `http://starlightdaemon.dev` returns Cloudflare 522 (HTTPS apex redirects correctly); needs a Cloudflare HTTPS redirect.
 
 ## Known Constraints
 
