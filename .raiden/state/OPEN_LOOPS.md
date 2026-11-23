@@ -1,18 +1,26 @@
 # Open Loops
 
-## OL-001 — CLOSED
+<!-- Statuses: open · deferred · held: <who> · no-action · accepted · closed. Each active item: ID, status, gate owner, next step or restart condition, evidence. IDs never change or get reused. Entries below stay in their original order. -->
+
+## Active
+
+Nothing is open, deferred or held. OL-001 and OL-002 are closed.
+
+---
+
+## OL-001 — closed
 
 - Title: Version-tag unreleased changelog entries
-- Status: Closed 2026-06-24
+- Status: closed 2026-06-24
 - What was done: v1.0.0 was tagged and the [Unreleased] section in CHANGELOG.md was promoted to [1.0.0] with the release date.
 - Success condition met: Version tag is cut and unreleased section is promoted to versioned entry.
 
 ---
 
-## OL-002 — CLOSED
+## OL-002 — closed
 
 - Title: WSL→macOS migration remediation
-- Status: Closed 2026-06-07
+- Status: closed 2026-06-07
 - What was done: Audit findings P1–P3 resolved in commit 94f8771 —
   CRLF line endings stripped from `start-dev-server.sh`,
   stale `/mnt/e/` WSL paths updated for the macOS checkout in
