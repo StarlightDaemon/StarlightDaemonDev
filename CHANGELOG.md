@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Seerr No-Confirm Request project card.
+- "Archived Projects" section with an Archived status badge (`.status-archived`).
+
+### Changed
+- Moved the retired CTRL, Hardlink Organizer and Hide RDP Connection Bar cards from Open Source Projects to Archived Projects.
+- Bumped the stylesheet cache-busting query to `v=1.0.11` and refreshed the sitemap `lastmod`.
+
 ---
 
 ## [1.1.0] - 2026-11-10

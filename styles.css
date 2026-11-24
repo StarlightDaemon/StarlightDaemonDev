@@ -574,6 +574,12 @@ section h2::after {
     background: transparent;
 }
 
+.status-archived {
+    color: var(--text-muted);
+    border-color: var(--text-muted);
+    background: transparent;
+}
+
 /* SUBTITLE (Option 3 Badge Block) */
 .project-subtitle {
     background: rgba(255, 255, 255, 0.05);
