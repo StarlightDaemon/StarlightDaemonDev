@@ -37,7 +37,7 @@ CI (`.github/workflows/verify-site.yml`) runs both check suites on Linux for eve
 This file and `.raiden/state/` are authoritative for this repo. Read in this order and stop when you have what you need:
 1. `.raiden/state/CURRENT_STATE.md`: deployment, domain routing, what's live and known constraints.
 2. The `## Active` section at the top of `.raiden/state/OPEN_LOOPS.md`: open, deferred and held items (statuses: `open`, `deferred`, `held: <who>`, `no-action`, `accepted`, `closed`).
-3. Only when needed: `DECISIONS.md` (IDs `D-0xx`), `WORK_LOG.md`, `CHANGELOG.md` and the root audit reports (history and evidence).
+3. Only when needed: `DECISIONS.md` (IDs `D-0xx`), `WORK_LOG.md` and `CHANGELOG.md` (history and evidence). Audit and remediation reports in the repo root are gitignored on purpose (see `.gitignore`), so they exist only in the owner's local checkout and are never published; don't commit them.
 
 Current picture: nothing open or deferred. `v1.1.0` (2026-11-10) is the latest release and is live.
 
